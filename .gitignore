@@ -17,3 +17,9 @@
 .DS_Store
 *.pem
 npm-debug.log*
+
+.vercel
+.env*
+
+# supabase CLI local cache
+supabase/.temp/
