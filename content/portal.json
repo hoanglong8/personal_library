@@ -1,0 +1,832 @@
+{
+  "meta": {
+    "title": "Viết Sách Cùng Claude — Portal thực hành",
+    "subtitle": "Chuyển thể tương tác từ cẩm nang \"Viết Sách Cùng Claude\" (Hoàng Trần) — dùng Claude Cowork & Claude Code để đi từ ý tưởng tới một cuốn sách hoàn chỉnh.",
+    "sourceLabel": "Nguồn: Viết Sách Cùng Claude — Hoàng Trần",
+    "disclaimer": "Nội dung tổng hợp và diễn giải lại từ tài liệu nguồn cho mục đích học tập; không thay thế bản sách gốc. Sinh bởi skill foxai-learning-portal.",
+    "stats": [
+      {
+        "label": "module",
+        "value": "17"
+      },
+      {
+        "label": "khung kiến thức",
+        "value": "17"
+      },
+      {
+        "label": "case study",
+        "value": "17"
+      },
+      {
+        "label": "bài tập",
+        "value": "17"
+      }
+    ]
+  },
+  "modules": [
+    {
+      "id": "buc-tranh-toan-canh",
+      "title": "Bức tranh toàn cảnh: Chat, Cowork và Code trên Claude Desktop",
+      "summary": "Phân biệt ba cách làm việc với Claude — Chat, Cowork, Code — và nắm ba khái niệm nền: phiên, ngữ cảnh, dự án.",
+      "sections": [
+        {
+          "id": "ch1-ba-vai-claude",
+          "type": "concept",
+          "title": "Ba cách làm việc với Claude — một sân khấu, ba vai",
+          "body": "Claude có thể đóng ba vai tuỳ cách bạn mời vào việc. Chat là hỏi–đáp trong khung hội thoại — bạn là người thao tác tiếp (mở file, lưu, sắp xếp). Cowork là nơi bạn mô tả kết quả mong muốn, Claude tự làm nhiều bước và báo lại, có luồng phê duyệt ở các bước lớn. Code là công cụ mạnh nhất về kỹ thuật: đọc và sửa nhiều file, chạy lệnh, gọi công cụ ngoài, lưu phiên bản.\n\nBa khái niệm nền để hiểu vì sao \"Claude quên mất chương trước\": phiên (session) là một lần làm việc liên tục, mặc định không nhớ phiên cũ; ngữ cảnh (context) là toàn bộ những gì Claude đang thấy trong phiên, giống một mặt bàn làm việc có kích thước hữu hạn; dự án (project) là mái nhà gom bản thảo, ghi chú research, quy ước riêng để Claude không phải giải thích lại từ đầu mỗi phiên."
+        },
+        {
+          "id": "ch1-khung-chon-vai",
+          "type": "framework",
+          "title": "Chọn đúng vai cho từng việc",
+          "intro": "Người mới không cần học cả ba cùng lúc — chọn theo loại việc:",
+          "steps": [
+            "Việc lẻ, tra cứu nhanh, hỏi một câu → dùng Chat.",
+            "Phần lớn hành trình viết sách: ý tưởng, research, dàn ý, bản thảo, biên tập → bắt đầu ở Cowork.",
+            "Dàn trang, xuất PDF, tự động hoá → chuyển sang Code khi tới khâu đó (luôn nằm trong 'Hộp nâng cao', có thể bỏ qua lúc đầu)."
+          ]
+        },
+        {
+          "id": "ch1-case-chi-mai",
+          "type": "case-study",
+          "title": "Chị Mai và nỗi sợ 'công nghệ AI'",
+          "body": "Chị Mai vừa nghỉ hưu sau ba mươi năm dạy văn, có một bản thảo hồi ký nằm rải rác trong đầu và vài trang ghi tay. Chị tải app Claude về, mở lên — và khựng lại: màn hình có một ô chat, đâu đó nhắc tới 'Cowork', 'Code', 'phiên làm việc', chị không biết bấm vào đâu.\n\nVí dụ này minh hoạ đúng lý do chương 1 tồn tại: trước khi học viết một câu prompt nào, người mới cần một tấm bản đồ — ở đây có những gì, cái nào để làm gì — thay vì bị ngợp bởi thuật ngữ.",
+          "source": "Chương 1 — Bức tranh toàn cảnh"
+        },
+        {
+          "id": "ch1-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Tải và cài Claude Desktop từ trang chính thức, đăng nhập, mở app lên. 2) Mở một cuộc trò chuyện, gõ thử: 'Mình đang chuẩn bị viết một cuốn sách [thể loại] cho độc giả [ai]. Bạn hãy đóng vai cộng sự viết, và hỏi mình 3 câu để hiểu dự án trước khi gợi ý bất cứ điều gì.' 3) Tìm trong app chỗ chuyển sang Cowork hoặc mở một dự án — chưa cần làm sâu. 4) Ghi ra một câu trả lời ngắn cho: 'Cuốn sách của tôi là về gì, và tại sao là tôi viết nó?'",
+          "hint": "Đây nguyên là danh sách 'Việc cần làm ngay' ở cuối chương 1 — không cần thêm gì, chỉ cần thực sự làm theo thứ tự.",
+          "answer": "Không có đáp án cố định — kết quả là app đã cài xong, biết vị trí Cowork, và một câu trả lời ngắn sẽ dùng lại ở Chương 4 (Lên ý tưởng)."
+        },
+        {
+          "id": "ch1-can-than",
+          "type": "note",
+          "title": "AI hỗ trợ, con người quyết định",
+          "body": "Đừng coi bản nháp của Claude là 'đã xong'. Về mặt sự thật, nó có thể bịa (ảo giác); về mặt bản quyền, nội dung do AI hỗ trợ có những vùng xám pháp lý (bàn kỹ ở Chương 15). Mọi tên riêng, con số, trích dẫn Claude đưa ra đều cần được kiểm chứng trước khi tin.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "dung-xuong-viet",
+      "title": "Dựng \"xưởng viết\" của bạn",
+      "summary": "Sắp một dự án sách thành thư mục gọn gàng, viết CLAUDE.md làm bộ nhớ dự án, và bảo vệ công sức bằng thói quen sao lưu.",
+      "sections": [
+        {
+          "id": "ch2-vi-sao-xuong-gon-gang",
+          "type": "concept",
+          "title": "Vì sao một xưởng gọn gàng lại quan trọng",
+          "body": "Cả Cowork lẫn Claude Code đều làm việc trực tiếp trên file thật trong một thư mục bạn chọn — bản thảo, ghi chú research, ảnh bìa đều nằm trên máy dưới dạng file chứ không kẹt trong một cửa sổ chat rồi biến mất.\n\nĐiều đó đặt ra một luật ngầm: Claude làm việc tốt tới đâu tuỳ thuộc vào việc nó tìm thấy đúng thứ nhanh tới đâu. Một thư mục lộn xộn, đặt tên tuỳ hứng khiến Claude phải đoán — và đoán là mảnh đất của sai sót. Một thư mục có cấu trúc rõ ràng thì ngược lại: chỉ cần nói 'cập nhật chương 3', Claude biết ngay file nào."
+        },
+        {
+          "id": "ch2-khung-cau-truc-thu-muc",
+          "type": "framework",
+          "title": "Cấu trúc thư mục cho một dự án sách",
+          "intro": "Mỗi loại việc một ngăn, tên ngăn nói rõ nó chứa gì — không cần tạo hết ngay, bắt đầu với 3 ngăn đầu:",
+          "steps": [
+            "CLAUDE.md — \"bộ nhớ dự án\": giọng văn, quy tắc, bối cảnh.",
+            "ban-thao/ — các chương bản thảo, mỗi chương một file (01-chuong-mot.md...).",
+            "research/ — ghi chú nghiên cứu, nguồn, tài liệu tham khảo.",
+            "outline/ — dàn ý, character bible, beat sheet.",
+            "anh/ — ảnh bìa, minh hoạ, sơ đồ.",
+            "thiet-ke/ — template, CSS/Typst cho dàn trang.",
+            "xuat-ban/ — file PDF/EPUB thành phẩm."
+          ]
+        },
+        {
+          "id": "ch2-case-claude-md",
+          "type": "case-study",
+          "title": "Một CLAUDE.md tối giản cho dự án \"Bánh Mì Của Mẹ\"",
+          "body": "Ví dụ trong sách cho một cuốn phi hư cấu về nghề bánh mì truyền thống: mục Giọng văn ghi rõ 'ấm áp, kể chuyện, xưng tôi, câu ngắn, tránh Hán-Việt nặng'; mục Độc giả ghi 'người yêu bếp núc, 30-55 tuổi'; mục Quy tắc bất di bất dịch ghi thẳng 'KHÔNG bịa số liệu, tên người, mốc lịch sử — chưa có nguồn thì để trống và hỏi tôi'.\n\nViết một lần, dùng mãi: mỗi phiên làm việc mới, Claude nạp lại CLAUDE.md nên không cần dặn lại từ đầu.",
+          "source": "Chương 2 — Dựng xưởng viết của bạn"
+        },
+        {
+          "id": "ch2-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Tạo một thư mục dự án trên máy với ít nhất ba ngăn: ban-thao/, research/, và một file CLAUDE.md trống (có thể nhờ Cowork dựng, nhớ yêu cầu nó duyệt kế hoạch trước). 2) Viết năm dòng đầu tiên cho CLAUDE.md: tên sách, giọng văn, độc giả, và hai quy tắc bất di bất dịch (bắt buộc có dòng 'không bịa dữ kiện, chưa có nguồn thì hỏi'). 3) Thiết lập một cách sao lưu ngay bây giờ (đồng bộ đám mây hoặc chép sang ổ ngoài định kỳ).",
+          "hint": "Làm bước 3 khi thư mục còn trống là dễ nhất — đừng đợi tới lúc nó chứa sáu tháng công sức.",
+          "answer": "Không có đáp án cố định — kết quả là một thư mục dự án có cấu trúc, một CLAUDE.md 5 dòng, và một cơ chế sao lưu đang chạy."
+        },
+        {
+          "id": "ch2-can-than-ghi-de",
+          "type": "note",
+          "title": "Một cú lỡ tay có thể xoá sạch công sức",
+          "body": "Claude làm việc trên file thật — khi bạn nhờ nó sửa hay dọn dẹp, nó có thể ghi đè nội dung cũ. Một câu lệnh mơ hồ ('dọn lại thư mục này cho gọn') có thể xoá thứ bạn muốn giữ. Luôn để Claude trình bày việc sắp làm trước khi nó động vào file, và đừng làm việc trên bản duy nhất của tư liệu quý.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "giao-viec-cho-claude",
+      "title": "Nghệ thuật giao việc cho Claude (prompting cho nhà văn)",
+      "summary": "Viết một brief rõ ràng để Claude làm đúng ý ngay từ lần đầu, thay vì phải sửa đi sửa lại.",
+      "sections": [
+        {
+          "id": "ch3-giao-viec-khong-phai-ra-lenh",
+          "type": "concept",
+          "title": "Giao việc, không phải ra lệnh",
+          "body": "Một prompt (câu lệnh cho Claude) không phải thần chú — nó là một bản giao việc (brief), giống như khi bạn thuê một biên tập viên giỏi nhưng chưa từng gặp: người đó viết tốt nhưng không đọc được suy nghĩ trong đầu bạn.\n\nMột prompt tồi không phải vì sai ngữ pháp, mà vì thiếu thông tin khiến Claude phải tự đoán — và khi phải đoán, Claude sẽ đoán về phía trung bình: trơn tru, an toàn, vô vị."
+        },
+        {
+          "id": "ch3-khung-5-phan-brief",
+          "type": "framework",
+          "title": "Khung năm phần của một brief tốt",
+          "intro": "Trước khi giao một việc đáng kể, tự soát năm câu hỏi:",
+          "steps": [
+            "Bối cảnh (context) — việc này nằm trong cuốn sách nào, viết cho ai, giọng ra sao?",
+            "Việc (task) — Claude cần làm chính xác điều gì, diễn đạt bằng một động từ rõ ràng?",
+            "Ràng buộc (constraints) — độ dài, điều bắt buộc phải có, điều cấm làm?",
+            "Ví dụ (example) — một mẫu giọng văn cho Claude thấy \"đúng\" trông như thế nào?",
+            "Định dạng ra (output format) — bạn muốn nhận kết quả dưới dạng gì?"
+          ]
+        },
+        {
+          "id": "ch3-case-study-anh-minh",
+          "type": "case-study",
+          "title": "Từ \"Viết cho tôi một chương về tuổi thơ ở làng quê\" đến bản brief đủ năm phần",
+          "body": "Anh Minh gõ đúng một câu: \"Viết cho tôi một chương về tuổi thơ ở làng quê.\" Kết quả: một trang văn trơn tru, đủ ý, nhưng nhạt — không có cái ao anh từng ngã xuống, không có mùi rơm rạ tháng mười, không có bà nội. Lỗi không nằm ở Claude, mà ở bản brief gần như trống rỗng.\n\nKhi bổ sung đủ năm phần — bối cảnh (chương 2 của hồi ký \"Rơm Tháng Mười\"), việc (viết cảnh mở chương), ràng buộc (500–600 từ, bắt buộc có cái ao rau muống và bàn tay bà, tránh sáo ngữ), một đoạn mẫu giọng văn, và định dạng ra — Claude trả về một bản nháp dùng được ngay, thay vì một trang phải bỏ đi.",
+          "source": "Chương 3 — Nghệ thuật giao việc cho Claude"
+        },
+        {
+          "id": "ch3-bai-tap-tu-brief",
+          "type": "exercise",
+          "title": "Tự viết một brief đủ năm phần",
+          "prompt": "Chọn một đoạn/chương bạn đang muốn nhờ Claude viết. Soạn brief theo đúng 5 phần ở khung trên (bối cảnh, việc, ràng buộc, ví dụ, định dạng ra), sau đó so sánh kết quả với khi chỉ gõ một câu yêu cầu ngắn như anh Minh.",
+          "hint": "Phần dễ bỏ sót nhất thường là 'ví dụ' — nếu chưa có đoạn mẫu giọng văn, hãy tự viết 200-400 từ trước.",
+          "answer": "Không có đáp án cố định — tự đánh giá bằng cách so sánh 2 kết quả: bản không có brief đủ 5 phần và bản có, xem bản nào gần giọng văn của bạn hơn."
+        },
+        {
+          "id": "ch3-luu-y-ban-quyen-giong-van",
+          "type": "note",
+          "title": "Ranh giới bản quyền khi dùng mẫu giọng văn",
+          "body": "Dùng văn của chính bạn làm mẫu giọng là bình thường. Nhưng dán nguyên đoạn của một tác giả khác và yêu cầu Claude viết y giọng tác giả đó để bán sách có thể chạm tới bản quyền và đạo đức nghề — nguyên tắc an toàn là giọng cuối cùng của cuốn sách phải là giọng của bạn.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "len-y-tuong-concept",
+      "title": "Lên ý tưởng & phát triển concept",
+      "summary": "Đi từ một hạt giống mơ hồ tới nhiều hướng khác nhau, brainstorm có kỷ luật, rồi chốt bốn viên gạch nền của một cuốn sách.",
+      "sections": [
+        {
+          "id": "ch4-dung-cuoi-y-tuong-dau",
+          "type": "concept",
+          "title": "Đừng cưới ý tưởng đầu tiên",
+          "body": "Ý tưởng đầu tiên hiếm khi là ý tưởng hay nhất — nó chỉ là ý tưởng gần nhất, cái bật ra trước vì quen thuộc và hiển nhiên. Công việc đầu tiên không phải là làm sâu một ý, mà là làm rộng ra nhiều ý đã, rồi mới chọn. Claude trải rộng khả năng (xin số lớn như '15 hướng' thay vì 'vài ý'), còn con người là người quyết định.\n\nTrải rộng thôi chưa đủ — kẻ thù thật sự là cái hiển nhiên: những góc mà độc giả đã đọc mòn. Kỷ luật ở đây là chủ động cho Claude chấm 'độ hiển nhiên' từng ý rồi gạch bỏ thẳng nhóm hiển nhiên nhất, sau đó đào sâu phần còn lại bằng cách thêm ràng buộc hoặc mượn loại suy từ một lĩnh vực hoàn toàn khác."
+        },
+        {
+          "id": "ch4-khung-bon-vien-gach",
+          "type": "framework",
+          "title": "Bốn viên gạch nền của một concept",
+          "intro": "Trước hết chốt thể loại (fiction hay non-fiction, và dòng sách cụ thể) vì nó định hình cả bốn viên gạch bên dưới, rồi dựng lần lượt:",
+          "steps": [
+            "Premise/logline — cuốn sách trong một câu: fiction cần nhân vật + khát khao + cản trở; non-fiction cần câu hỏi lớn + lời hứa với độc giả.",
+            "Thông điệp — điều còn lại sau khi gấp sách: một luận điểm (non-fiction) hoặc một cảm nhận/câu hỏi đọng lại (fiction).",
+            "Độc giả mục tiêu — chân dung cụ thể: họ đã biết gì, bận tâm gì, mong nhận được gì.",
+            "\"Tại sao là bạn\" — thẩm quyền (non-fiction) hoặc tiếng nói riêng (fiction) khiến độc giả nên nghe bạn kể thay vì người khác."
+          ]
+        },
+        {
+          "id": "ch4-case-anh-son",
+          "type": "case-study",
+          "title": "Anh Sơn và cuốn sách về nghề xây cầu",
+          "body": "Anh Sơn, kỹ sư cầu đường, mang trong người câu 'mình muốn viết một cuốn sách về nghề xây cầu' suốt mười năm. Gõ đúng câu đó vào Claude, anh nhận về một dàn ý mười hai chương trơn tru — đúng, gọn, và nhạt, vì đó cũng là dàn ý bất kỳ ai gõ đúng câu đó cũng nhận được.\n\nSau khi đi qua brainstorm có kỷ luật và chốt bốn viên gạch nền, anh Sơn không còn viết 'một cuốn về nghề xây cầu' nữa — anh viết cuốn về bảy cây cầu và bảy quyết định anh từng phải đứng ra chịu trách nhiệm, kể bằng giọng của người đã sống nó. Cùng một hạt giống, nhưng lần này là cuốn sách chỉ anh viết được.",
+          "source": "Chương 4 — Lên ý tưởng & phát triển concept"
+        },
+        {
+          "id": "ch4-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Viết hạt giống ý tưởng của bạn thành 1-2 câu, xin Claude 15 hướng khác nhau (chưa đánh giá vội). 2) Cho Claude chấm độ hiển nhiên, gạch bỏ 3 hướng hiển nhiên nhất, khoanh hướng khiến bạn hào hứng nhất. 3) Với hướng đó, chạy prompt xin 6 phiên bản logline rồi tự viết lại một câu bằng giọng của bạn. 4) Dành 10 phút trả lời 'tại sao là tôi?' và lưu cả bốn viên gạch nền vào một chỗ cố định.",
+          "hint": "Xin số lẻ và số lớn ('15 hướng' chứ không phải 'vài ý') — bảy ý cuối của một danh sách 15 thường thú vị hơn ba ý đầu.",
+          "answer": "Không có đáp án cố định — kết quả là bốn viên gạch nền (logline, thông điệp, độc giả, tại-sao-là-bạn) đã được viết lại bằng giọng của chính bạn, không phải nguyên văn Claude đề xuất."
+        },
+        {
+          "id": "ch4-can-than-nguyen-ban",
+          "type": "note",
+          "title": "Mới lạ trong brainstorm không đảm bảo nguyên bản ngoài đời",
+          "body": "Khi Claude đề xuất một góc 'độc đáo', nó có thể vô tình mô tả gần sát một cuốn sách đã có mà nó từng thấy. Trước khi cưới một concept, hãy tự tra cứu xem thị trường đã có cuốn nào rất giống chưa — và luôn nhớ ranh giới giữa 'lấy cảm hứng' và đạo văn.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "research-cung-claude",
+      "title": "Research cùng Claude (và giữ cho sự thật sạch)",
+      "summary": "Biến Claude thành trợ lý nghiên cứu mà không để nó dắt bạn vào chỗ sai — quản lý nguồn và chống ảo giác cho cả non-fiction lẫn fiction.",
+      "sections": [
+        {
+          "id": "ch5-research-la-gi",
+          "type": "concept",
+          "title": "Research nghĩa là gì trong hành trình viết sách",
+          "body": "Mọi cuốn sách đều cần research, không chỉ sách khoa học. Có hai kiểu: research non-fiction cần dữ kiện đúng — số liệu, ngày tháng, tên riêng, trích dẫn; research fiction cần bối cảnh thật — độc giả không tra cứu nhưng cảm được ngay khi chi tiết giả tạo.\n\nClaude là cộng sự nghiên cứu, không phải nguồn dữ kiện. Nó giúp đọc nhanh hơn, hỏi đúng hơn, sắp xếp gọn hơn — nhưng câu 'theo Claude thì...' không bao giờ được là chú thích trong sách. Chú thích phải trỏ về một nguồn thật mà bạn đã tự mở ra xem. Bốn cách khai thác an toàn nhất tới cần cẩn thận nhất: đọc–tóm tắt tài liệu bạn cung cấp, tra cứu web (phải kiểm chứng kết quả), 'phỏng vấn chuyên gia mô phỏng' (lấy câu hỏi và không khí, không lấy dữ kiện cứng), và tổng hợp ghi chú thô thành có cấu trúc."
+        },
+        {
+          "id": "ch5-khung-ba-lop-chong-ao-giac",
+          "type": "framework",
+          "title": "Ba lớp chống ảo giác — quy tắc \"không nguồn thì không khẳng định\"",
+          "intro": "Ảo giác (hallucination) là khi AI bịa thông tin nghe hợp lý, trôi chảy, tự tin — nhưng sai sự thật. Không có mẹo xoá bỏ hoàn toàn, nhưng ba lớp kỷ luật khiến nó gần như không lọt vào sách:",
+          "steps": [
+            "Lớp 1 — Ra lệnh chống bịa ngay trong brief: nói thẳng bạn thà nghe 'tôi không chắc' còn hơn một câu trả lời bịa, yêu cầu đánh dấu [CẦN KIỂM] cho mọi thứ đến từ kiến thức nền của Claude.",
+            "Lớp 2 — Đối chiếu chéo: với dữ kiện quan trọng, tra ít nhất hai nguồn độc lập, không tin một nguồn duy nhất và càng không tin lời Claude đứng một mình.",
+            "Lớp 3 — Tự mở nguồn ra xem: khi Claude nói 'theo nghiên cứu của Đại học X năm 2019...', tự mở nghiên cứu đó ra. Không tìm thấy nó tồn tại — đó là ảo giác."
+          ]
+        },
+        {
+          "id": "ch5-case-chi-ha",
+          "type": "case-study",
+          "title": "Chị Hà và cái tên hiệp hội bị bịa ra",
+          "body": "Chị Hà viết sách về dinh dưỡng cho người tiểu đường, hỏi Claude 'người tiểu đường ăn bao nhiêu gram carb mỗi bữa là an toàn?'. Claude trả lời trôi chảy một con số, kèm tên một 'hiệp hội' nghe rất uy tín. Chị suýt đưa thẳng vào bản thảo.\n\nMay là chị dừng lại, mở trang chính thức của hiệp hội đó ra tra — và không tìm thấy khuyến nghị nào như vậy. Con số thì gần đúng, nhưng cái tên tổ chức và câu trích dẫn thì Claude tự dựng lên cho câu văn nghe chắc chắn hơn. Nếu cuốn sách in ra với dòng đó, người đọc bị tiểu đường có thể tin theo.",
+          "source": "Chương 5 — Research cùng Claude (và giữ cho sự thật sạch)"
+        },
+        {
+          "id": "ch5-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Mở thư mục research/ và tạo một bảng theo dõi nguồn tối giản: dữ kiện · nguồn · đã tự kiểm? 2) Lấy một tài liệu PDF liên quan tới sách của bạn, đưa vào Claude, chạy thử prompt 'tóm tắt kèm số trang + trích nguyên văn', rồi tự lật lại một số trang xem Claude trích có đúng không. 3) Dán câu chống bịa Lớp 1 vào đầu mọi lời giao việc research từ nay. 4) Chọn một dữ kiện định đưa vào sách và tự tay đối chiếu với hai nguồn độc lập.",
+          "hint": "Cảm nhận rõ sự khác nhau giữa 'nghe có vẻ đúng' và 'đã kiểm là đúng' — đó là kỷ luật xuyên suốt cả cuốn sách, không riêng chương này.",
+          "answer": "Không có đáp án cố định — kết quả là một bảng theo dõi nguồn đang chạy, và ít nhất một dữ kiện đã được đối chiếu thật với hai nguồn độc lập."
+        },
+        {
+          "id": "ch5-can-than-ban-quyen-rieng-tu",
+          "type": "note",
+          "title": "Bản quyền & riêng tư khi đưa tài liệu người khác vào Claude",
+          "body": "Tóm tắt và học từ nguồn là bình thường, nhưng chép nguyên văn một đoạn dài của người khác vào sách mà không xin phép/trích dẫn là đạo văn. Đừng đưa tài liệu chứa thông tin cá nhân nhạy cảm của người khác vào công cụ nếu bạn không có quyền — research để hiểu, rồi viết lại bằng lời của bạn với nguồn được ghi rõ.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "outline-kien-truc",
+      "title": "Outline & kiến trúc tác phẩm",
+      "summary": "Biến concept và research thành một bộ khung đủ chắc để viết dựa vào, và soi lỗ hổng cấu trúc trước khi viết một chữ bản thảo — nơi sửa còn rẻ.",
+      "sections": [
+        {
+          "id": "ch6-vi-sao-outline-re",
+          "type": "concept",
+          "title": "Vì sao outline là chỗ rẻ nhất để sửa sai",
+          "body": "Sửa một dòng trong dàn ý mất ba mươi giây; sửa cùng lỗi đó sau khi đã viết xong mười hai chương có thể mất cả tuần đập đi xây lại. Claude giữ được cả bản đồ cấu trúc trong tầm nhìn và rất giỏi trả lời 'chương 4 có hứa điều gì mà không chương nào trả không?' — nhưng bạn là kiến trúc sư, Claude là người phản biện bản vẽ.\n\nOutline không phải một hợp đồng bất di bất dịch. Nó là giàn giáo: đủ chắc để dựa vào khi viết, nhưng luôn được phép tháo dỡ và dựng lại khi bản thảo dạy bạn điều mới."
+        },
+        {
+          "id": "ch6-khung-loi-hua-va-beat-sheet",
+          "type": "framework",
+          "title": "Dựng khung: lời hứa từng chương (non-fiction) và beat sheet ba hồi (fiction)",
+          "intro": "Chọn nhánh đúng với loại sách, rồi làm việc lặp với Claude qua các bước:",
+          "steps": [
+            "Chọn xương sống trước: non-fiction theo trình tự thời gian / 'vấn đề → giải pháp' / thang dễ-khó; fiction theo ba hồi (thiết lập, đối đầu, giải quyết).",
+            "Non-fiction: mỗi chương phải trả lời 3 câu — độc giả bước vào biết/thắc mắc gì? chương hứa mang lại điều gì? bước ra họ có gì mới? Không hứa được gì cụ thể là chương thừa.",
+            "Fiction: phác beat sheet theo ba hồi (biến cố khơi mào, bước ngoặt cuối Hồi 1, điểm giữa, điểm xuống đáy, cao trào, kết), yêu cầu Claude đánh dấu rõ chỗ nó phải đoán thay vì bịa cho liền mạch.",
+            "Cả hai nhánh: dựng dòng thời gian (timeline) để Claude bắt lỗi liên tục — tuổi nhân vật hoặc mốc năm tháng không khớp — ngay ở khâu khung."
+          ]
+        },
+        {
+          "id": "ch6-case-chi-huong",
+          "type": "case-study",
+          "title": "Chị Hương và chương 1 đã \"tiêu\" mất ý dành cho chương 5",
+          "body": "Chị Hương đã chốt logline, gom một tập ghi chú research dày về đề tài nuôi con tuổi dậy thì, và một buổi sáng đầy hứng khởi, chị bảo Claude 'viết giúp chương 1'. Claude viết — trơn tru, đủ chữ. Đến chương 3 thì chị nhận ra chương 1 đã tiêu mất hai ý lẽ ra phải để dành cho chương 5, còn một luận điểm cốt lõi thì không biết nhét vào đâu vì chẳng chương nào được thiết kế để chứa nó.\n\nChị quay lại làm đúng thứ đã bỏ qua: một bảng mười chương, mỗi chương một lời hứa, đọc dọc xuống nghe như một hành trình. Lần sau bảo Claude 'viết chương 1', cả hai đều biết chính xác chương 1 được phép tiêu ý nào và phải để dành ý nào.",
+          "source": "Chương 6 — Outline & kiến trúc tác phẩm"
+        },
+        {
+          "id": "ch6-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Dán bốn viên gạch nền (Chương 4) và ghi chú research thô, xin Claude 3 cấu trúc xương sống (non-fiction) hoặc phác beat sheet ba hồi (fiction) — chọn một. 2) Non-fiction: dựng mục lục có 'lời hứa từng chương', đọc riêng cột lời hứa xem có thành một hành trình không. Fiction: lần arc nhân vật qua các nhịp, khoanh chỗ đứng yên hoặc nhảy vọt. 3) Fiction: mở file character bible và dòng thời gian, để Claude tính tuổi nhân vật ở mỗi mốc và chỉ ra mâu thuẫn. 4) Chạy prompt 'biên tập viên khó tính soi lỗ hổng cấu trúc' trên bản khung, tự quyết giữ/sửa từng vấn đề.",
+          "hint": "Đọc riêng cột 'lời hứa' của tất cả chương như mục lục rút gọn của một cuốn sách khác — nếu chính bạn thấy nhạt, vấn đề nằm ở xương sống chứ không phải số lượng chương.",
+          "answer": "Không có đáp án cố định — kết quả là một bản khung đã qua ít nhất một vòng Claude tự phản biện, và bạn đã tự quyết định giữ/sửa từng vấn đề nó nêu."
+        },
+        {
+          "id": "ch6-can-than-gian-giao",
+          "type": "note",
+          "title": "Beat sheet là giàn giáo, không phải khuôn đúc",
+          "body": "Các mô hình cấu trúc (ba hồi, 'hành trình người hùng'...) là giàn giáo, không phải khuôn đúc. Bám quá sát khiến truyện của bạn nghe giống mọi truyện khác — đúng thứ 'văn AI' cần tránh. Dùng khung để không bị lạc, rồi mạnh dạn phá khung ở chỗ câu chuyện của bạn đòi hỏi. Cấu trúc phục vụ truyện, không phải ngược lại.",
+          "variant": "tip"
+        }
+      ]
+    },
+    {
+      "id": "viet-ban-thao",
+      "title": "Viết bản thảo",
+      "summary": "Băng qua khoảng cách giữa một bộ khung và một trang văn thật — viết theo cảnh, giữ giọng nhất quán, và nhận diện chữa \"văn AI\" trước khi nó ngấm vào cả cuốn sách.",
+      "sections": [
+        {
+          "id": "ch7-goi-brief-va-viet-theo-canh",
+          "type": "concept",
+          "title": "Gói brief cho một chương, và viết theo cảnh chứ không cả chương",
+          "body": "Lỗi phổ biến nhất khi bắt đầu drafting là mở một phiên mới rồi gõ 'Viết Chương 4 giúp tôi' — Claude sẽ viết trong chân không, không nhớ giọng đã chốt, không biết nhân vật đã dựng ra sao. Trước khi viết, hãy dành năm phút gom gói brief chương: lời hứa của chương (từ outline), mẫu giọng văn, bối cảnh chương liền kề (chương trước kết ở đâu), và hồ sơ nhân vật hoặc dữ kiện đã kiểm chứng.\n\nĐừng đòi Claude viết trọn một chương 4.000 từ trong một lượt — chương ra sẽ nhàn nhạt đều một tông. Chia chương thành các cảnh/nhịp (phi hư cấu là các ý/lập luận) rồi viết từng đơn vị: bạn có điểm dừng để lái, giọng ổn định hơn, và cảm giác tiến bộ thật."
+        },
+        {
+          "id": "ch7-khung-ba-vai-claude-viet",
+          "type": "framework",
+          "title": "Ba vai của Claude khi bạn viết",
+          "intro": "Người viết giỏi biết đổi vai đúng lúc:",
+          "steps": [
+            "Bệ phóng (kê mồi): khi bí câu đầu, để Claude ném ra một bản nháp thô để bạn phản ứng lại — bản nháp là đất sét, không phải tượng.",
+            "Người phản biện: bạn tự viết một đoạn rồi hỏi 'chỗ nào nhịp bị chùng, câu nào thừa — đừng viết lại, chỉ ra'.",
+            "Thư ký ngòi bút: bạn đọc chính tả ý tưởng lan man, Claude sắp lại thành đoạn văn theo giọng mẫu, giữ nguyên ý, không thêm gì mới.",
+            "Những khúc chở trái tim cuốn sách — cao trào cảm xúc, kỷ niệm riêng, câu kết muốn người đọc nhớ mãi — hãy tự viết trước, rồi mới nhờ Claude phản biện."
+          ]
+        },
+        {
+          "id": "ch7-case-chi-thu",
+          "type": "case-study",
+          "title": "Chị Thu và bốn mươi phút trước con trỏ nhấp nháy",
+          "body": "Chị Thu có một outline gọn gàng: mười hai chương, mỗi chương một lời hứa, một beat sheet đầy đủ — mất ba tuần để dựng. Vậy mà sáng đó, mở máy định viết Chương 4, chị ngồi đờ bốn mươi phút trước con trỏ nhấp nháy. Dòng 'Chương 4: nhân vật rời làng lên thành phố' trên outline chẳng giúp gì cho việc gõ câu đầu tiên.\n\nKhoảng cách giữa một bộ khung và một trang văn thật chính là nơi hầu hết bản thảo chết yểu — và là lý do gói brief chương + viết theo cảnh tồn tại: không phải để Claude viết hộ, mà để không bao giờ phải đối diện trang trắng một mình.",
+          "source": "Chương 7 — Viết bản thảo"
+        },
+        {
+          "id": "ch7-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Chọn một chương cần viết, dựng gói brief chương, viết một cảnh (không phải cả chương) — so với khi chỉ gõ 'viết chương này giúp tôi'. 2) Tạo style sheet năm dòng (giọng, xưng hô, danh sách cấm, quy ước từ/dấu), lưu vào xưởng viết. 3) Lấy một đoạn Claude vừa viết, chạy prompt 'khử văn AI', tự tay sửa ít nhất ba chỗ bằng chi tiết thật của riêng bạn. 4) Sau 3-4 chương nháp, chạy kiểm tra liên tục theo cụm và mở một 'sổ liên tục' ghi dữ kiện cứng.",
+          "hint": "Đơn vị viết không phải 'chương', mà là cảnh/nhịp/ý — một cuốn sách hoàn thành là hàng trăm đơn vị nhỏ được duyệt từng cái.",
+          "answer": "Không có đáp án cố định — kết quả là một style sheet đang sống cùng dự án, và ít nhất một đoạn văn đã được tự tay sửa để thoát khỏi 'văn AI'."
+        },
+        {
+          "id": "ch7-meo-chong-van-ai",
+          "type": "note",
+          "title": "Dấu hiệu \"văn AI\" thường gặp",
+          "body": "Mở đầu rỗng kiểu xã luận ('Trong cuộc sống, ai trong chúng ta cũng...'); câu dài đều nhau, cân đối giả tạo; tính từ chồng tính từ mà không thấy gì cụ thể; giải thích hộ cảm xúc ('Nam cảm thấy rất buồn'); từ nối sáo ('hơn nữa', 'bên cạnh đó'); kết đoạn kiểu tổng-kết-đạo-lý. Cách chữa chắc nhất: để Claude chỉ ra chỗ nhẵn, còn bạn cầm bút lấp bằng chi tiết thật chỉ mình có.",
+          "variant": "tip"
+        }
+      ]
+    },
+    {
+      "id": "review-bien-tap",
+      "title": "Review & biên tập",
+      "summary": "Biến bản thảo có chữ thành một cuốn sách đáng đọc — đúng thứ tự hai tầng biên tập, và giữ quyền quyết định cuối cùng ở tay bạn.",
+      "sections": [
+        {
+          "id": "ch8-hai-tang-bien-tap",
+          "type": "concept",
+          "title": "Hai tầng biên tập — làm sai thứ tự sẽ trả giá",
+          "body": "Người mới hay gộp 'biên tập' thành một cục và bắt đầu từ chỗ dễ thấy nhất: sửa câu cho mượt. Đó là sai lầm tốn kém. Developmental edit (biên tập chiều sâu) xét cả cuốn ở tầm vĩ mô — cấu trúc, nhịp, lỗ hổng lập luận/cốt truyện, chương nào thừa/thiếu. Line edit (biên tập câu chữ) xét ở tầm câu và đoạn.\n\nThứ tự phải là developmental trước, line sau: nếu bạn chuốt từng câu trong một chương rồi phát hiện cả chương nên bị cắt, công chuốt câu đổ sông đổ bể. Sửa cái khung trước, rồi mới sơn tường. Còn một tầng thứ ba — soát lỗi chính tả/ngữ pháp — là bước cuối cùng, thuộc về Chương 9."
+        },
+        {
+          "id": "ch8-khung-bon-buoc-bien-tap",
+          "type": "framework",
+          "title": "Bốn bước biên tập theo đúng thứ tự",
+          "intro": "Mỗi vòng một mục tiêu — đừng trộn chung, đừng cố xong cả cuốn trong một phiên:",
+          "steps": [
+            "Developmental edit: đưa cả bản thảo, đóng vai biên tập viên chiều sâu khó tính, xin 5-8 vấn đề cấu trúc/nhịp lớn nhất kèm hướng sửa gợi ý (không tự viết lại).",
+            "Line edit: làm từng chương một, kèm mẫu giọng văn, theo định dạng 'câu gốc | đề xuất | lý do' để Claude chỉ ra chứ không thay thế.",
+            "Cắt gọt có kỷ luật: bắt Claude lập luận cho việc cắt ('5 đoạn sẽ không mất gì nếu bỏ đi'), dời đoạn cắt sang file riêng thay vì xoá hẳn.",
+            "Checklist nhất quán: đối chiếu bản thảo với character bible và style sheet, liệt kê mọi chỗ lệch (tên viết khác nhau, chi tiết mâu thuẫn, con số vênh giữa các chương)."
+          ]
+        },
+        {
+          "id": "ch8-case-anh-tu",
+          "type": "case-study",
+          "title": "Anh Tú và nỗi bất an mơ hồ sáng hôm sau",
+          "body": "Anh Tú gõ xong dòng cuối bản thảo lúc gần nửa đêm và trong ba phút thấy nó hoàn hảo. Sáng hôm sau đọc lại, cảm giác hoàn hảo biến mất: Chương 9 lê thê, một nhân vật biến mất giữa chừng không ai để ý, có đoạn văn đẹp long lanh nhưng chẳng để làm gì.\n\nAnh không đập bỏ bản thảo. Anh đi từ trên xuống: một lượt soi cấu trúc cho biết chương 9 lê thê vì lặp lại chương 6 — anh cắt hai phần ba; một lượt soi nhất quán bắt ra nhân vật biến mất và đưa cô quay lại; rồi mới line edit từng chương, giữ những câu vụng-mà-rất-anh và bỏ những câu đẹp-mà-thừa. Nỗi bất an chỉ là cuốn sách đang bảo anh nó chưa xong phần biên tập, chứ không phải chưa xong phần viết.",
+          "source": "Chương 8 — Review & biên tập"
+        },
+        {
+          "id": "ch8-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Chạy prompt developmental edit trên toàn bản thảo, yêu cầu 5-8 vấn đề cấu trúc xếp theo mức nghiêm trọng, tự mở bản thảo xác nhận từng cái trước khi sửa. 2) Chọn một chương đã chốt cấu trúc, chạy line edit kèm voice sample theo định dạng câu gốc | đề xuất | lý do. 3) Đưa character bible/style sheet kèm bản thảo, xin bảng các chỗ lệch nhất quán. 4) Mở file nhung-doan-cat.md, mạnh tay cắt những đoạn 'đẹp mà thừa' Claude đã chỉ.",
+          "hint": "Với mỗi đề xuất sửa lớn, tự hỏi ba câu: nó giải quyết vấn đề gì? vấn đề đó có thật với độc giả của mình không? bản sửa có làm mất điều mình cố ý đặt vào đó không?",
+          "answer": "Không có đáp án cố định — kết quả là một bản thảo đã qua đủ 4 bước theo đúng thứ tự, với mọi đề xuất của Claude đã được bạn tự xác nhận trước khi áp dụng."
+        },
+        {
+          "id": "ch8-can-than-san-phang-giong",
+          "type": "note",
+          "title": "Line edit là chỗ giọng văn dễ bị san phẳng nhất",
+          "body": "Claude có xu hướng kéo mọi câu về một kiểu 'trơn tru, an toàn, ai viết cũng thế' — đúng thứ 'văn AI' đã cảnh báo ở Chương 7. Một câu hơi vụng nhưng rất bạn nhiều khi giá trị hơn một câu mượt mà vô danh tính. Sau mỗi lượt line edit, đọc to chương lên: nếu nó nghe như bạn thì giữ, nếu nghe như một cuốn sách nào cũng được thì bạn vừa chuốt nhầm hướng.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "soat-loi-hieu-dinh",
+      "title": "Soát lỗi & hiệu đính",
+      "summary": "Săn những vết xước nhỏ trước khi cuốn sách đóng khung thành trang in — bước cuối cùng, làm sau chót, trên một bản thảo đã đóng băng nội dung.",
+      "sections": [
+        {
+          "id": "ch9-soat-loi-khac-bien-tap",
+          "type": "concept",
+          "title": "Soát lỗi không phải là biên tập",
+          "body": "Biên tập (Chương 8) hỏi: câu này có hay hơn được không, đoạn này có thừa không — chuyện chất lượng, luôn có thể tốt hơn, không có điểm dừng tự nhiên. Soát lỗi hỏi một câu hẹp hơn: chỗ này có đúng không — đúng chính tả, ngữ pháp, dấu câu, tên, số, nhất quán với chính nó. Đó là chuyện đúng/sai, và nó có điểm dừng.\n\nSoát lỗi là việc làm sau cùng, trên một bản thảo đã đóng băng nội dung. Chừng nào bạn còn viết lại câu, còn thêm đoạn — bạn đang biên tập, và mỗi lần chạm vào chữ là một cơ hội sinh lỗi mới. Hãy hoàn tất biên tập, tuyên bố 'ngừng cải thiện', rồi mới bắt đầu soát."
+        },
+        {
+          "id": "ch9-khung-bon-vong-soat",
+          "type": "framework",
+          "title": "Bốn vòng soát, mỗi vòng một mục tiêu",
+          "intro": "Săn mọi loại lỗi cùng lúc khiến não quá tải và bỏ sót cả ba — tách thành nhiều vòng, giao Claude đúng một loại lỗi mỗi lượt:",
+          "steps": [
+            "Vòng chính tả & gõ nhầm: chữ sai, thiếu/thừa chữ, lặp chữ ('và và'), dấu thanh sai vị trí.",
+            "Vòng ngữ pháp & dấu câu: câu thiếu chủ/vị, dấu chấm/phẩy đặt sai, mở ngoặc không đóng.",
+            "Vòng nhất quán: đối chiếu style sheet — tên riêng, con số, viết hoa, thuật ngữ có trôi giữa các chương không.",
+            "Vòng dữ kiện: liệt kê mọi phát biểu mang tính dữ kiện (con số, ngày tháng, tên, trích dẫn) để tự đối chiếu với nguồn — cổng kiểm chứng lần cuối."
+          ]
+        },
+        {
+          "id": "ch9-case-anh-tuan",
+          "type": "case-study",
+          "title": "Anh Tuấn và cái tên đổi từ \"Hải\" thành \"Hoà\"",
+          "body": "Anh Tuấn vừa gõ dấu chấm cuối cùng cho cuốn cẩm nang nghề, sau ba tháng viết và hai vòng biên tập — cho tới khi in thử một chương ra giấy để đọc trên tàu. Trang đầu: tên một chuyên gia anh phỏng vấn, chương 2 viết 'Nguyễn Văn Hải', chương 9 thành 'Nguyễn Văn Hoà'. Đoạn dưới, một con số phần trăm bị lặp chữ 'và và'. Nửa trang sau, một câu thiếu hẳn một từ mà mắt anh đã lướt qua ba lần trên màn hình mà không thấy.\n\nKhông lỗi nào trong số đó là lỗi biên tập — câu vẫn hay, cấu trúc vẫn chặt. Chúng là những vết xước nhỏ mà chỉ cần vài cái là đủ khiến người đọc ngờ vực toàn bộ công sức. Anh chỉ thấy chúng khi đổi hình hài văn bản — in ra giấy — không phải tình cờ.",
+          "source": "Chương 9 — Soát lỗi & hiệu đính"
+        },
+        {
+          "id": "ch9-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Tuyên bố 'ngừng biên tập' cho một chương đã xong, bổ sung vào style sheet quy ước soát lỗi (tên riêng, con số, viết hoa, thuật ngữ). 2) Chạy vòng nhất quán tên riêng: đưa các chương vào một phiên, yêu cầu Claude liệt kê mọi biến thể của từng tên riêng cùng vị trí, tự tay sửa cho khớp. 3) Làm cổng kiểm chứng dữ kiện lần cuối cho một chương, mở lại nguồn đối chiếu từng con số/tên/trích dẫn. 4) Chọn một chương, in ra giấy hoặc đổi font, tự đọc ngược từ dưới lên một lượt, đối chiếu số lỗi bạn bắt được với danh sách Claude đưa ra.",
+          "hint": "Đọc ngược, đọc to, và đổi hình hài văn bản (in ra giấy, đổi font) phá được cái bẫy 'não đọc cái đúng thay vì cái đang có trên trang' — Claude không thay được ba kỹ thuật này.",
+          "answer": "Không có đáp án cố định — kết quả là bạn tự trải nghiệm được hai cặp mắt (máy và người) bắt hai loại lỗi khác nhau, không cặp nào thay được cặp kia."
+        },
+        {
+          "id": "ch9-ghi-nho-quy-tac-vang",
+          "type": "note",
+          "title": "Quy tắc vàng: Claude báo lỗi, con người sửa lỗi",
+          "body": "Đừng bảo Claude 'sửa hết lỗi trong chương này rồi trả lại bản sạch' cho cả một khối lớn — nó có thể lặng lẽ đổi câu chữ bạn cố ý chọn, hoặc bỏ sót khi tái tạo văn bản dài. Yêu cầu liệt kê lỗi kèm vị trí, không yêu cầu bản viết lại; tự tay sửa từng lỗi trên bản gốc. Không có nút 'làm sạch tự động' nào thay được lượt đọc cuối của chính tác giả.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "hinh-anh-tu-prompt",
+      "title": "Hình ảnh: từ prompt tới trang sách",
+      "summary": "Claude không vẽ ảnh — nó là người chỉ đạo nghệ thuật viết mô tả, soi kết quả, và dàn ảnh vào trang. Chạy đúng quy trình 4 bước để biến ý tưởng thành ảnh nằm đúng chỗ.",
+      "sections": [
+        {
+          "id": "ch10-claude-doc-anh-khong-ve-anh",
+          "type": "concept",
+          "title": "Sự thật đầu tiên: Claude đọc ảnh, nhưng không vẽ ảnh",
+          "body": "Claude không tạo và không chỉnh sửa ảnh raster (ảnh dạng điểm ảnh — ảnh chụp, tranh vẽ, minh hoạ). Nó không phải Midjourney hay DALL·E. Cái Claude làm được là đọc và hiểu ảnh (vision) — bạn đưa một tấm ảnh vào, nó nhìn và mô tả, nhận xét, so sánh được.\n\nCó hai nửa việc: nửa chữ (mô tả cần vẽ gì, đánh giá cái đã vẽ, dàn ảnh vào trang) là việc của Claude; nửa hình (biến lời mô tả thành điểm ảnh thật) là việc của công cụ khác — công cụ tạo ảnh AI, hoạ sĩ thuê, hoặc kho ảnh stock. Ngoại lệ: sơ đồ và biểu đồ dạng SVG/Mermaid (hình vẽ bằng mã) thì Claude tạo thẳng được, vì viết mã đúng sở trường của nó."
+        },
+        {
+          "id": "ch10-khung-quy-trinh-4-buoc",
+          "type": "framework",
+          "title": "Quy trình 4 bước: từ ý tưởng hình ảnh tới ảnh trên trang",
+          "intro": "Một hình ảnh trong sách đi qua bốn chặng, Claude đồng hành ở ba trong bốn chặng — vòng lặp này thường quay lại nhiều lượt:",
+          "steps": [
+            "Claude viết prompt ảnh + mô tả bố cục (chủ thể, phong cách, ánh sáng, bảng màu, và quan trọng nhất: chừa khoảng trống cho chữ tiêu đề).",
+            "Bạn tạo ảnh ở nơi khác — công cụ AI (Midjourney, DALL·E, Flux, Stable Diffusion), thuê hoạ sĩ, hoặc mua ảnh stock.",
+            "Đưa ảnh về cho Claude soi: đối chiếu với mục tiêu (có chừa chỗ cho chữ chưa, tông có khớp mô tả chưa, có chi tiết kỳ dị không), và giữ nhất quán phong cách giữa nhiều ảnh.",
+            "Claude chèn ảnh vào layout — viết đúng dòng lệnh tham chiếu file ảnh trong bản thảo, đúng vị trí, đúng chú thích."
+          ]
+        },
+        {
+          "id": "ch10-case-chi-ngoc",
+          "type": "case-study",
+          "title": "Chị Ngọc và cái bìa Claude \"từ chối\" vẽ",
+          "body": "Chị Ngọc viết xong một cuốn cẩm nang làm bánh, bản thảo sạch sẽ, nghĩ phần khó nhất đã qua. Chị mở Claude gõ: 'Vẽ cho tôi cái bìa hình một ổ bánh mì nóng hổi trên bàn gỗ.' Claude trả lời lịch sự rằng nó không tạo được ảnh — chị thấy hụt hẫng, như thể người cộng sự vừa từ chối đúng việc cần nhất.\n\nHụt hẫng đó đến từ một hiểu lầm về vai trò. Claude không phải cây cọ; nó là người chỉ đạo nghệ thuật ngồi cạnh bạn — biết mô tả chính xác cần vẽ gì, soi bản vẽ mang về xem đạt chưa, và đặt nó vào đúng ô trên trang. Hình ảnh vẫn do bạn (và công cụ khác) tạo ra.",
+          "source": "Chương 10 — Hình ảnh: từ prompt tới trang sách"
+        },
+        {
+          "id": "ch10-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Đưa bản thảo cho Claude, xin danh sách hình ảnh cho cả cuốn (mỗi hình đặt ở đâu, phục vụ gì, dạng ảnh chụp/minh hoạ/sơ đồ). 2) Chọn hình quan trọng nhất (thường là bìa), xin Claude viết 2 phương án prompt ảnh — nhớ yêu cầu chừa chỗ cho tên sách và tên tác giả. 3) Với một sơ đồ/quy trình trong sách, thử xin thẳng Claude một SVG và lưu vào thư mục hinh-anh/. 4) Trước khi tạo ảnh AI cho sách sẽ bán, đọc trang điều khoản bản quyền của công cụ định dùng, phần quyền thương mại.",
+          "hint": "Quy tắc chọn loại rất gọn: cần ảnh có hồn/cảnh/không khí → quy trình 4 bước với công cụ ngoài; cần thông tin có cấu trúc (quy trình, so sánh, số liệu) → để Claude tạo thẳng SVG/Mermaid.",
+          "answer": "Không có đáp án cố định — kết quả là một danh sách hình ảnh đầy đủ cho cuốn sách, và ít nhất một prompt ảnh bìa đã được Claude soạn kèm chỉ dẫn bố cục chừa chỗ chữ."
+        },
+        {
+          "id": "ch10-can-than-ban-quyen-anh",
+          "type": "note",
+          "title": "Bản quyền hình ảnh là chỗ dễ vấp nhất",
+          "body": "Ảnh AI còn là vùng xám pháp lý về quyền sử dụng thương mại, khác nhau theo công cụ và quốc gia. Ảnh stock an toàn nếu đúng giấy phép từng ảnh — đừng đánh đồng. Ảnh thuê hoạ sĩ cần ghi rõ hợp đồng ai giữ bản quyền. Tuyệt đối tránh lấy ảnh tìm được trên mạng rồi dùng luôn — phần lớn có bản quyền. Nhiều nhà xuất bản hiện yêu cầu khai báo (disclosure) việc dùng nội dung AI.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "thiet-ke-dan-trang",
+      "title": "Thiết kế & dàn trang",
+      "summary": "Dàn trang — chứ không chỉ nội dung — mới biến một tệp bản thảo thành thứ trông và cảm giác như một cuốn sách. Nắm nguyên tắc nền để ra quyết định đúng, hoặc ra brief đúng cho Claude sinh template.",
+      "sections": [
+        {
+          "id": "ch11-vi-sao-dan-trang",
+          "type": "concept",
+          "title": "Vì sao \"dàn trang\" mới biến bản thảo thành \"sách\"",
+          "body": "Nội dung là điều bạn nói. Dàn trang là cách con chữ nằm trên trang để người ta đọc được điều đó mà không mệt, không phân tâm. Một cuốn sách in đẹp gần như 'vô hình': bạn đọc một mạch mà không để ý tới font hay lề — chính sự vô hình đó là dấu hiệu của thiết kế tốt.\n\nKhổ sách (trim size) và lưới trang là quyết định nền móng vì mọi thứ khác (cỡ chữ, số dòng, lề) phụ thuộc vào nó. Lề rộng không phải lãng phí — nó là khoảng thở giúp mắt nghỉ. Một chỉ dẫn kinh điển: một dòng thân bài lý tưởng dài khoảng 60-75 ký tự; dài hơn mắt khó tìm đầu dòng kế tiếp, ngắn hơn nhịp đọc bị băm vụn."
+        },
+        {
+          "id": "ch11-khung-typography-loi",
+          "type": "framework",
+          "title": "Typography lõi: bốn quyết định gắn với nhau",
+          "intro": "Chốt lần lượt, và giữ tối đa 2 họ font trong cả cuốn sách:",
+          "steps": [
+            "Font thân bài: truyền thống dùng font có chân (serif) cho đoạn văn dài in giấy — dễ đọc hơn sans-serif khi đọc lâu.",
+            "Font tiêu đề: cùng họ với thân bài (hài hoà) hoặc một font tương phản để nhấn — nhưng không quá 2 họ font cho cả cuốn.",
+            "Cỡ chữ (thường 10-12pt) và giãn dòng (khoảng 120-145% cỡ chữ) — giãn dòng chật là thủ phạm lớn nhất khiến trang trông như báo cáo.",
+            "Căn lề đoạn văn: thân bài thường căn đều hai biên (justified) kèm ngắt từ tự động; tiêu đề và trích dẫn căn trái."
+          ]
+        },
+        {
+          "id": "ch11-case-chi-phuong",
+          "type": "case-study",
+          "title": "Chị Phương và bản thảo trông như xấp báo cáo",
+          "body": "Chị Phương đã có một bản thảo sạch: mười hai chương, đã biên tập, đã soát lỗi. Chị dán tất cả vào một file Word, chọn cỡ chữ 12, in ra — và thấy hụt hẫng. Nó đúng, nhưng không giống một cuốn sách. Dòng chữ chạy sát mép giấy, các chương bắt đầu ngay giữa trang chẳng có khoảng thở, tiêu đề chương to đúng bằng một câu in đậm, đọc mấy phút là mỏi mắt.\n\nChị chưa đổi một chữ nào trong nội dung, nhưng đã chạm vào một sự thật mọi tác giả tự xuất bản đều gặp: cùng một câu chữ, dàn trang tốt hay tệ là khác biệt giữa một cuốn sách người ta muốn cầm và một tập giấy người ta muốn gấp lại.",
+          "source": "Chương 11 — Thiết kế & dàn trang"
+        },
+        {
+          "id": "ch11-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Chốt khổ sách và một bộ typography khởi điểm: dùng prompt cố vấn để Claude đề xuất font/cỡ/giãn dòng/lề kèm lý do, rồi tự quyết. 2) Thử bẫy dấu tiếng Việt: với mỗi font đang cân nhắc, gõ một câu đủ dấu khó và soi từng chữ, đồng thời kiểm tra giấy phép dùng thương mại. 3) Dựng một Artifact HTML xem thử cho một chương mẫu để nhìn hệ phân cấp thị giác, lặp tới khi tên chương/đề mục/thân bài tách bạch. 4) Giao Claude sinh một template (Typst hoặc HTML/CSS) có sẵn trang tiêu đề, mục lục tự động, đầu/chân trang.",
+          "hint": "Nguyên tắc phân cấp thị giác: ít bậc thôi (3-4 bậc là đủ), tạo khác biệt bằng cỡ chữ + khoảng trắng nhất quán chứ đừng đổi cả font/màu/kiểu cùng lúc.",
+          "answer": "Không có đáp án cố định — kết quả là một bộ quyết định typography đã ghi vào tài liệu dự án, và một template Typst/HTML+CSS sẵn sàng mang sang Chương 12 để dựng PDF."
+        },
+        {
+          "id": "ch11-can-than-bay-font-viet",
+          "type": "note",
+          "title": "Bẫy font tiếng Việt: dấu bị vỡ hoặc mất",
+          "body": "Không phải font nào cũng dựng đủ dấu tiếng Việt — lỗi âm thầm, dễ lọt tới tận bản in cuối. Một font chỉ có Latin cơ bản có thể thiếu glyph riêng (ă â ê ô ơ ư đ, các tổ hợp mũ-với-thanh như ế, ệ, ữ, ợ), khiến chữ lệch dấu, mất dấu, hoặc hiện thành ô vuông rỗng. Cách phòng: ưu tiên font tuyên bố hỗ trợ Vietnamese, rồi tự gõ một câu đủ dấu khó và soi từng chữ trên bản in thử ra giấy — đừng tin lời quảng cáo hay bản mặc định.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "xuat-ban-pdf",
+      "title": "Xuất bản thành PDF đẹp (và các định dạng khác)",
+      "summary": "\"Xuất ra PDF\" không phải một nút bấm — đó là một pipeline thật với công cụ ngoài, và Claude đóng vai người thợ đứng máy lái pipeline đó.",
+      "sections": [
+        {
+          "id": "ch12-claude-khong-tu-tao-pdf",
+          "type": "concept",
+          "title": "Sự thật đầu tiên: Claude không tự tạo PDF",
+          "body": "Claude không có 'máy in PDF' bên trong. Thay vào đó, nó điều khiển các công cụ ngoài — Pandoc, Typst, WeasyPrint — bằng cách gọi lệnh qua bash. Claude đóng vai người thợ đứng máy: biết cú pháp lệnh, biết viết file cấu hình, biết đọc thông báo lỗi và sửa — nhưng cái máy in thật là phần mềm bạn phải cài lên máy trước.\n\nBa con đường phổ biến: Pandoc + Typst (đơn giản nhất, biên dịch nhanh, khuyên bắt đầu ở đây), Typst thuần (kiểm soát cao, cú pháp sạch hơn LaTeX), và HTML/CSS + WeasyPrint (nếu đã quen CSS). Cả Cowork lẫn Claude Code đều chạy được pipeline; người mới nên bắt đầu bằng Cowork."
+        },
+        {
+          "id": "ch12-khung-vong-lap-vang",
+          "type": "framework",
+          "title": "Vòng lặp vàng: chạy → đọc lỗi → sửa → chạy lại",
+          "intro": "Lần build đầu tiên hiếm khi hoàn hảo — đây chính là chỗ Claude toả sáng:",
+          "steps": [
+            "Chạy lệnh build (Pandoc/Typst/WeasyPrint tuỳ con đường đã chọn).",
+            "Đọc thông báo — thành công, hay lỗi ở dòng nào.",
+            "Sửa đúng nguyên nhân thật (thiếu font? sửa cấu hình. Ảnh gãy? sửa đường dẫn) — không đoán mò.",
+            "Chạy lại, lặp tới khi ra file sạch — yêu cầu Claude báo tín hiệu khách quan (số trang, kích thước file) sau mỗi vòng, và tự mình mở file kiểm."
+          ]
+        },
+        {
+          "id": "ch12-case-loi-am-tham-mat-dau",
+          "type": "case-study",
+          "title": "Lỗi âm thầm: build \"thành công\" nhưng chữ mất dấu",
+          "body": "Đây là cạm bẫy số một khi build sách tiếng Việt. Nếu font bạn chọn không phủ đủ glyph tiếng Việt, chữ có dấu (ê, ữ, ậ, ợ, ễ...) sẽ mất dấu hoặc hiện thành ô vuông (tofu) — nhưng lệnh build vẫn báo 'thành công' và vẫn cho ra file PDF, không một thông báo lỗi nào.\n\nKhông có cảnh báo kỹ thuật nào cứu bạn khỏi lỗi này ngoài chính đôi mắt bạn: cách phòng là chọn font Unicode phủ đầy đủ tiếng Việt từ khâu thiết kế, rồi sau mỗi lần build, tự mở PDF phóng to soi một đoạn nhiều dấu tận mắt. 'Build xong' không có nghĩa là 'chữ đúng'.",
+          "source": "Chương 12 — Xuất bản thành PDF đẹp"
+        },
+        {
+          "id": "ch12-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Kiểm tra công cụ đã sẵn sàng: nhờ Claude kiểm xem máy đã cài Pandoc và Typst chưa, nếu chưa thì chỉ cách cài. 2) Build bản nháp đầu tiên: xuất một sach.pdf từ bản thảo hiện có, dù còn xấu — mục tiêu là thấy nó chạy. 3) Mở file PDF ra tận mắt: đếm số trang, xem mục lục, tìm ảnh gãy, ghi lại 3 vấn đề lớn nhất. 4) Lưu lệnh build đã chạy được vào một file ghi chú hoặc nhờ Claude gói thành build.sh để lần sau không phải nhớ lại.",
+          "hint": "Đừng bằng lòng với câu 'đã xuất PDF xong' — 'đã chạy' là một khẳng định, bằng chứng của nó là file PDF thật sự nằm trong thư mục, mở ra xem được, đúng số trang.",
+          "answer": "Không có đáp án cố định — kết quả là một file sach.pdf đã tự tay mở kiểm tra, và một script build lưu lại để tái sử dụng cho các lần build sau."
+        },
+        {
+          "id": "ch12-can-than-dung-tin-da-xong",
+          "type": "note",
+          "title": "Đừng tin \"đã xong\" khi chưa tự mở file",
+          "body": "Hãy để Claude dán nguyên văn lệnh đã chạy và kết quả thật, đừng bằng lòng với câu 'đã xuất PDF xong'. Một trợ lý AI, nếu bị thúc, có thể tường thuật một thành công chưa xảy ra. Yêu cầu tín hiệu khách quan (số trang, kích thước file) và tự bạn mở file kiểm lại — một câu tường thuật không thay được một file mở lên tận mắt.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "tu-dong-hoa-claude-code",
+      "title": "Tự động hoá & sức mạnh Claude Code",
+      "summary": "Đóng gói những đoạn chỉ dẫn bạn gõ đi gõ lại thành công cụ dùng lại được — mà không đánh mất quyền kiểm soát của người tác giả.",
+      "sections": [
+        {
+          "id": "ch13-tu-dong-hoa-qua-som",
+          "type": "concept",
+          "title": "Tự động hoá là gì — và cái bẫy \"tự động hoá quá sớm\"",
+          "body": "Tự động hoá ở đây không có nghĩa 'để AI viết sách hộ bạn'. Nó có nghĩa hẹp hơn: đóng gói một việc bạn đã làm bằng tay đủ nhiều lần để biết công thức, thành một thứ chạy lại được mà không phải dựng lại từ đầu. Không công cụ nào thay bạn quyết định — chúng chỉ bỏ đi phần cơ bắp lặp lại.\n\nNguyên tắc chống lãng phí: đừng tự động hoá một việc bạn chưa làm tay đủ nhiều để hiểu nó. Một công thức sai chạy tự động chỉ nhân cái sai lên nhanh hơn. Thứ tự lành mạnh luôn là: làm tay → thấy mình lặp lại đúng các bước ấy → khi đó mới đóng gói."
+        },
+        {
+          "id": "ch13-khung-bon-cong-cu",
+          "type": "framework",
+          "title": "Bốn công cụ tự động hoá của Claude Code",
+          "intro": "Mỗi công cụ rút ngắn một khâu khác nhau, không cái nào bắt buộc:",
+          "steps": [
+            "Skills: đóng gói một quy trình lặp (ví dụ 'biên tập một chương') thành một công thức gọi lại được, sống ở .claude/skills/<tên>/SKILL.md.",
+            "Subagents: dựng một 'đội biên tập ảo' — mỗi subagent một vai cố định với ngữ cảnh riêng (biên tập chiều sâu, line editor, người canh continuity), nhiều góc nhìn tách bạch trên cùng một bản thảo.",
+            "Tác vụ theo lịch: hẹn Claude làm một việc theo nhịp thời gian (tóm tắt tiến độ hằng tuần, rà nhất quán định kỳ) — chỉ ở mức tổng hợp và báo cáo.",
+            "Hooks: lệnh chạy tự động tại các mốc vòng đời (đầu phiên tự đọc style sheet, sau khi sửa file tự sao lưu) — chốt an toàn nền, không phải nơi tự viết văn."
+          ]
+        },
+        {
+          "id": "ch13-case-chi-hanh",
+          "type": "case-study",
+          "title": "Chị Hạnh và đoạn chỉ dẫn dán đi dán lại",
+          "body": "Sau khi biên tập tay bốn chương của cuốn hồi ký, chị Hạnh nhận ra mình đang gõ lại gần như y hệt một đoạn chỉ dẫn cho Claude mỗi lần: 'đọc chương này ở hai tầng — cấu trúc trước, rồi câu chữ; giữ giọng theo style sheet của tôi; đừng đổi ý, chỉ đề xuất.' Bốn lần dán đi dán lại, còn mười sáu chương phía trước. Mỗi sáng thứ Hai chị lại ngồi mở từng file bản thảo để nhớ tuần trước mình dừng ở đâu.\n\nKhông có gì trong hai việc này là sáng tạo — chúng là việc lặp. Chị đóng gói đúng công thức đã tinh chỉnh qua bốn chương đầu thành một skill tên 'bien-tap-chuong'; từ chương thứ năm trở đi, chị chỉ cần bảo Claude áp skill đó lên chương mới.",
+          "source": "Chương 13 — Tự động hoá & sức mạnh Claude Code"
+        },
+        {
+          "id": "ch13-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Mở lịch sử trò chuyện với Claude và tìm đoạn chỉ dẫn bạn dán đi dán lại — đó là ứng viên số một để đóng gói thành skill, nhưng chỉ khi bạn đã làm tay việc đó vài lần và tin công thức. 2) Dựng một skill đầu tiên cho việc lặp nhiều nhất (thường là biên tập một chương), xem nội dung trước khi lưu, thử áp lên một chương thật. 3) Hẹn một tác vụ theo lịch nhẹ và an toàn: tóm tắt tiến độ hằng tuần chỉ đọc và kể lại, không đổi file. 4) Nếu dùng nhiều nguồn ngoài, thử nối một connector và giao Claude tổng hợp — rồi tự đối chiếu vài dữ kiện về nguồn gốc.",
+          "hint": "Chỉ đóng gói một quy trình thành skill sau khi đã làm tay đủ nhiều lần để tin vào công thức — đóng gói một quy trình chưa hiểu rõ là cách nhanh nhất để tự động nhân bản sai sót.",
+          "answer": "Không có đáp án cố định — kết quả là một skill đầu tiên đã được thử trên ít nhất một chương thật, và bạn đã xác nhận công thức bên trong đúng như dự định."
+        },
+        {
+          "id": "ch13-can-than-tac-vu-theo-lich",
+          "type": "note",
+          "title": "Tác vụ theo lịch: đừng để nó tự đổi bản thảo",
+          "body": "Tác vụ theo lịch tiết kiệm công đọc lại, nhưng đừng để nó tự đổi bản thảo mà bạn không xem. Hãy để việc theo lịch dừng ở mức tổng hợp và báo cáo, còn mọi thay đổi lên câu chữ vẫn đi qua mắt bạn. Một tác vụ tự sửa file rồi tự kết luận 'xong' là một tác vụ bạn đã mất dấu — và mất dấu là mất quyền tác giả.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "quy-trinh-tron-goi",
+      "title": "Quy trình trọn gói: từ trang trắng tới PDF",
+      "summary": "Ghép mọi kỹ thuật đã học thành một con đường liền mạch — một bản đồ bảy chặng, timeline 6 tuần, và các cổng kiểm tra chất lượng để không mang lỗi từ chặng này sang chặng sau.",
+      "sections": [
+        {
+          "id": "ch14-ban-do-bay-chang",
+          "type": "concept",
+          "title": "Bản đồ bảy chặng",
+          "body": "Cả cuốn sách, rút gọn lại, là bảy chặng: (1) Ý tưởng & concept — chốt tiền đề, độc giả, lời hứa; (2) Research & kiểm chứng — gom dữ kiện, quản lý nguồn, chống bịa; (3) Outline — dựng khung, lời hứa từng chương; (4) Drafting — viết bản thảo, giữ giọng văn; (5) Biên tập & soát lỗi — hai tầng biên tập rồi hiệu đính; (6) Hình ảnh & thiết kế — ảnh, typography, dàn trang; (7) Xuất bản — Markdown → PDF/EPUB đẹp.\n\nCác chặng không hoàn toàn tuần tự: bạn sẽ quay lại research khi viết tới một chương thiếu dữ kiện, sẽ chỉnh outline khi biên tập lộ ra một lỗ hổng. Đó là chuyện bình thường và lành mạnh — bản đồ cho bạn hướng đi, không phải một đường ray một chiều. Ở mỗi chặng, Claude là cộng sự làm khối lượng lớn với tốc độ bạn không theo kịp; bạn là tác giả giữ quyền quyết định — nếu cột quyết định của bạn ở chặng nào đó trống, đó là dấu hiệu bạn đang trượt từ tác giả sang người bấm nút cho máy viết hộ."
+        },
+        {
+          "id": "ch14-khung-cong-kiem-tra",
+          "type": "framework",
+          "title": "Cổng kiểm tra chất lượng — đừng mang lỗi sang chặng sau",
+          "intro": "Một câu hỏi ngắn phải trả lời 'đạt' trước khi bước sang chặng kế — mỗi lỗi lọt qua một cổng sẽ đắt gấp bội ở cổng sau:",
+          "steps": [
+            "Sau Ý tưởng: tôi có nói được tiền đề trong một câu, và biết ai đọc nó không?",
+            "Sau Research: mọi dữ kiện quan trọng có nguồn thật tôi kiểm được không (không phải 'Claude bảo thế')?",
+            "Sau Outline: mỗi chương/mục có một 'lời hứa' rõ, không trùng, không hụt không?",
+            "Sau Draft: tôi đã đọc bằng mắt mình từng mục và nó nghe ra giọng của tôi chưa?",
+            "Sau Biên tập: còn [CẦN KIỂM] nào chưa quét? Còn chỗ nào tôi 'để Claude tự lo' mà chưa duyệt?",
+            "Sau Thiết kế: bản PDF thử mở lên có đúng số trang, ảnh không gãy, mục lục đúng không?"
+          ]
+        },
+        {
+          "id": "ch14-case-chi-lan",
+          "type": "case-study",
+          "title": "Chị Lan và cuốn \"Tủ Thuốc Gia Đình: 30 Điều Nên Biết\" trong 6 tuần",
+          "body": "Chị Lan, dược sĩ 20 năm nghề, muốn viết một cuốn cẩm nang mỏng khoảng 60 trang, giọng ấm áp cho các bà mẹ trẻ, dùng Claude Desktop, cho mình 6 tuần buổi tối. Tuần 1 chị brainstorm có kỷ luật, chốt tiền đề '30 tình huống thật trong tủ thuốc gia đình'. Tuần 2 research và kiểm chứng — với sách về thuốc, sai một liều là chuyện tính mạng, nên mỗi con số liều lượng đều phải có nguồn chị tin được. Tuần 3-4 outline rồi draft toàn bộ 30 mục. Tuần 5 biên tập hai tầng rồi soát lỗi, quét mọi dấu [CẦN KIỂM] đã gieo từ trước. Tuần 6 hình ảnh, thiết kế, và xuất PDF — chị tự mở file cuối cùng ra đọc tận mắt, rồi mới ký tên.\n\nSuốt sáu tuần, cột 'bạn giữ quyền quyết định' không bao giờ trống: chị chọn tiền đề, xác nhận nguồn, duyệt cấu trúc, sửa giọng, chấp nhận/bác từng đề xuất biên tập, và mở PDF kiểm trước khi ký tên.",
+          "source": "Chương 14 — Quy trình trọn gói: từ trang trắng tới PDF"
+        },
+        {
+          "id": "ch14-bai-tap",
+          "type": "exercise",
+          "title": "Áp bản đồ bảy chặng vào dự án của bạn",
+          "prompt": "Với dự án sách của riêng bạn: 1) Viết ra bạn đang ở chặng nào trong bảy chặng, và trả lời cổng kiểm tra chất lượng của TẤT CẢ các chặng đã qua (không chỉ chặng hiện tại) — nếu có cổng nào chưa 'đạt', quay lại xử lý trước khi đi tiếp. 2) Vẽ một timeline thực tế cho riêng bạn (không nhất thiết 6 tuần) với deliverable cuối mỗi tuần. 3) Với chặng đang làm, viết rõ: phần nào Claude đang làm, phần nào bạn đang giữ quyền quyết định — nếu cột quyết định trống, dừng lại và sửa ngay.",
+          "hint": "Đừng dồn việc kiểm chứng dữ kiện vào cuối — như chị Lan, đánh dấu [CẦN KIỂM] ngay khi Claude nêu một con số/tên riêng, rồi quét lại một lượt ở chặng biên tập thay vì kiểm tất cả trong một đợt.",
+          "answer": "Không có đáp án cố định — kết quả là bạn tự định vị chính xác mình đang ở chặng nào, và xác nhận không có cổng chất lượng nào bị bỏ qua phía sau."
+        },
+        {
+          "id": "ch14-can-than-sao-luu-tuong-tuong",
+          "type": "note",
+          "title": "Đừng tin một câu \"đã sao lưu xong\"",
+          "body": "Việc 'đã lưu / đã copy / đã commit' cũng là một khẳng định cần kiểm chứng, giống như mọi khẳng định 'đã xong' khác trong hành trình làm sách. Hãy tự mở thư mục sao lưu ra xem file có thật ở đó, đúng ngày, mở lên đọc được. Một bản sao lưu tưởng tượng không cứu được bạn khi cần.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "dao-duc-ban-quyen",
+      "title": "Đạo đức, bản quyền & xuất bản có trách nhiệm",
+      "summary": "Ba câu hỏi trách nhiệm mà mọi tác giả dùng AI phải đối diện: sách này có còn là của tôi không, tôi có cần nói với độc giả tôi dùng AI không, và tôi đã kiểm chứng dữ kiện chưa.",
+      "sections": [
+        {
+          "id": "ch15-sach-nay-co-con-la-cua-toi",
+          "type": "concept",
+          "title": "\"Sách này có còn là của tôi không?\"",
+          "body": "Bạn là tác giả; Claude là cộng sự — điều này có hệ quả thực tế về mặt quyền. Ở nhiều nền pháp lý, một nguyên tắc đang nổi lên là bản quyền gắn với đóng góp sáng tạo của con người: phần nào là kết quả của quyết định, chọn lựa, sắp đặt, tiếng nói của bạn — phần đó là chỗ quyền tác giả của bạn bám vào. Phần chỉ là đầu ra máy sinh ra mà bạn không định hình thì yếu hơn về mặt quyền.\n\nDùng Claude như bệ phóng và tấm gương phản biện — bạn vẫn là ngòi bút và người ra quyết định — thì tác phẩm là của bạn theo nghĩa vững nhất. Dùng nó như máy in sách hộ thì bạn đang đứng trên nền pháp lý và đạo đức mong manh nhất. Cuốn sách này không đưa tư vấn pháp lý ràng buộc — luật về AI và bản quyền thay đổi theo nước và theo năm; việc lớn thì hỏi luật sư sở tại."
+        },
+        {
+          "id": "ch15-khung-bon-lan-ranh",
+          "type": "framework",
+          "title": "Bốn lằn ranh trách nhiệm của một tác giả dùng AI",
+          "intro": "Bốn việc cần giữ tỉnh táo xuyên suốt hành trình:",
+          "steps": [
+            "Giữ quyền tác giả: bạn quyết định premise, cấu trúc, giọng văn; định hình lại (không dán nguyên) đề xuất của Claude; giữ dấu vết quá trình sáng tạo (bản nháp, ghi chú) làm bằng chứng đóng góp.",
+            "Phòng đạo văn vô ý: với đoạn dữ kiện/trích dẫn nghe 'quá gọn, quá hay', tự tra lại cụm từ đó — khớp nguồn cụ thể thì trích dẫn đàng hoàng hoặc viết lại bằng lời mình; đừng nhờ chính Claude 'xác nhận không đạo văn' làm bằng chứng.",
+            "Minh bạch có cân nhắc: đọc chính sách AI của nơi bạn nộp (nhà xuất bản, nền tảng self-publish, cuộc thi) và khai đúng; với độc giả, một dòng ghi chú tác giả trung thực về mức độ dùng AI thường là đủ.",
+            "Kiểm chứng sự thật lần cuối: mọi dữ kiện, con số, tên riêng, câu trích phải được một con người đối chiếu với nguồn thật trước khi in — một câu Claude đưa ra mà bạn chưa kiểm không phải sự thật, nó là một giả thuyết trôi chảy."
+          ]
+        },
+        {
+          "id": "ch15-case-chi-trang",
+          "type": "case-study",
+          "title": "Chị Trang và ba câu hỏi giữ chị thức đêm trước khi gửi bản thảo",
+          "body": "Chị Trang sắp gửi bản thảo cuốn sách nghề nghiệp của mình cho một nhà xuất bản. Đêm trước khi bấm nút gửi, ba câu hỏi giữ chị thức: 'Cuốn này có còn là của mình không, khi Claude đã giúp mình biên tập gần như từng chương? Mình có phải nói với họ là mình dùng AI không? Và cái đoạn thống kê ở chương 4 — mình lấy từ đâu ấy nhỉ?'\n\nKhông câu nào trong ba câu này là câu hỏi kỹ thuật. Chúng là những câu hỏi về trách nhiệm — và chúng đến với mọi tác giả dùng AI, dù sách hay đến đâu.",
+          "source": "Chương 15 — Đạo đức, bản quyền & xuất bản có trách nhiệm"
+        },
+        {
+          "id": "ch15-bai-tap",
+          "type": "exercise",
+          "title": "Việc cần làm ngay",
+          "prompt": "1) Soạn thử một câu ghi chú tác giả mô tả trung thực mức độ bạn dùng AI (nghiên cứu? biên tập? soạn thảo?) — nếu nó khiến bạn chột dạ, đó là tín hiệu cần điều chỉnh cách làm việc. 2) Nếu đã nhắm một nhà xuất bản/nền tảng/cuộc thi, tìm chính sách AI của họ ngay hôm nay và ghi lại yêu cầu khai báo. 3) Chọn 3 dữ kiện 'nghe rất chắc' trong bản thảo, tự tay đối chiếu với một nguồn thật. 4) Liệt kê mọi ảnh trong sách và nguồn của chúng, đánh dấu ảnh nào chưa rõ quyền dùng thương mại; kiểm xem có tài liệu chứa thông tin cá nhân người khác mà bạn đã đưa cho Claude không.",
+          "hint": "Bài tập số 3 (tự kiểm 3 dữ kiện) là bài tập nhỏ nhưng cho cảm nhận trực tiếp nhất vì sao khâu kiểm chứng của con người là không thể bỏ qua.",
+          "answer": "Không có đáp án cố định — kết quả là một ghi chú minh bạch đã soạn xong, và ít nhất 3 dữ kiện + toàn bộ ảnh trong sách đã được rà lại quyền/nguồn gốc."
+        },
+        {
+          "id": "ch15-can-than-chinh-sach-ai",
+          "type": "note",
+          "title": "Đọc chính sách AI trước khi nộp — đừng đoán",
+          "body": "Nếu bạn nộp cho một nhà xuất bản hay cuộc thi, tìm và đọc chính sách AI của họ trước khi nộp. Chính sách khác nhau rất nhiều giữa các nơi và thay đổi nhanh. Không thấy chính sách công khai thì hỏi thẳng biên tập viên. Im lặng rồi bị phát hiện sau tệ hơn nhiều so với hỏi trước — khai man có thể khiến bạn bị gỡ tác phẩm hoặc mất quyền lợi.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "phu-luc-prompt-template-checklist",
+      "title": "Phụ lục A–C: Thư viện prompt, bộ template, bộ checklist",
+      "summary": "Ba ngăn kéo công cụ để với tay lấy giữa lúc đang làm việc — không dạy điều gì mới, chỉ giúp bạn không phải nhớ lại từ đầu mỗi lần.",
+      "sections": [
+        {
+          "id": "pl-abc-ba-ngan-keo",
+          "type": "concept",
+          "title": "Ba phụ lục, ba việc khác nhau",
+          "body": "Phụ lục A — Thư viện prompt: bản cô đọng của các kỹ thuật giao việc đã giải thích kỹ trong từng chương chính, tổ chức theo giai đoạn (A.1 Ý tưởng, A.2 Research, A.3 Outline, A.4 Drafting...). Chỗ [trong ngoặc vuông] là phần bạn phải điền bằng bối cảnh thật trước khi gửi cho Claude.\n\nPhụ lục B — Bộ template: tám khuôn mẫu copy-dùng-ngay cho các mốc lớn của dự án (CLAUDE.md, brief, outline, beat sheet, character bible, style sheet, brief chương, bảng theo dõi nguồn). Template là giàn giáo, không phải khuôn đúc — thêm/bớt mục tuỳ cuốn sách của bạn.\n\nPhụ lục C — Bộ checklist: ô tick cho từng chặng (chuẩn bị dự án, research, biên tập, soát lỗi, tiền-in, xuất bản, đạo đức) để biết một chặng đã thật sự xong, thay vì cảm giác 'chắc ổn rồi'."
+        },
+        {
+          "id": "pl-abc-khung-tra-cuu",
+          "type": "framework",
+          "title": "Khi nào mở phụ lục nào",
+          "intro": "Ba phụ lục phục vụ ba thời điểm khác nhau trong lúc làm việc:",
+          "steps": [
+            "Đang cần gõ một brief cho một việc cụ thể (research, outline, line edit...) → mở Phụ lục A, tìm đúng mục theo giai đoạn, điền chỗ trống.",
+            "Bắt đầu một mốc lớn mới (dự án mới, nhân vật mới, chương mới) và không biết bắt đầu từ đâu → mở Phụ lục B, copy template, xoá phần không cần.",
+            "Sắp coi một chặng là xong và muốn chắc chắn không bỏ sót gì → mở Phụ lục C, tick từng ô, chỉ tick khi tự mắt đã xác nhận.",
+            "Template/checklist đã điền xong → dán vào CLAUDE.md hoặc đầu phiên làm việc để Claude có bản đồ trước mặt, thay vì phải đoán."
+          ]
+        },
+        {
+          "id": "pl-abc-case-anh-duc",
+          "type": "case-study",
+          "title": "Anh Đức và bốn lỗi lọt qua vì thiếu một danh sách để dò",
+          "body": "Anh Đức viết xong bản thảo cuốn hồi ký của bố, mừng rỡ gửi in. Ba tuần sau sách về, anh mới phát hiện tên một người bác bị sai dấu ở bốn chỗ, mục lục lệch số trang, và một tấm ảnh chương 3 bị vỡ nét khi phóng to. Không phải anh lười — anh chỉ không có một danh sách để dò.\n\nCuốn sách đã dạy anh từng kỹ thuật riêng lẻ; thứ anh thiếu là cái bảng cuối cùng để tick trước khi bấm nút. Đây chính xác là lý do Phụ lục C tồn tại: nó không dạy điều gì mới, nó là lưới an toàn giăng dưới mọi chương trước đó — nhưng lưới đó chỉ có tác dụng nếu thật sự mở ra dùng.",
+          "source": "Phụ lục C — Bộ checklist"
+        },
+        {
+          "id": "pl-abc-bai-tap",
+          "type": "exercise",
+          "title": "Dựng ngăn kéo công cụ cho dự án của bạn",
+          "prompt": "1) Mở thư mục dự án của bạn, tạo một file checklist.md, copy vào đó bộ checklist của chặng bạn đang làm (ví dụ 'chuẩn bị dự án' nếu mới bắt đầu). 2) Chọn một template phù hợp nhất với việc sắp làm (CLAUDE.md nếu chưa có, character bible nếu viết fiction, style sheet nếu sắp drafting) và điền đầy đủ — không để sót ô [...] nào. 3) Với việc kế tiếp bạn định giao Claude, tìm đúng prompt mẫu theo giai đoạn tương ứng thay vì gõ tự do từ đầu.",
+          "hint": "Đừng để nguyên ngoặc vuông [...] khi gửi cho Claude — một ô [tên nhân vật] còn sót lại trong bản thảo là dấu hiệu bạn đã copy mà quên điền.",
+          "answer": "Không có đáp án cố định — kết quả là một checklist.md đang sống trong dự án, và ít nhất một template đã điền đầy đủ, sẵn sàng dán vào CLAUDE.md."
+        },
+        {
+          "id": "pl-abc-ghi-nho-tick-that",
+          "type": "note",
+          "title": "Ô tick chỉ có giá trị khi chính bạn xác nhận",
+          "body": "Checklist là để con người ký tên vào từng dòng. Bạn có thể nhờ Claude rà soát và báo cáo trạng thái từng mục, nhưng ô [ ] chỉ được tick khi bạn đã tự mắt xác nhận. Một checklist Claude tự đánh dấu hộ mà bạn không kiểm lại thì không còn là lưới an toàn — nó chỉ là một lời hứa suông.",
+          "variant": "warning"
+        }
+      ]
+    },
+    {
+      "id": "phu-luc-cong-cu-thuat-ngu-tai-nguyen",
+      "title": "Phụ lục D–F: Cài đặt công cụ, thuật ngữ, tài nguyên chính thức",
+      "summary": "Nơi tra cứu khi kẹt kỹ thuật: cài đúng công cụ để build PDF, tra một thuật ngữ lạ, hoặc xác nhận một tính năng còn đúng như sách mô tả không.",
+      "sections": [
+        {
+          "id": "pl-def-ba-phu-luc",
+          "type": "concept",
+          "title": "Ba phụ lục hỗ trợ kỹ thuật",
+          "body": "Phụ lục D — Cài đặt công cụ & script build: hướng dẫn cài ba công cụ ngoài để biến bản thảo thành PDF (Pandoc, Typst, WeasyPrint), kèm lệnh mẫu và một script build một-lệnh. Đây là 'hộp đồ nghề' của Chương 11-12 — Claude không tự tạo PDF, nó ra lệnh cho các công cụ này chạy trên máy bạn, nên chúng phải nằm sẵn trên máy trước.\n\nPhụ lục E — Bảng thuật ngữ Việt-Anh: tra nhanh nghĩa gọn của mọi từ tiếng Anh cuốn sách dùng (prompt, context, artifact, subagent, bleed...), kèm tên chương chủ nhà để đào sâu khi cần. Không có khái niệm mới, chỉ là tra cứu cho yên tâm.\n\nPhụ lục F — Tài nguyên & liên kết chính thức: danh bạ các trang tài liệu chính thức của Claude (claude.com, code.claude.com, platform.claude.com, support.claude.com) để đối chiếu khi một nút hay tính năng trong thực tế không giống mô tả trong sách — vì phần mềm AI đổi nhanh hơn tốc độ in sách."
+        },
+        {
+          "id": "pl-def-khung-chon-cong-cu",
+          "type": "framework",
+          "title": "Chọn một con đường build, rồi đi tới cùng",
+          "intro": "Không cần cài cả ba công cụ — chọn một con đường phù hợp:",
+          "steps": [
+            "Muốn sách đẹp mặc định, biên dịch nhanh, cú pháp sạch hơn LaTeX → cài Typst (đi từ Markdown/Typst → PDF).",
+            "Đã quen CSS, muốn kiểm soát dàn trang cao bằng CSS3 quen thuộc → cài WeasyPrint (đi từ HTML/CSS → PDF).",
+            "Phân vân → bắt đầu bằng Pandoc + Typst, con đường đơn giản nhất cho người mới, có thể 'lên đời' sau.",
+            "Gặp thuật ngữ lạ khi đọc sách hoặc trò chuyện với Claude → tra Phụ lục E trước khi đoán nghĩa.",
+            "Nghi ngờ một tính năng đã đổi so với mô tả trong sách → mở đúng trang tài liệu chính thức ở Phụ lục F, không tin lời đồn hay để Claude tự 'nhớ' về chính nó."
+          ]
+        },
+        {
+          "id": "pl-def-case-chi-van",
+          "type": "case-study",
+          "title": "Chị Vân và câu \"hãy cài Pandoc\" nghe như mật mã",
+          "body": "Chị Vân, một tác giả tản văn không rành máy tính, kể rằng đoạn làm chị sợ nhất trong cả hành trình không phải là viết, mà là câu 'hãy cài Pandoc' — nghe như mật mã. Phụ lục D tồn tại để câu đó không còn đáng sợ: nó gom mọi thứ cần cài và mọi lệnh cần gõ vào một chỗ, để khi Claude bảo 'ta cần Typst', chị biết chính xác phải làm gì.\n\nCùng một tinh thần, chị Nga — một giáo viên về hưu viết sách dạy nấu ăn — kể điều làm chị nản nhất tuần đầu không phải Claude khó dùng, mà là những từ lạ: 'Nó cứ nói artifact, context, subagent... tôi gật gù cho qua nhưng thật ra không hiểu.' Cả hai không thiếu khả năng viết sách — họ thiếu một cuốn từ điển bỏ túi và một hộp đồ nghề cài đặt, đúng thứ Phụ lục D và E cung cấp.",
+          "source": "Phụ lục D — Cài đặt công cụ & script build; Phụ lục E — Bảng thuật ngữ"
+        },
+        {
+          "id": "pl-def-bai-tap",
+          "type": "exercise",
+          "title": "Chuẩn bị hộp đồ nghề kỹ thuật trước khi build",
+          "prompt": "1) Chọn một con đường build (Pandoc+Typst được khuyên cho người mới) và nhờ Claude kiểm tra máy đã cài công cụ đó chưa; nếu chưa, làm theo hướng dẫn cài ở Phụ lục D. 2) Lướt qua Phụ lục E một lượt, khoanh 5 thuật ngữ bạn từng gặp mà chưa chắc nghĩa. 3) Bookmark Phụ lục F — lần tới khi thấy một nút hoặc tính năng không giống sách mô tả, tra đúng trang tài liệu chính thức tương ứng thay vì đoán.",
+          "hint": "Nguồn đáng tin nhất về một sản phẩm luôn là trang tài liệu của chính hãng làm ra nó — khi tài liệu chính thức và bất kỳ nguồn nào khác (kể cả cuốn sách này) mâu thuẫn nhau, tài liệu chính thức thắng.",
+          "answer": "Không có đáp án cố định — kết quả là công cụ build đã cài và kiểm tra chạy được, cùng một danh sách thuật ngữ đã tra cứu để đọc các chương kỹ thuật trôi chảy hơn."
+        },
+        {
+          "id": "pl-def-ghi-nho-nguon-chinh-thuc",
+          "type": "note",
+          "title": "Khi nghi ngờ, tài liệu chính thức thắng",
+          "body": "Nguồn đáng tin nhất về một sản phẩm là trang tài liệu của chính hãng làm ra nó. Với Claude, đó là các tên miền claude.com, code.claude.com, platform.claude.com và support.claude.com. Một bài blog hay video của bên thứ ba có thể hữu ích, nhưng khi mâu thuẫn, tài liệu chính thức thắng — kể cả khi nó mâu thuẫn với chính cuốn sách bạn đang đọc.",
+          "variant": "tip"
+        }
+      ]
+    }
+  ]
+}
