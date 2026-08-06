@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Thư viện Portal",
+  title: "Thư viện số",
   description: "Portal học tập tương tác, sinh bởi foxai-learning-portal.",
 };
 

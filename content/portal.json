@@ -1,5 +1,5 @@
 {
-  "siteTitle": "Thư viện Portal",
+  "siteTitle": "Thư viện số",
   "siteSubtitle": "Portal học tập được dựng từ các tài liệu nguồn — mỗi cuốn sách một khu vực riêng.",
   "books": [
     {
@@ -35,7 +35,9 @@
           "Xuất bản",
           "Kỹ năng viết"
         ],
-        "sourceUrl": "https://drive.google.com/file/d/1rq4mPiDGB8c-7_HglEP7aYeTHWDCxhFS/view?usp=drive_link"
+        "sourceUrl": "https://drive.google.com/file/d/1rq4mPiDGB8c-7_HglEP7aYeTHWDCxhFS/view?usp=drive_link",
+        "domain": "cong-nghe-thong-tin",
+        "field": "cong-cu-ung-dung-ai"
       },
       "modules": [
         {
@@ -878,7 +880,9 @@
           "Công nghệ"
         ],
         "publishedAt": "2026-05-25",
-        "sourceUrl": "https://drive.google.com/file/d/1kyscS9TELeWXAJkoGLqTgFpI1u9WGpyr/view?usp=sharing"
+        "sourceUrl": "https://drive.google.com/file/d/1kyscS9TELeWXAJkoGLqTgFpI1u9WGpyr/view?usp=sharing",
+        "domain": "cong-nghe-thong-tin",
+        "field": "tri-tue-nhan-tao"
       },
       "modules": [
         {

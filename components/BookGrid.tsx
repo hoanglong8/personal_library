@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { Book } from "@/lib/types";
+import { CATEGORY_TREE } from "@/lib/categories";
+import CategorySidebar from "./CategorySidebar";
 
 type SortOrder = "newest" | "oldest" | "title";
 
@@ -17,11 +19,29 @@ export default function BookGrid({ books }: { books: Book[] }) {
   const [query, setQuery] = useState("");
   const [activeTags, setActiveTags] = useState<string[]>([]);
   const [sort, setSort] = useState<SortOrder>("newest");
+  const [selectedDomain, setSelectedDomain] = useState<string | null>(null);
+  const [selectedField, setSelectedField] = useState<string | null>(null);
 
   const allTags = useMemo(() => {
     const set = new Set<string>();
     books.forEach((b) => b.meta.tags?.forEach((t) => set.add(t)));
     return Array.from(set).sort((a, b) => a.localeCompare(b, "vi"));
+  }, [books]);
+
+  const countByDomain = useMemo(() => {
+    const counts: Record<string, number> = {};
+    books.forEach((b) => {
+      if (b.meta.domain) counts[b.meta.domain] = (counts[b.meta.domain] ?? 0) + 1;
+    });
+    return counts;
+  }, [books]);
+
+  const countByField = useMemo(() => {
+    const counts: Record<string, number> = {};
+    books.forEach((b) => {
+      if (b.meta.field) counts[b.meta.field] = (counts[b.meta.field] ?? 0) + 1;
+    });
+    return counts;
   }, [books]);
 
   const filtered = useMemo(() => {
@@ -35,7 +55,9 @@ export default function BookGrid({ books }: { books: Book[] }) {
       const matchesTags =
         activeTags.length === 0 ||
         activeTags.every((t) => b.meta.tags?.includes(t));
-      return matchesQuery && matchesTags;
+      const matchesDomain = !selectedDomain || b.meta.domain === selectedDomain;
+      const matchesField = !selectedField || b.meta.field === selectedField;
+      return matchesQuery && matchesTags && matchesDomain && matchesField;
     });
 
     return [...matches].sort((a, b) => {
@@ -44,7 +66,7 @@ export default function BookGrid({ books }: { books: Book[] }) {
       const db = b.meta.publishedAt ?? "";
       return sort === "newest" ? db.localeCompare(da) : da.localeCompare(db);
     });
-  }, [books, query, activeTags, sort]);
+  }, [books, query, activeTags, sort, selectedDomain, selectedField]);
 
   function toggleTag(tag: string) {
     setActiveTags((prev) =>
@@ -53,63 +75,74 @@ export default function BookGrid({ books }: { books: Book[] }) {
   }
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-14">
-      <h1 className="text-3xl font-semibold text-ink">Thư viện portal</h1>
-      <p className="mt-2 text-ink-soft">Chọn một cuốn sách để bắt đầu học.</p>
+    <section className="mx-auto max-w-6xl px-6 py-14 lg:flex lg:items-start lg:gap-10">
+      <CategorySidebar
+        tree={CATEGORY_TREE}
+        countByDomain={countByDomain}
+        countByField={countByField}
+        selectedDomain={selectedDomain}
+        selectedField={selectedField}
+        onSelectDomain={setSelectedDomain}
+        onSelectField={setSelectedField}
+      />
 
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-        <input
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Tìm theo tên sách, tác giả..."
-          className="flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-        />
-        <select
-          value={sort}
-          onChange={(e) => setSort(e.target.value as SortOrder)}
-          className="rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-        >
-          <option value="newest">Mới nhất trước</option>
-          <option value="oldest">Cũ nhất trước</option>
-          <option value="title">Theo tên (A-Z)</option>
-        </select>
-      </div>
+      <div className="min-w-0 flex-1">
+        <h1 className="text-3xl font-semibold text-ink">Thư viện số</h1>
+        <p className="mt-2 text-ink-soft">Chọn một cuốn sách để bắt đầu học.</p>
 
-      {allTags.length > 0 && (
-        <div className="mt-3 flex flex-wrap gap-2">
-          {allTags.map((tag) => {
-            const active = activeTags.includes(tag);
-            return (
-              <button
-                key={tag}
-                type="button"
-                onClick={() => toggleTag(tag)}
-                aria-pressed={active}
-                className={`rounded-full border px-3 py-1 text-xs font-mono transition-colors ${
-                  active
-                    ? "border-accent bg-accent-soft text-accent"
-                    : "border-border text-paper-400 hover:border-accent hover:text-accent"
-                }`}
-              >
-                #{tag}
-              </button>
-            );
-          })}
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Tìm theo tên sách, tác giả..."
+            className="flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+          />
+          <select
+            value={sort}
+            onChange={(e) => setSort(e.target.value as SortOrder)}
+            className="rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+          >
+            <option value="newest">Mới nhất trước</option>
+            <option value="oldest">Cũ nhất trước</option>
+            <option value="title">Theo tên (A-Z)</option>
+          </select>
         </div>
-      )}
 
-      <p className="mt-4 text-xs text-paper-400">
-        {filtered.length}/{books.length} sách
-      </p>
+        {allTags.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {allTags.map((tag) => {
+              const active = activeTags.includes(tag);
+              return (
+                <button
+                  key={tag}
+                  type="button"
+                  onClick={() => toggleTag(tag)}
+                  aria-pressed={active}
+                  className={`rounded-full border px-3 py-1 text-xs font-mono transition-colors ${
+                    active
+                      ? "border-accent bg-accent-soft text-accent"
+                      : "border-border text-paper-400 hover:border-accent hover:text-accent"
+                  }`}
+                >
+                  #{tag}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
-      {filtered.length === 0 ? (
-        <p className="mt-6 text-sm text-ink-soft">
-          Không tìm thấy sách phù hợp — thử đổi từ khoá hoặc bỏ bớt thẻ lọc.
+        <p className="mt-4 text-xs text-paper-400">
+          {filtered.length}/{books.length} sách
         </p>
-      ) : (
-        <div className="mt-4 grid gap-5 sm:grid-cols-2">
-          {filtered.map((book) => {
+
+        {filtered.length === 0 ? (
+          <p className="mt-6 text-sm text-ink-soft">
+            Không tìm thấy sách phù hợp — thử đổi từ khoá hoặc bỏ bớt bộ lọc.
+          </p>
+        ) : (
+          <div className="mt-4 grid gap-5 sm:grid-cols-2">
+            {filtered.map((book) => {
             const date = formatDate(book.meta.publishedAt);
             return (
               <Link
@@ -158,8 +191,9 @@ export default function BookGrid({ books }: { books: Book[] }) {
               </Link>
             );
           })}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </section>
   );
 }

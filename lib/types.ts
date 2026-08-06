@@ -76,6 +76,10 @@ export interface PortalMeta {
   publishedAt?: string;
   /** Link chia sẻ Google Drive tới file gốc (dạng .../file/d/<id>/view...), để nhúng xem song song bản gốc. */
   sourceUrl?: string;
+  /** id của CategoryDomain (lib/categories.ts) mà sách thuộc về, để lọc theo panel chủ đề ở trang chủ. */
+  domain?: string;
+  /** id của CategoryField (lib/categories.ts) trong domain trên. */
+  field?: string;
 }
 
 export interface Book {

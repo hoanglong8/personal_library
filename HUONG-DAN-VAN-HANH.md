@@ -1,7 +1,9 @@
-# Hướng dẫn vận hành Portal
+# Hướng dẫn vận hành Portal "Thư viện số"
 
-Portal học tập chạy tại **https://creatgitbookcanhan.vercel.app**, dựng
-bởi skill `foxai-learning-portal` (`~/.claude/skills/foxai-learning-portal`
+Portal học tập chạy tại **https://thuvien-so.vercel.app** (domain cũ
+`https://creatgitbookcanhan.vercel.app` vẫn còn sống, trỏ cùng
+deployment — chưa gỡ để tránh hỏng link đã chia sẻ trước đó), dựng bởi
+skill `foxai-learning-portal` (`~/.claude/skills/foxai-learning-portal`
 trên máy có Claude Code). Tài liệu này ghi lại cách sửa nội dung, thêm
 sách mới, và deploy — để đọc lại khi cần mà không phải hỏi lại từ đầu.
 
@@ -19,6 +21,10 @@ sách mới, và deploy — để đọc lại khi cần mà không phải hỏi
 - Sách có `meta.sourceUrl` (link Google Drive) sẽ tự có nút nổi
   "📄 Xem bản gốc" — mở panel nhúng PDF gốc song song với nội dung đã viết
   lại. Cả 2 sách hiện có đều đã bật tính năng này.
+- Trang chủ có **panel chủ đề bên trái** (`components/CategorySidebar.tsx`)
+  phân loại sách theo cây cố định ở `lib/categories.ts`: Khoa học tự nhiên,
+  Khoa học xã hội, Nhân học, Công nghệ thông tin (mỗi domain có vài nhánh
+  con). Gán qua `meta.domain`/`meta.field` trong `portal.json` — xem mục 3.
 
 ## 2. Sửa nội dung một sách đang có
 
@@ -61,6 +67,12 @@ Chi tiết máy móc hơn (quy tắc đặt `slug`, cách viết `author`/`tags`
 Drive tới file gốc (đặt quyền chia sẻ **"Anyone with the link"**, không thì
 panel nhúng sẽ báo lỗi truy cập) — Claude điền vào `meta.sourceUrl`, không
 cần sửa code gì thêm.
+
+**Muốn sách mới hiện đúng chỗ trong panel chủ đề bên trái?** Nói Claude
+sách thuộc lĩnh vực nào (vd "sách này về Vật lý" hoặc "về AI/công nghệ") —
+Claude điền `meta.domain`/`meta.field` bằng đúng `id` có sẵn trong
+`lib/categories.ts` (không tự đặt tên domain mới). Nếu chưa có nhánh phù
+hợp trong cây hiện tại, nói Claude mở rộng `lib/categories.ts` trước.
 
 ## 4. Deploy
 
@@ -118,7 +130,7 @@ lệnh 4a nữa. Tự kiểm tra bằng cách push một thay đổi nhỏ và x
 
 | Thứ | Giá trị |
 |---|---|
-| Site live | https://creatgitbookcanhan.vercel.app |
+| Site live | https://thuvien-so.vercel.app (alias cũ: https://creatgitbookcanhan.vercel.app) |
 | Repo GitHub | https://github.com/hoanglong8/creat_gitbook_ca_nhan |
 | Vercel project | `hoanglong8s-projects/creat_gitbook_ca_nhan` |
 | Supabase project | `viet-sach-cung-claude-portal` (ref `lamaeusnlxnlcfahtube`) |
