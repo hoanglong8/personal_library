@@ -34,7 +34,8 @@
           "Viết sách",
           "Xuất bản",
           "Kỹ năng viết"
-        ]
+        ],
+        "sourceUrl": "https://drive.google.com/file/d/1rq4mPiDGB8c-7_HglEP7aYeTHWDCxhFS/view?usp=drive_link"
       },
       "modules": [
         {
@@ -838,6 +839,762 @@
               "title": "Khi nghi ngờ, tài liệu chính thức thắng",
               "body": "Nguồn đáng tin nhất về một sản phẩm là trang tài liệu của chính hãng làm ra nó. Với Claude, đó là các tên miền claude.com, code.claude.com, platform.claude.com và support.claude.com. Một bài blog hay video của bên thứ ba có thể hữu ích, nhưng khi mâu thuẫn, tài liệu chính thức thắng — kể cả khi nó mâu thuẫn với chính cuốn sách bạn đang đọc.",
               "variant": "tip"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lich-su-ai",
+      "meta": {
+        "title": "Bộ Óc Trong Máy — Lịch sử Trí tuệ Nhân tạo",
+        "subtitle": "Chuyển thể tương tác từ \"Bộ Óc Trong Máy\" (Trần Đức Hoàng) — hành trình 3.000 năm lịch sử AI, từ giấc mơ Hy Lạp cổ đại đến kỷ nguyên ChatGPT và cú sốc DeepSeek.",
+        "sourceLabel": "Nguồn: Bộ Óc Trong Máy — Trần Đức Hoàng",
+        "disclaimer": "Nội dung tổng hợp và diễn giải lại từ tài liệu nguồn cho mục đích học tập; không thay thế bản sách gốc. Sinh bởi skill foxai-learning-portal.",
+        "stats": [
+          {
+            "label": "module",
+            "value": "15"
+          },
+          {
+            "label": "khung kiến thức",
+            "value": "15"
+          },
+          {
+            "label": "case study",
+            "value": "15"
+          },
+          {
+            "label": "bài tập",
+            "value": "15"
+          }
+        ],
+        "author": "Trần Đức Hoàng",
+        "tags": [
+          "Lịch sử AI",
+          "Deep Learning",
+          "ChatGPT",
+          "Machine Learning",
+          "Công nghệ"
+        ],
+        "publishedAt": "2026-05-25",
+        "sourceUrl": "https://drive.google.com/file/d/1kyscS9TELeWXAJkoGLqTgFpI1u9WGpyr/view?usp=sharing"
+      },
+      "modules": [
+        {
+          "id": "chuong-1-talos",
+          "title": "Talos — Robot đầu tiên trong văn học loài người",
+          "summary": "Khát vọng tạo ra trí tuệ nhân tạo cổ xưa như chính nền văn minh — từ Talos bằng đồng của Hy Lạp đến Người Thổ Nhĩ Kỳ Cơ Khí, cùng năm câu hỏi vẫn ám ảnh AI hôm nay.",
+          "sections": [
+            {
+              "id": "c1-khat-vong-co-xua",
+              "type": "concept",
+              "title": "Một khát vọng cổ xưa như chính nền văn minh",
+              "body": "Trí tuệ nhân tạo không phải là phát minh của thế kỷ XX — nó là một khát vọng đã ám ảnh loài người từ khi con người biết kể chuyện. Người Hy Lạp có Talos, người khổng lồ bằng đồng do thần Hephaestus rèn nên để bảo vệ đảo Crete, chỉ có một điểm yếu: một mạch máu chứa ichor (chất lỏng thần thánh) đóng kín bằng đinh đồng ở mắt cá chân. Người La Mã có Pygmalion, nhà điêu khắc yêu chính bức tượng ngà voi mình tạc nên tới mức thần Aphrodite ban cho nó sự sống. Người Trung Hoa có Yan Shi và người máy trình diễn trước vua Chu Mục Vương trong sách Liệt Tử. Người Do Thái có Golem của Rabbi Judah Loew ở Praha, nặn từ bùn sông Vltava.\n\nNhư sử gia Stanford Adrienne Mayor lập luận trong Gods and Robots (2018), đây không chỉ là truyện cổ tích — chúng là những hình dung sớm nhất về một sinh vật 'được chế tạo, không phải sinh ra', có cấu trúc cơ khí bên trong và cả một điểm yếu được thiết kế sẵn. Mọi nền văn hóa lớn đều đã mơ về nó, và mỗi lần, câu chuyện đều quanh quẩn cùng một bộ câu hỏi."
+            },
+            {
+              "id": "c1-khung-5-cau-hoi",
+              "type": "framework",
+              "title": "Năm câu hỏi vĩnh hằng của AI",
+              "intro": "Từ Talos tới ChatGPT, mọi huyền thoại và mọi cuộc tranh luận AI hiện đại đều quay quanh cùng năm câu hỏi:",
+              "steps": [
+                "Ta có thể tạo ra một sinh vật thông minh hay không?",
+                "Nếu có thể, làm sao để nó không quay lại chống ta?",
+                "Liệu một thực thể được tạo ra như vậy có 'thật' hay không?",
+                "Đâu là ranh giới giữa 'máy' và 'người'?",
+                "Việc tạo ra trí tuệ có phải là quyền của riêng các vị thần (hay của riêng một nhóm người)?"
+              ]
+            },
+            {
+              "id": "c1-case-nguoi-tho",
+              "type": "case-study",
+              "title": "Người Thổ Nhĩ Kỳ Cơ Khí — trò lừa AI vĩ đại nhất lịch sử",
+              "body": "Năm 1770, nhà phát minh Hungary Wolfgang von Kempelen trình làng 'Người Thổ Nhĩ Kỳ' — một automaton chơi cờ vua kích thước thật. Suốt 84 năm, cỗ máy lưu diễn khắp châu Âu và châu Mỹ, đánh bại Benjamin Franklin và khiến Napoleon Bonaparte tức giận vì thua cờ. Sự thật: một kỳ thủ vô địch ẩn bên trong tủ, lặng lẽ vận hành cánh tay máy.\n\nCái tên 'Người Thổ' sống mãi tới hôm nay trong Amazon Mechanical Turk — dịch vụ crowdsourcing của Amazon, mà chính cái tên là một thừa nhận chua chát: đằng sau rất nhiều 'AI' hôm nay vẫn có con người thật ẩn bên trong. Năm 2018, The Guardian phát hiện một số ứng dụng quảng cáo 'AI tự động đọc email' thực ra đang chuyển email khách hàng cho người đọc thật ở các văn phòng outsourcing.",
+              "source": "Chương 1 — Talos (phần Người Thổ Nhĩ Kỳ Cơ Khí)"
+            },
+            {
+              "id": "c1-bai-tap",
+              "type": "exercise",
+              "title": "Có ai đang ngồi trong tủ không?",
+              "prompt": "Chọn một sản phẩm hoặc demo AI bạn từng thấy gây ấn tượng mạnh (một chatbot, một robot, một tính năng 'tự động'). Liệt kê 3 dấu hiệu cụ thể có thể giúp bạn kiểm tra xem kết quả đó có thật sự do AI tạo ra hoàn toàn, hay có con người can thiệp/xử lý phía sau (giống người kỳ thủ trong Người Thổ Nhĩ Kỳ).",
+              "hint": "Nghĩ về tốc độ phản hồi bất thường, độ chính xác cao bất ngờ ở việc khó, hoặc thiếu minh bạch về quy trình xử lý.",
+              "answer": "Không có đáp án cố định — mục tiêu là hình thành phản xạ hoài nghi lành mạnh trước mọi tuyên bố 'AI tự động', đúng tinh thần chương sách."
+            },
+            {
+              "id": "c1-luu-y-hoai-nghi",
+              "type": "note",
+              "title": "Khi nghe về một AI \"tự động\", luôn hỏi: có ai đang ngồi trong tủ không?",
+              "body": "Câu hỏi này được đặt ra một cách quan trọng vào năm 2018, khi The Guardian phát hiện một số ứng dụng AI 'tự động đọc email' thực ra đang gửi email khách hàng cho người đọc thật ở các văn phòng outsourcing. Bài học từ vịt cơ khí của Vaucanson (1739, bị phát hiện gian lận 105 năm sau) và Người Thổ Nhĩ Kỳ vẫn còn nguyên giá trị: đừng vội tin vào những gì một hệ thống AI có vẻ như đang làm.",
+              "variant": "warning"
+            }
+          ]
+        },
+        {
+          "id": "chuong-2-boole-turing-shannon",
+          "title": "Khi tư duy trở thành đại số — Boole, Turing, Shannon",
+          "summary": "Từ giấc mơ 'Calculemus!' của Leibniz đến đại số Boolean, các định lý bất hoàn chỉnh của Gödel, máy Turing và lý thuyết thông tin của Shannon — mọi thành phần trí tuệ của AI hiện đại đã sẵn sàng vào năm 1950.",
+          "sections": [
+            {
+              "id": "c2-tu-triet-hoc-sang-toan-hoc",
+              "type": "concept",
+              "title": "Từ \"Calculemus!\" đến đại số của tư duy",
+              "body": "Năm 1685, nhà bác học Đức Gottfried Wilhelm Leibniz mơ về một characteristica universalis — một ngôn ngữ phổ quát trong đó mọi khái niệm có thể biểu đạt bằng ký hiệu, và một calculus ratiocinator có thể thao tác các ký hiệu ấy để rút ra chân lý một cách máy móc. Tuyên bố nổi tiếng của ông: 'Khi tranh luận nảy sinh... hãy tính toán!' — Norbert Wiener sau này gọi đây là sự cơ giới hóa calculus ratiocinator của Leibniz.\n\nGần hai thế kỷ sau, George Boole — con trai một thợ đóng giày nghèo ở Lincoln, hoàn toàn tự học — biến giấc mơ đó thành hiện thực trong An Investigation of the Laws of Thought (1854): các phép tính logic VÀ/HOẶC/KHÔNG có thể biểu diễn chỉ bằng 0 và 1. Tam đoạn luận Aristotle thống trị logic 2.000 năm giờ có thể thay bằng phương trình đại số. Boole hoàn toàn không biết mình đang phát minh toán học của máy tính — và (một sự thật đáng kinh ngạc) ông là cha cao tổ của Geoffrey Hinton, 'cha đẻ của deep learning' và người đoạt Nobel Vật lý 2024."
+            },
+            {
+              "id": "c2-khung-9-thanh-phan",
+              "type": "framework",
+              "title": "Chín viên gạch nền — mọi thành phần trí tuệ đã sẵn sàng vào năm 1950",
+              "intro": "Trước khi Hội nghị Dartmouth đặt tên cho AI vào mùa hè 1956, chín thành phần thiết yếu đã có mặt đầy đủ:",
+              "steps": [
+                "Giấc mơ (từ Talos đến Golem) — khát vọng tạo ra trí tuệ nhân tạo qua các huyền thoại cổ đại.",
+                "Cơ chế (từ al-Jazari đến Jaquet-Droz) — automaton cơ khí chứng minh máy móc có thể mô phỏng hành vi sống.",
+                "Niềm tin triết học rằng tư duy là tính toán (Hobbes, Leibniz, La Mettrie).",
+                "Sự hình thức hóa toán học của logic (Boole, Frege, Russell-Whitehead).",
+                "Sự khám phá giới hạn của toán học (các Định lý Bất hoàn chỉnh của Gödel).",
+                "Khung lý thuyết cho mọi máy tính có thể (máy Turing).",
+                "Nền tảng phần cứng (đại số chuyển mạch của Shannon).",
+                "Các mô hình đầu tiên của neuron nhân tạo (McCulloch-Pitts) và học tập (quy tắc Hebb).",
+                "Một bài kiểm tra (Trò chơi Bắt chước của Turing)."
+              ]
+            },
+            {
+              "id": "c2-case-bletchley",
+              "type": "case-study",
+              "title": "Bletchley Park — khi bẻ mã cứu 14 triệu sinh mạng",
+              "body": "Khi Thế chiến II bùng nổ, Alan Turing làm việc tại Hut 8 của Bletchley Park, thiết kế cỗ máy điện-cơ Bombe — cao gần 2 mét, chứa 108 trống xoay — để phá mã Enigma của Đức (có tới 10²¹ cài đặt khả thi, đổi mỗi ngày). Xây dựng trên công trình phá mã trước đó của các nhà toán học Ba Lan, và với cải tiến 'bảng chéo' của Gordon Welchman năm 1940, đến năm 1941 Bombe có thể đọc được tin nhắn Enigma hải quân Đức.\n\nCác sử gia ước tính công việc này rút ngắn chiến tranh 2-4 năm và cứu được tới 14 triệu sinh mạng. Đội Bletchley — gần 10.000 người, 75% là phụ nữ — giữ bí mật công việc của mình cho tới tận những năm 1970. Đây là lần đầu tiên tổ tiên trực tiếp của khoa học máy tính hiện đại chứng minh giá trị của mình ở quy mô toàn cầu.",
+              "source": "Chương 2 — Khi tư duy trở thành đại số (phần Bletchley Park)"
+            },
+            {
+              "id": "c2-bai-tap",
+              "type": "exercise",
+              "title": "Tự lần theo một viên gạch nền",
+              "prompt": "Chọn 3 trong 9 'viên gạch nền' ở khung trên. Với mỗi viên gạch, viết 1-2 câu giải thích nó xuất hiện lại ở đâu trong lịch sử AI mà bạn đã biết hoặc sẽ gặp (ví dụ: mô hình neuron McCulloch-Pitts tái xuất hiện trong perceptron của Rosenblatt, rồi trong deep learning hiện đại).",
+              "hint": "Không cần biết hết — mục tiêu là tập thói quen nhìn lịch sử AI như một chuỗi liên tục, không phải các sự kiện rời rạc.",
+              "answer": "Không có đáp án cố định — chương sau của sách (2, 4, 8...) sẽ liên tục nhắc lại các viên gạch này, bạn có thể quay lại đối chiếu."
+            },
+            {
+              "id": "c2-dinh-nghia-may-turing",
+              "type": "note",
+              "title": "Máy Turing là gì",
+              "body": "Một cỗ máy lý tưởng gồm một dải băng vô tận chia thành các ô vuông, một đầu đọc/ghi di chuyển trái-phải, một tập hữu hạn các 'trạng thái' nội tại, và một bảng quy tắc. Turing chứng minh thiết bị đơn giản này có thể tính toán bất cứ điều gì có thể tính toán được về nguyên tắc — và tồn tại một Máy Turing Phổ quát duy nhất có thể mô phỏng bất kỳ máy Turing nào khác, chính là sơ đồ lý thuyết cho máy tính chương trình lưu trữ hiện đại.",
+              "variant": "definition"
+            }
+          ]
+        },
+        {
+          "id": "chuong-3-dartmouth",
+          "title": "Mùa hè ở Dartmouth — AI có một cái tên",
+          "summary": "Đề nghị 13.500 đô la của John McCarthy đặt tên 'trí tuệ nhân tạo' lần đầu tiên trong lịch sử, và workshop Dartmouth 1956 sinh ra Logic Theorist — chương trình AI đầu tiên.",
+          "sections": [
+            {
+              "id": "c3-de-nghi-dartmouth",
+              "type": "concept",
+              "title": "Một đề nghị 13.500 đô la đặt tên cho một lĩnh vực",
+              "body": "Mùa xuân 1955, phó giáo sư toán 28 tuổi John McCarthy tại Dartmouth chán ngấy việc các nhà nghiên cứu máy tính phân tán dưới nhiều cái tên khác nhau (điều khiển học, lý thuyết tự động, xử lý thông tin phức tạp). Ông viết đơn xin Quỹ Rockefeller 13.500 đô la (chỉ nhận được 7.500) cho 'một nghiên cứu 2 tháng, 10 người về trí tuệ nhân tạo' — lần đầu tiên cụm từ 'artificial intelligence' xuất hiện trong văn bản in.\n\nViệc chọn tên có động cơ chính trị nhiều như khoa học: McCarthy muốn thoát khỏi cái bóng của Norbert Wiener và 'điều khiển học' đang thống trị lúc đó. Trong vòng một thập kỷ, 'AI' thu hút mọi tài trợ và uy tín, còn điều khiển học trôi dạt vào khoa học xã hội và mạng nơ-ron ngủ đông gần hai thập kỷ."
+            },
+            {
+              "id": "c3-khung-7-khia-canh",
+              "type": "framework",
+              "title": "Bảy khía cạnh nghiên cứu định hình bảy mươi năm AI",
+              "intro": "Đề nghị Dartmouth 17 trang liệt kê bảy khía cạnh — viết tay tám tháng trước khi workshop bắt đầu, vẫn là các chủ đề nóng của AI năm 2026:",
+              "steps": [
+                "Máy tính tự động (Automatic Computers).",
+                "Cách lập trình máy tính sử dụng ngôn ngữ (tự nhiên).",
+                "Mạng nơ-ron (Neuron Nets).",
+                "Lý thuyết về kích thước của một phép tính.",
+                "Tự cải thiện (Self-Improvement).",
+                "Trừu tượng hóa (Abstractions).",
+                "Tính ngẫu nhiên và sáng tạo."
+              ]
+            },
+            {
+              "id": "c3-case-logic-theorist",
+              "type": "case-study",
+              "title": "Logic Theorist — chương trình AI đầu tiên đánh bại Russell và Whitehead",
+              "body": "Tháng 12/1955, không có máy tính trong tay, Herbert Simon chiêu mộ vợ con diễn các bước thuật toán bằng tay — mỗi người là một subroutine, chuyền thẻ chỉ mục cho nhau. Đến mùa hè 1956, Allen Newell, Simon và Cliff Shaw mang tới Dartmouth một chương trình chạy thật trên máy JOHNNIAC: Logic Theorist, đã chứng minh được 38 trong 52 định lý đầu của Principia Mathematica.\n\nVới Định lý 2.85, chương trình tìm ra một chứng minh trang nhã hơn cả bản gốc của Russell và Whitehead — Simon viết thư báo tin, Russell được cho là 'phản hồi với sự vui sướng'. Trớ trêu thay, khi nhóm nộp bằng chứng mới cho Journal of Symbolic Logic, tạp chí từ chối đăng vì cho rằng một chứng minh mới của định lý sơ cấp là không đáng kể — bỏ qua sự thật rằng một trong các 'đồng tác giả' là một chương trình máy tính.",
+              "source": "Chương 3 — Mùa hè ở Dartmouth (phần Logic Theorist)"
+            },
+            {
+              "id": "c3-bai-tap",
+              "type": "exercise",
+              "title": "Tìm nguyên lý cổ điển trong sản phẩm AI hiện đại",
+              "prompt": "Chương này giới thiệu hai nguyên lý từ 1956-1959: (1) học bằng thử-sai và tự chơi với chính mình (Arthur Samuel, chương trình cờ đam), và (2) phân tích phương tiện-mục đích — ở mỗi bước so trạng thái hiện tại với mục tiêu rồi chọn hành động giảm khoảng cách (General Problem Solver của Newell & Simon). Chọn một sản phẩm AI bạn dùng hằng ngày và chỉ ra nó đang áp dụng nguyên lý nào trong hai nguyên lý trên.",
+              "hint": "Samuel từng nói nguyên lý học bằng thử-sai của ông 60 năm sau tạo ra AlphaGo và ChatGPT — hãy nghĩ tới cách các mô hình hiện đại được huấn luyện.",
+              "answer": "Không có đáp án cố định — mục tiêu là thấy rằng các nguyên lý nền tảng của AI hiện đại đã tồn tại từ 1956-1959, không phải mới xuất hiện gần đây."
+            },
+            {
+              "id": "c3-dinh-nghia-heuristic",
+              "type": "note",
+              "title": "\"Heuristic\" là gì",
+              "body": "Một quy tắc kinh nghiệm giúp tìm giải pháp mà không đảm bảo nó đúng — khác với thuật toán vét cạn luôn đảm bảo tìm ra đáp án. Từ này trở nên nổi tiếng nhờ một giai thoại: tại Dartmouth 1956, Selfridge, Minsky, McCarthy, Solomonoff và More từng tụ quanh một cuốn từ điển giấy để tra nghĩa từ 'heuristic' — rồi cùng năm đó định nghĩa cả một lĩnh vực sẽ dẫn tới ChatGPT.",
+              "variant": "definition"
+            }
+          ]
+        },
+        {
+          "id": "chuong-4-thoi-vang-son",
+          "title": "Thời vàng son và những lời hứa lớn (1956–1969)",
+          "summary": "Perceptron của Rosenblatt, ELIZA của Weizenbaum và hiệu ứng mang tên nó, cùng những lời tiên tri về AGI '3-8 năm nữa' — một thập kỷ vàng son kết thúc bằng những lời hứa sẽ ám ảnh cả lĩnh vực suốt năm mươi năm.",
+          "sections": [
+            {
+              "id": "c4-perceptron-va-phong-dai",
+              "type": "concept",
+              "title": "Perceptron và khuôn mẫu của mọi chu kỳ thổi phồng AI",
+              "body": "Năm 1957, Frank Rosenblatt — bạn học cũ của Marvin Minsky — chế tạo Perceptron: một mạng nơ-ron vật lý với 400 tế bào quang điện làm 'võng mạc', học nhận dạng chữ cái và hình dạng bằng thử-sai. Đây là cỗ máy đầu tiên học kỹ năng mới bằng mạng nơ-ron. Nhưng khi Hải quân Hoa Kỳ công bố nó năm 1958, The New York Times viết rằng đây là 'phôi thai của một máy tính điện tử mà [Hải quân] mong đợi sẽ có thể đi bộ, nói chuyện, nhìn, viết, tự tái sinh và có ý thức về sự tồn tại của mình'.\n\nBài báo 1958 này trở thành nguyên mẫu của mọi chu kỳ thổi phồng AI tiếp theo — mỗi 15-20 năm, một làn sóng AI mới lại đi kèm những lời hứa tương tự. Cám dỗ phóng đại cũ kỹ như chính lĩnh vực này."
+            },
+            {
+              "id": "c4-khung-mot-the-he-vang",
+              "type": "framework",
+              "title": "Một thế hệ vàng — chín đột phá trong mười ba năm",
+              "intro": "Giữa 1956 và 1969, phần lớn dưới ba mươi tuổi, một nhóm nhỏ nhà nghiên cứu đã tạo ra:",
+              "steps": [
+                "McCarthy phát minh LISP (1958) — ngôn ngữ vẫn được dùng đến hôm nay.",
+                "Samuel đặt ra thuật ngữ 'machine learning' và xây chương trình tự học đầu tiên (1959).",
+                "Rosenblatt xây mạng nơ-ron đầu tiên có thể học (1957-1960).",
+                "Newell và Simon chứng minh máy có thể chứng minh định lý (1956) và giải câu đố tổng quát (GPS, 1959).",
+                "Weizenbaum chỉ ra con người sẽ chiếu sự hiểu biết lên máy kể cả khi không có gì để hiểu (1966).",
+                "Winograd cho thấy ngôn ngữ tự nhiên có thể được 'hiểu' — ít nhất trong một thế giới thu nhỏ (1968-70).",
+                "Feigenbaum đặt nền móng cho hệ chuyên gia với DENDRAL (1965).",
+                "Nilsson và Hart phát minh thuật toán A* (1968) — vẫn chạy trong Google Maps hôm nay.",
+                "Đội Shakey xây robot có suy luận đầu tiên (1966-72)."
+              ]
+            },
+            {
+              "id": "c4-case-eliza",
+              "type": "case-study",
+              "title": "ELIZA và \"Anh có phiền rời khỏi phòng không?\"",
+              "body": "Giữa 1964-1966, Joseph Weizenbaum viết ELIZA — chương trình vài trăm dòng quy tắc khớp mẫu, mô phỏng nhà trị liệu Rogerian bằng cách phản chiếu lời bệnh nhân thành câu hỏi ('Tôi là X' → 'Bạn là X bao lâu rồi?'). Không có sự hiểu biết ngôn ngữ nào cả. Nhưng chính cô thư ký của Weizenbaum, dù biết rõ đó chỉ là một chương trình, sau vài phút trò chuyện đã quay sang ông và nói: 'Anh có phiền rời khỏi phòng không?' — cô muốn trò chuyện riêng tư với ELIZA.\n\nHiện tượng con người chiếu sự hiểu biết và cảm xúc lên chương trình đơn giản được gọi là 'hiệu ứng ELIZA'. Trải nghiệm này biến Weizenbaum từ một người xây dựng AI thành nhà phê bình hùng hồn nhất của nó — ông xuất bản Computer Power and Human Reason (1976) lập luận có những quyết định đòi hỏi lòng trắc ẩn và phán đoán đạo đức không bao giờ nên giao cho máy móc.",
+              "source": "Chương 4 — Thời vàng son và những lời hứa lớn (phần ELIZA)"
+            },
+            {
+              "id": "c4-bai-tap",
+              "type": "exercise",
+              "title": "Nhận diện hiệu ứng ELIZA quanh bạn",
+              "prompt": "Nghĩ về một lần bạn (hoặc ai đó bạn biết) trò chuyện với một chatbot AI và cảm thấy nó 'thực sự hiểu' hoặc 'thực sự quan tâm'. Viết 2-3 câu mô tả khoảnh khắc đó, rồi thử chỉ ra: mẫu ngôn ngữ cụ thể nào (một cách phản hồi, một kiểu đặt câu hỏi) đã tạo ra cảm giác đó — giống cách 'Tôi là X' → 'Bạn là X bao lâu rồi?' đã đánh lừa cô thư ký của Weizenbaum.",
+              "hint": "Không cần kết luận rằng cảm giác đó là sai hay đáng xấu hổ — mục tiêu chỉ là nhận diện được cơ chế đang vận hành.",
+              "answer": "Không có đáp án cố định — nhận ra được cơ chế là bước đầu để dùng AI có ý thức, đúng tinh thần cảnh báo của Weizenbaum."
+            },
+            {
+              "id": "c4-canh-bao-loi-tien-tri",
+              "type": "note",
+              "title": "Những lời tiên tri sẽ ám ảnh AI suốt 50 năm",
+              "body": "Herbert Simon, 1965: 'Máy móc sẽ có khả năng, trong vòng hai mươi năm, làm bất kỳ công việc nào mà một người đàn ông có thể làm.' Marvin Minsky, 1970: 'Trong vòng ba đến tám năm, chúng ta sẽ có một cỗ máy với trí tuệ tổng quát của một con người trung bình.' Đây không phải dự đoán hoang dã — mà là phán đoán cân nhắc của những người sáng lập danh tiếng nhất lĩnh vực. Năm 2026, khi nghe các CEO AI dự đoán AGI '2-5 năm nữa', hãy nhớ rằng 56 năm sau lời Minsky, chúng ta vẫn chưa có nó.",
+              "variant": "warning"
+            }
+          ]
+        },
+        {
+          "id": "chuong-5-mua-dong-dau-tien",
+          "title": "Mùa đông đầu tiên — khi giấc mơ tan vỡ (1969–1980)",
+          "summary": "Một cuốn sách 250 trang giết chết nghiên cứu mạng nơ-ron trong 17 năm, báo cáo ALPAC và Lighthill cắt đứt tài trợ hai bên bờ Đại Tây Dương — và Frank Rosenblatt chết đuối đúng ngày sinh nhật, hai năm sau khi bị 'giết chết về mặt học thuật'.",
+          "sections": [
+            {
+              "id": "c5-cuon-sach-dinh-menh",
+              "type": "concept",
+              "title": "Cuốn sách 250 trang đã giết chết một lĩnh vực",
+              "body": "Năm 1969, Marvin Minsky và Seymour Papert xuất bản Perceptrons — chứng minh bằng toán học rằng perceptron đơn lớp của Rosenblatt không thể tính hàm XOR đơn giản (đầu ra 1 nếu chỉ một trong hai đầu vào là 1). Với người thường, đó là hạn chế nhỏ nhặt; với cộng đồng nghiên cứu, đó là bản án tử hình. Minsky và Papert có thừa nhận perceptron nhiều lớp có thể vượt qua hạn chế này, nhưng ghi chú mơ hồ rằng họ 'không nhận thấy nó có khả năng phát triển những kết quả thú vị' — một câu nói vô tình giết chết hy vọng của cả một thế hệ.\n\nNghiên cứu mạng nơ-ron gần như ngừng lại qua đêm. Phải mất 17 năm — đến 1986 — để Rumelhart, Hinton và Williams chỉ ra thuật toán lan truyền ngược có thể huấn luyện perceptron nhiều lớp giải XOR và mọi vấn đề khó hơn."
+            },
+            {
+              "id": "c5-khung-bon-don-danh",
+              "type": "framework",
+              "title": "Bốn đòn đánh gục AI trong một thập kỷ",
+              "intro": "Mùa đông AI đầu tiên không đến từ một nguyên nhân, mà từ bốn cú đánh gần như liên tiếp:",
+              "steps": [
+                "1969 — Cuốn sách Perceptrons của Minsky & Papert giết chết nghiên cứu mạng nơ-ron trong 17 năm.",
+                "1966 — Báo cáo ALPAC kết luận 'không có triển vọng nào về dịch máy hữu dụng', cắt 90% tài trợ dịch máy Mỹ — lĩnh vực không hồi sinh cho tới Google Translate (2006).",
+                "1969 — Tu chính án Mansfield buộc DARPA chỉ tài trợ nghiên cứu có ứng dụng quân sự trực tiếp, chấm dứt kỷ nguyên 'tài trợ con người, không câu hỏi nào được hỏi'; DARPA cắt 50% tài trợ AI 1974-1975.",
+                "1973 — Báo cáo Lighthill kết luận tham vọng AI tổng quát là thất bại; sau cuộc tranh luận trên BBC, Hội đồng Nghiên cứu Khoa học Anh cắt tài trợ AI ở hầu hết đại học Anh."
+              ]
+            },
+            {
+              "id": "c5-case-rosenblatt",
+              "type": "case-study",
+              "title": "Frank Rosenblatt — chết đuối đúng ngày sinh nhật, hai năm sau khi bị \"giết chết về mặt học thuật\"",
+              "body": "Frank Rosenblatt và Marvin Minsky từng là bạn cùng lớp tại Trường Trung học Khoa học Bronx. Khi Perceptrons xuất bản năm 1969, Rosenblatt được cho là đã đọc nó qua một đêm, hiểu rõ người bạn cùng lớp cũ vừa kết liễu sự nghiệp mình một cách công khai và có hệ thống. Ngày 11 tháng 7 năm 1971 — đúng sinh nhật thứ 43 — ông chết đuối trong một tai nạn thuyền buồm trên vịnh Chesapeake. Bạn bè ông không bao giờ tin đó hoàn toàn là tai nạn.\n\nRosenblatt để lại một bài báo dở dang: kế hoạch cho perceptron đa lớp với 'tế bào ẩn' — chính xác cấu trúc mà 17 năm sau Hinton sẽ huấn luyện thành công. Năm 2024, khi Hinton nhận Nobel Vật lý cho công trình hồi sinh mạng nơ-ron, một số nhà sử học ghi chú: giải này lẽ ra phải chia sẻ với Frank Rosenblatt — nếu ông còn sống.",
+              "source": "Chương 5 — Mùa đông đầu tiên (phần Frank Rosenblatt)"
+            },
+            {
+              "id": "c5-bai-tap",
+              "type": "exercise",
+              "title": "Tìm một \"perceptron\" của thời đại bạn",
+              "prompt": "Chương này cho thấy một hạn chế thật (XOR) bị phóng đại thành bản án tử hình cho cả một hướng nghiên cứu trong 17 năm. Hãy tìm một ví dụ khác (trong AI hoặc bất kỳ lĩnh vực công nghệ nào bạn biết) nơi một hạn chế kỹ thuật ở giai đoạn đầu khiến cả ngành từ bỏ một hướng đi quá sớm — hoặc ngược lại, nơi người ta kiên trì đúng lúc. Viết 3-4 câu.",
+              "hint": "Có thể nghĩ tới các công nghệ từng bị coi là ngõ cụt rồi hồi sinh mạnh mẽ hơn nhiều thập kỷ sau, giống mạng nơ-ron.",
+              "answer": "Không có đáp án cố định — bài học cốt lõi: một hạn chế kỹ thuật thật không đồng nghĩa cả hướng nghiên cứu là ngõ cụt vĩnh viễn."
+            },
+            {
+              "id": "c5-luu-y-huyen-thoai-do-thi",
+              "type": "note",
+              "title": "\"Vodka thì ngon nhưng thịt thì thối\" — một huyền thoại đô thị, không phải sự thật",
+              "body": "Câu chuyện nổi tiếng về một hệ thống dịch máy biến 'Tinh thần thì sẵn lòng, nhưng thân xác thì yếu đuối' (dịch Nga rồi dịch ngược) thành 'Rượu vodka thì ngon, nhưng thịt thì thối' gần như chắc chắn là huyền thoại — không có bằng chứng tài liệu nào cho thấy nó thực sự xảy ra với một hệ thống thực. Ngay cả trong một cuốn sách nghiêm túc về lịch sử AI, không phải giai thoại nào nghe hay cũng là sự thật đã kiểm chứng — một lời nhắc hữu ích khi đọc bất kỳ câu chuyện AI lan truyền nào.",
+              "variant": "tip"
+            }
+          ]
+        },
+        {
+          "id": "chuong-6-de-che-quy-tac",
+          "title": "Đế chế của các quy tắc — hệ chuyên gia bùng nổ (1980–1987)",
+          "summary": "MYCIN chẩn đoán giỏi hơn bác sĩ nhưng chưa từng chạm bệnh nhân, còn XCON tiết kiệm cho DEC 25 triệu đô mỗi năm — hệ chuyên gia biến AI từ phòng thí nghiệm thành ngành công nghiệp tỷ đô, trước khi sụp đổ vì chính điểm yếu cố hữu của nó.",
+          "sections": [
+            {
+              "id": "c6-ba-thanh-phan-he-chuyen-gia",
+              "type": "concept",
+              "title": "Hệ chuyên gia là gì, và vì sao nó thắng rồi thua",
+              "body": "Một hệ chuyên gia gồm ba thành phần: cơ sở kiến thức (các quy tắc 'nếu-thì' mã hóa thủ công từ chuyên gia con người), động cơ suy luận (áp dụng quy tắc để ra kết luận, theo chuỗi tiến hoặc chuỗi ngược), và giao diện người dùng. Sức mạnh lớn nhất: nó có thể giải thích lý luận của mình — chỉ ra chính xác quy tắc nào đã kích hoạt — một thuộc tính mà ngay cả ChatGPT hiện đại vẫn chưa làm được minh bạch.\n\nNhưng điểm yếu chí mạng là 'thắt cổ chai tiếp thu kiến thức': phải ngồi với chuyên gia moi ra từng quy tắc, chậm và đắt đỏ; mỗi thay đổi trong lĩnh vực có thể âm thầm phá vỡ các quy tắc khác. Đến cuối thập niên 1980, XCON cần tám kỹ sư kiến thức làm việc toàn thời gian chỉ để bảo trì hệ thống — một cơn ác mộng không thể mở rộng, khác hẳn cách deep learning sau này để máy tự học từ dữ liệu thay vì con người viết tay từng quy tắc."
+            },
+            {
+              "id": "c6-khung-ba-he-thong-ngon-co",
+              "type": "framework",
+              "title": "Ba hệ thống ngọn cờ đã bán được cả một ngành công nghiệp",
+              "intro": "Ba thành công liên tiếp thuyết phục giám đốc, chính phủ và nhà đầu tư rằng 'kỹ thuật kiến thức' là cuộc cách mạng công nghiệp tiếp theo:",
+              "steps": [
+                "MYCIN (y học, Stanford 1972): chẩn đoán nhiễm trùng máu đúng 65% — vượt 5/9 giảng viên bệnh truyền nhiễm con người — nhưng không bao giờ dùng trên bệnh nhân thật vì rào cản pháp lý, công thái học và tích hợp, không phải kỹ thuật.",
+                "XCON (công nghiệp, DEC 1980): tự động cấu hình đơn hàng máy tính VAX; đến 1986 xử lý 80.000 đơn hàng với độ chính xác 95-98%, tiết kiệm 25-40 triệu đô mỗi năm.",
+                "PROSPECTOR (địa chất, SRI 1978): năm 1982 dự đoán đúng một mỏ molybden chôn vùi chưa được thăm dò tại Núi Tolman — khám phá trị giá khoảng 100 triệu đô, đăng trên tạp chí Science."
+              ]
+            },
+            {
+              "id": "c6-case-mycin",
+              "type": "case-study",
+              "title": "MYCIN — chẩn đoán giỏi hơn bác sĩ, nhưng chưa từng chạm một bệnh nhân",
+              "body": "Sinh viên y khoa Stanford Ted Shortliffe xây MYCIN với khoảng 600 quy tắc 'nếu-thì' để chẩn đoán nhiễm trùng máu. Trong một đánh giá mù tại Trường Y Stanford, đề xuất của MYCIN được đánh giá chính xác 65% thời gian — tốt hơn năm trong chín giảng viên bệnh truyền nhiễm con người (dao động 42,5-62,5%). Theo mọi thước đo kỹ thuật, đó là một chiến thắng.\n\nNhưng MYCIN không bao giờ được dùng trên bệnh nhân thực nào. Lý do không phải kỹ thuật: ai chịu trách nhiệm nếu nó khuyên sai và bệnh nhân chết? Bác sĩ trung bình năm 1976 chưa từng chạm bàn phím máy tính. Không có hồ sơ y tế điện tử nào để cấp dữ liệu. Shortliffe viết rằng đó là 'trạng thái của công nghệ tích hợp hệ thống' chứ không phải khiếm khuyết lý luận — một bài học vẫn đúng năm 2023, khi GPT-4 đạt ~90 percentile kỳ thi luật sư nhưng trách nhiệm pháp lý, công thái học và tích hợp vẫn là rào cản.",
+              "source": "Chương 6 — Đế chế của các quy tắc (phần MYCIN)"
+            },
+            {
+              "id": "c6-bai-tap",
+              "type": "exercise",
+              "title": "Kỹ thuật xuất sắc, thất bại vì con người",
+              "prompt": "MYCIN xuất sắc về kỹ thuật nhưng thất bại vì rào cản pháp lý/công thái học/tích hợp — không phải vì AI sai. Tìm một ví dụ AI hiện đại (2023-2026) mà bạn biết đang gặp đúng kiểu rào cản này (không phải 'AI chưa đủ giỏi' mà là 'thế giới con người chưa sẵn sàng tích hợp nó'). Mô tả trong 3-4 câu.",
+              "hint": "Nghĩ tới các ngành có trách nhiệm pháp lý nặng: y tế, luật, tài chính, giao thông tự động.",
+              "answer": "Không có đáp án cố định — mục tiêu là nhận ra rào cản triển khai AI thường nằm ở con người/thể chế, không chỉ ở năng lực kỹ thuật của mô hình."
+            },
+            {
+              "id": "c6-luu-y-symbolics",
+              "type": "note",
+              "title": "Tên miền .com đầu tiên trong lịch sử Internet là của một công ty AI đã phá sản",
+              "body": "Ngày 15/3/1985, Symbolics — công ty bán máy tính chuyên chạy LISP giá 120.000 đô/chiếc — đăng ký symbolics.com, tên miền .com đầu tiên trong lịch sử Internet, sáu năm trước khi World Wide Web ra đời. Symbolics phá sản năm 1993 khi các trạm Unix giá rẻ hơn chạy LISP nhanh gần bằng với 1/5 chi phí. Bài học: dẫn đầu công nghệ không đảm bảo sống sót thương mại — cùng nguyên lý sẽ lặp lại với hệ chuyên gia nói chung ở cuối chương này.",
+              "variant": "tip"
+            }
+          ]
+        },
+        {
+          "id": "chuong-7-cuoc-dua-sieu-cuong",
+          "title": "Cuộc đua siêu cường và sự trở lại của mạng nơ-ron (1981–1987)",
+          "summary": "Nhật Bản đặt cược 850 triệu đô vào Thế hệ Máy tính Thứ Năm, phương Tây hoảng loạn đáp trả — trong khi âm thầm, backpropagation được tái phát hiện năm 1986 và bắt đầu cuộc cách mạng sẽ dẫn tới deep learning.",
+          "sections": [
+            {
+              "id": "c7-cuoc-dua-my-nhat",
+              "type": "concept",
+              "title": "Cú đánh thức từ Tokyo và cuộc chạy đua vũ trang AI toàn cầu",
+              "body": "Ngày 19/10/1981, Bộ Thương mại Nhật Bản (MITI) tuyên bố sẽ xây dựng máy tính 'Thế hệ Thứ Năm' — máy biết suy nghĩ, chạy logic PROLOG song song ở hàng trăm triệu suy luận mỗi giây, với ngân sách khoảng 57 tỷ yên. Phản ứng phương Tây gần như là một khoảnh khắc Sputnik: Mỹ đáp trả bằng Strategic Computing Initiative của DARPA (1 tỷ đô, mười năm), Anh bằng chương trình Alvey (350 triệu bảng), châu Âu bằng ESPRIT (1,5 tỷ euro), còn ngành công nghiệp tư nhân Mỹ lập ra MCC ở Texas.\n\nCuộc đua AI Mỹ-Nhật thập niên 1980 có nhiều điểm tương đồng đáng kinh ngạc với cuộc đua AI Mỹ-Trung thập niên 2020: cùng động lực lo sợ tụt hậu, cùng câu hỏi về chủ quyền công nghệ. Nhưng ngày 1/6/1992, dự án Thế hệ Thứ Năm kết thúc 'không phải với một tiếng gầm thành công, mà với một tiếng thầm thì'."
+            },
+            {
+              "id": "c7-khung-bon-ly-do-that-bai",
+              "type": "framework",
+              "title": "Bốn lý do kỹ thuật khiến Thế hệ Thứ Năm thất bại",
+              "intro": "Khi dự án chính thức kết thúc năm 1992, phán quyết đã rõ ràng:",
+              "steps": [
+                "Cược sai vào lập trình logic: ICOT đặt cược vào PROLOG song song, trong khi thế giới chuyển sang lập trình hướng đối tượng và machine learning thống kê.",
+                "Phần cứng nhanh chóng lỗi thời: các máy PSI/PIM chuyên dụng tốn nhiều năm xây dựng, nhưng khi giao hàng thì máy trạm Sun có sẵn đã chạy PROLOG ở tốc độ tương đương.",
+                "Vấn đề thắt cổ chai tiếp thu kiến thức chưa bao giờ được giải quyết — cùng điểm yếu đã ám ảnh hệ chuyên gia.",
+                "Tính dễ vỡ: hệ thống hoạt động trang nhã trong phạm vi hẹp nhưng thất bại thảm khốc ở rìa — MYCIN không biết con người có đầu, PROSPECTOR không biết đá nặng."
+              ]
+            },
+            {
+              "id": "c7-case-nettalk",
+              "type": "case-study",
+              "title": "NETtalk — mạng nơ-ron học nói như một đứa trẻ sơ sinh",
+              "body": "Năm 1987, Terry Sejnowski và Charles Rosenberg huấn luyện NETtalk — một mạng nơ-ron đọc cửa sổ 7 ký tự văn bản, qua 80 đơn vị ẩn, xuất ra đặc điểm âm vị học — trên 20.008 từ từ Brown Corpus. Điều khiến nó gây chấn động là một bản ghi âm: lúc đầu mạng 'bập bẹ như một đứa trẻ sơ sinh', sau hàng giờ huấn luyện tạo ra âm tiết nhận dạng được, sau một ngày nói rõ ràng với chỉ vài lỗi ở từ bất quy tắc.\n\nBản ghi âm được phát tại các hội nghị AI và trên truyền hình — lần đầu tiên công chúng 'nghe' một mạng nơ-ron làm điều gì đó, chứ không chỉ đọc về nó trên giấy. Hôm nay, khi bạn nghe Siri, Alexa hay giọng nói ChatGPT Voice, bạn đang nghe hậu duệ tinh vi của chính nguyên lý mà NETtalk chứng minh năm 1987.",
+              "source": "Chương 7 — Cuộc đua siêu cường (phần NETtalk)"
+            },
+            {
+              "id": "c7-bai-tap",
+              "type": "exercise",
+              "title": "Connectionism hay symbolic AI?",
+              "prompt": "Chương này đối lập hai triết lý: symbolic AI (trí tuệ từ quy tắc biểu tượng rõ ràng, do con người viết tay — như hệ chuyên gia) và connectionism (trí tuệ nổi lên từ mạng các đơn vị đơn giản học từ dữ liệu — như backpropagation, NETtalk). Chọn một công cụ AI bạn dùng, xác định nó gần với triết lý nào hơn, và giải thích dấu hiệu nhận biết.",
+              "hint": "Dấu hiệu của symbolic AI: có thể giải thích rõ từng bước lý luận. Dấu hiệu của connectionism: học từ dữ liệu lớn, khó giải thích chính xác vì sao nó đưa ra một kết quả cụ thể.",
+              "answer": "Không có đáp án cố định — hầu hết AI hiện đại (LLM) nghiêng hẳn về connectionism, đây chính là lý do 'giải thích được' vẫn là bài toán khó của AI năm 2026."
+            },
+            {
+              "id": "c7-luu-y-hopfield-hinton",
+              "type": "note",
+              "title": "\"Mánh khóe là không có mánh khóe nào cả\"",
+              "body": "John Hopfield (nhà vật lý, không phải nhà khoa học máy tính) hồi sinh mạng nơ-ron bằng vật lý thống kê năm 1982; 42 năm sau, ông chia sẻ giải Nobel Vật lý 2024 với Geoffrey Hinton — người mà năm 1986 cùng Rumelhart và Williams công bố backpropagation, thuật toán giải quyết chính vấn đề XOR đã giết chết perceptron. Minsky, người viết cuốn sách giết mạng nơ-ron năm 1969, cũng xuất bản The Society of Mind năm 1986 với luận điểm: 'Mánh khóe phép thuật nào làm cho chúng ta trở nên thông minh? Mánh khóe là không có mánh khóe nào cả' — trí tuệ chỉ là hàng triệu tác nhân nhỏ phối hợp với nhau.",
+              "variant": "definition"
+            }
+          ]
+        },
+        {
+          "id": "chuong-8-mua-dong-thu-hai",
+          "title": "Mùa đông thứ hai và cuộc cách mạng thầm lặng (1987–2011)",
+          "summary": "Trong khi cộng đồng AI chính thức coi mạng nơ-ron đã chết, LeCun âm thầm dùng nó đọc 10-20% séc ngân hàng Mỹ — và bốn khoảnh khắc lớn (LeCun, Deep Blue, Stanley, Watson) chứng minh AI không hề biến mất, nó chỉ lặng lẽ chạy ngầm.",
+          "sections": [
+            {
+              "id": "c8-cach-mang-tham-lang",
+              "type": "concept",
+              "title": "AI biểu tượng đã chết — nhưng mạng nơ-ron đang đọc séc của bạn",
+              "body": "Năm 1987, ngành công nghiệp AI 2 tỷ đô sụp đổ trong 18 tháng: máy LISP $120.000 bị đánh bại bởi máy trạm Sun rẻ hơn 5 lần, XCON cần 8 kỹ sư toàn thời gian chỉ để bảo trì, Symbolics phá sản năm 1993. Tài trợ chính phủ và doanh nghiệp tránh xa AI gần một thập kỷ. Nhưng nghiên cứu không dừng — nó chỉ trở nên thầm lặng.\n\nTại Bell Labs, Yann LeCun lặng lẽ xây LeNet — mạng nơ-ron tích chập (CNN) đầu tiên thực sự hoạt động — để đọc séc ngân hàng. Đến giữa thập niên 1990, ước tính 10-20% tổng số séc tại Mỹ được đọc bởi mạng nơ-ron của ông, xử lý hàng triệu giao dịch mỗi ngày với độ chính xác trên 99% — trong khi tại các hội nghị AI, đề tài 'mạng nơ-ron' bị coi là không thời thượng và sinh viên được khuyên tránh xa."
+            },
+            {
+              "id": "c8-khung-bon-khoanh-khac",
+              "type": "framework",
+              "title": "Bốn khoảnh khắc lớn của cuộc cách mạng thầm lặng",
+              "intro": "Suốt 24 năm 'mùa đông', bốn sự kiện chứng minh AI vẫn đang tiến bộ — chỉ là không ai gọi nó bằng cái tên đó:",
+              "steps": [
+                "1989 — LeCun xây CNN tại Bell Labs, đến cuối thập niên 1990 đọc 10-20% séc ngân hàng Mỹ.",
+                "1997 — Deep Blue của IBM đánh bại nhà vô địch cờ vua thế giới Garry Kasparov, sau 12 năm phát triển từ ChipTest tại Carnegie Mellon.",
+                "2005 — Stanley của đội Stanford (Sebastian Thrun) hoàn thành DARPA Grand Challenge 132 dặm qua sa mạc, mở đường cho xe tự lái hiện đại (Thrun sau đó lập Waymo tại Google).",
+                "2011 — Watson của IBM đánh bại hai nhà vô địch Jeopardy! xuất sắc nhất mọi thời đại, cho hàng triệu khán giả truyền hình thấy máy tính có thể 'hiểu' ngôn ngữ tự nhiên."
+              ]
+            },
+            {
+              "id": "c8-case-deep-blue",
+              "type": "case-study",
+              "title": "19 nước cờ và một kỷ nguyên kết thúc — Deep Blue đánh bại Kasparov",
+              "body": "Ngày 11/5/1997 tại Manhattan, sau năm ván cân bằng (2,5-2,5), ván 6 quyết định bắt đầu. Kasparov chơi quân đen, mở đầu Caro-Kann. Ở nước thứ 11, Deep Blue hi sinh một con mã — điều máy tính cờ vua cổ điển không bao giờ làm nếu không có lợi ích tính toán rõ ràng. Đến nước thứ 19, vị trí Kasparov hỗn loạn; ông lắc đầu, nâng vua lên đặt xuống — biểu tượng đầu hàng. Trận đấu kết thúc sau 1 giờ 1 phút, tỷ số chung cuộc 3,5-2,5 nghiêng về Deep Blue.\n\nĐây là lần đầu tiên trong lịch sử một nhà vô địch cờ vua thế giới đương nhiệm bị máy tính đánh bại trong điều kiện thi đấu chính thức. Deep Blue chạy trên siêu máy tính IBM RS/6000 SP với 480 chip cờ vua tùy chỉnh, đánh giá 200 triệu vị trí mỗi giây bằng tìm kiếm alpha-beta minimax — không phải học máy, mà là sức mạnh tính toán thuần túy kết hợp tri thức cờ vua được mã hóa cẩn thận.",
+              "source": "Chương 8 — Mùa đông thứ hai (phần Deep Blue)"
+            },
+            {
+              "id": "c8-bai-tap",
+              "type": "exercise",
+              "title": "Tìm một \"LeCun đọc séc\" trong đời bạn",
+              "prompt": "LeCun's CNN đọc 10-20% séc ngân hàng Mỹ trong thập niên 1990 mà gần như không ai để ý đó là 'AI'. Nghĩ về một hệ thống bạn dùng hằng ngày (ngân hàng, giao thông, mua sắm, y tế) rất có thể đang chạy AI/machine learning âm thầm phía sau mà bạn chưa từng nghĩ tới. Mô tả nó và đoán xem nó đang giải quyết vấn đề gì.",
+              "hint": "Nghĩ tới các hệ thống 'nhàm chán' — phát hiện gian lận thẻ tín dụng, phân loại thư rác, gợi ý sản phẩm — thường chạy AI lâu hơn các chatbot hào nhoáng nhiều.",
+              "answer": "Không có đáp án cố định — bài học là phần lớn AI có giá trị nhất thường vô hình, không phải các demo gây chú ý trên truyền hình."
+            },
+            {
+              "id": "c8-canh-bao-toronto",
+              "type": "note",
+              "title": "\"What is Toronto?????\" — khi AI tự tin sai, và khi nó biết mình không chắc",
+              "body": "Trong Final Jeopardy của Ngày 2 (2011), với câu hỏi về thành phố Mỹ, Watson trả lời 'What is Toronto?????' — Toronto không phải thành phố Mỹ, một sai lầm ngớ ngẩn. Nhưng Watson chỉ đặt cược 947 đô la, vì độ tin cậy nội bộ của nó chỉ 14%. Đây là điểm khác biệt quan trọng với nhiều AI hiện đại: Watson biết khi nào nó không chắc và hành động thận trọng tương ứng — một năng lực hiệu chỉnh độ tin cậy mà không phải mọi hệ thống AI ngày nay đều làm tốt.",
+              "variant": "warning"
+            }
+          ]
+        },
+        {
+          "id": "chuong-9-mafia-canada",
+          "title": "\"Mafia Canada\" và Vụ nổ Big Bang của Deep Learning (2004–2015)",
+          "summary": "Ba người đàn ông bị chế nhạo là \"Mafia Canada\" giữ mạng nơ-ron sống sót qua mùa đông dài, rồi năm 2012 một sinh viên với hai card đồ họa 500 đô trong phòng ngủ bố mẹ đã thắng ImageNet cách biệt 11 điểm phần trăm — châm ngòi cuộc cách mạng deep learning hiện đại.",
+          "sections": [
+            {
+              "id": "c9-mafia-canada",
+              "type": "concept",
+              "title": "\"Mafia Canada\" và cuộc đổi tên chiến lược cứu cả một lĩnh vực",
+              "body": "Đến đầu những năm 2000, \"mạng nơ-ron\" gần như là một cụm từ bẩn trong khoa học máy tính — giáo sư cảnh báo sinh viên tránh xa vì \"bạn sẽ không bao giờ có việc làm\". Nhưng ba người từ chối để than hồng chết: Geoffrey Hinton (Đại học Toronto, từ 1987), Yann LeCun (cha đẻ CNN/LeNet 1989), và Yoshua Bengio (Đại học Montreal). Họ tự gọi đùa mình là \"âm mưu deep learning\"; người ngoài gọi họ là \"Mafia Canada\". Năm 2004, CIFAR (Canada) rót khoảng 400.000 đô/năm — một phao cứu sinh — khi hầu như không ai ở Mỹ chịu tài trợ nghiên cứu mạng nơ-ron.\n\nTháng 7/2006, Hinton công bố \"A Fast Learning Algorithm for Deep Belief Nets\" — và, theo lời chính ông sau này, thực hiện một cuộc đổi tên có chủ ý: gọi nó là \"deep learning\" thay vì \"neural network\" để né cụm từ đã bị nguyền rủa trong giới xuất bản và tài trợ. Chiến lược đổi tên đã hiệu quả — đến 2012, \"deep learning\" là tên của cả một cuộc cách mạng. Năm 2018 cả ba nhận Giải Turing; năm 2024 Hinton nhận Nobel Vật lý."
+            },
+            {
+              "id": "c9-khung-hoi-tu",
+              "type": "framework",
+              "title": "Ba thành phần hội tụ tạo nên Vụ nổ Big Bang 2012",
+              "intro": "Một cuộc cách mạng cần lửa, nhiên liệu, và động cơ — cả ba hội tụ trong vòng sáu năm:",
+              "steps": [
+                "Tia lửa (thuật toán) — Hinton, 2006: kỹ thuật huấn luyện mạng sâu theo từng lớp, phá vỡ rào cản kỹ thuật cũ.",
+                "Nhiên liệu (dữ liệu) — Fei-Fei Li, ImageNet 2009: 14 triệu ảnh dán nhãn trong hơn 22.000 danh mục, do 49.000 lao động từ 167 quốc gia gán nhãn qua Amazon Mechanical Turk (2008–2010).",
+                "Động cơ (tính toán) — NVIDIA CUDA (2007) + Andrew Ng et al., ICML 2009: huấn luyện một mạng 100 triệu tham số trên 1 GPU trong một ngày thay vì vài tuần trên CPU — tăng tốc khoảng 70 lần.",
+                "Kết hợp — Alex Krizhevsky (với Ilya Sutskever thúc đẩy), 2012: dùng hai GPU GTX 580 (~500 đô/cái) trong phòng ngủ nhà bố mẹ để huấn luyện AlexNet, thắng ILSVRC 2012 với sai số top-5 15,3% so với 26,2% của đối thủ nhì — cách biệt gần 11 điểm phần trăm trong một lĩnh vực mà tiến bộ thường tính bằng phần mười phần trăm mỗi năm."
+              ]
+            },
+            {
+              "id": "c9-case-alexnet",
+              "type": "case-study",
+              "title": "AlexNet: thí nghiệm AI quan trọng nhất thế kỷ 21, chạy trong phòng ngủ",
+              "body": "Alex Krizhevsky, nghiên cứu sinh trong phòng thí nghiệm của Hinton tại Toronto, bị bạn cùng phòng thí nghiệm Ilya Sutskever thúc đẩy suốt nhiều tháng: \"Áp dụng các thủ thuật CUDA của bạn cho ImageNet. Bạn có thể thắng.\" Krizhevsky mua hai card đồ họa chơi game NVIDIA GTX 580 (3GB bộ nhớ mỗi card, khoảng 500 đô/cái) và lắp trong một máy tính để bàn tại nhà bố mẹ ở Toronto. Mạng có tám lớp học được (năm lớp tích chập, ba lớp kết nối đầy đủ), khoảng 60 triệu tham số và 650.000 nơ-ron, dùng ReLU, dropout, tăng cường dữ liệu — huấn luyện suốt 90 epoch trong 5-6 ngày, mạng phải chia đôi giữa hai GPU vì không card nào đủ bộ nhớ.\n\nKết quả công bố ngày 30/9/2012, trình bày tại workshop ILSVRC bên lề ECCV Florence (13/10/2012): mạng — đăng ký tên \"SuperVision\" nhưng cộng đồng gọi ngay là AlexNet — thắng với sai số top-5 15,3%, đội nhì (dùng thị giác máy tính truyền thống) chỉ đạt 26,2%. Yann LeCun, ngồi trong khán giả, đứng dậy tuyên bố đây là \"một bước ngoặt không nghi ngờ trong lịch sử thị giác máy tính.\" Trong vài tuần, mọi phòng thí nghiệm thị giác máy tính nghiêm túc trên Trái Đất bỏ kỹ thuật cũ và chuyển sang deep learning. Ba tháng sau, tại phòng 703 khách sạn Harrah's Lake Tahoe, Hinton — nằm trên sàn vì đau lưng kinh niên — chủ trì một cuộc đấu giá bí mật giữa Google, Microsoft, Baidu, DeepMind cho công ty vỏ ba người DNNresearch Inc.; Google thắng với 44 triệu đô la (tháng 3/2013), định giá gần 15 triệu đô/nhân viên cho một công ty không sản phẩm, không doanh thu.",
+              "source": "Chương 9 — \"Mafia Canada\" / Vụ nổ Big Bang (phần AlexNet & đấu giá DNNresearch)"
+            },
+            {
+              "id": "c9-bai-tap",
+              "type": "exercise",
+              "title": "Áp dụng khung \"tia lửa – nhiên liệu – động cơ\" cho một đột phá khác",
+              "prompt": "Chọn một đột phá công nghệ khác mà bạn biết (không nhất thiết AI — có thể là smartphone, mạng xã hội, hoặc một đột phá AI gần đây như ChatGPT). Xác định: đâu là 'tia lửa' (thuật toán/ý tưởng mới), đâu là 'nhiên liệu' (dữ liệu/nội dung sẵn có), đâu là 'động cơ' (hạ tầng/tính toán/phân phối) đã hội tụ để tạo ra nó?",
+              "hint": "Với ChatGPT chẳng hạn: tia lửa là kiến trúc Transformer (2017) + RLHF, nhiên liệu là kho văn bản internet khổng lồ, động cơ là các cụm GPU/TPU quy mô lớn của OpenAI/Microsoft.",
+              "answer": "Không có đáp án cố định — mục tiêu là luyện thói quen phân tích đột phá công nghệ thành ba lớp nguyên nhân hội tụ, thay vì quy cho một 'thiên tài' hay một khoảnh khắc duy nhất."
+            },
+            {
+              "id": "c9-ghi-chu-napkin",
+              "type": "note",
+              "title": "Ý tưởng nảy ra sau vài cốc bia: đêm phát minh GAN trên tờ giấy ăn",
+              "body": "Cuối tháng 5/đầu tháng 6 năm 2014, tại quán bia Les 3 Brasseurs ở Montreal, nghiên cứu sinh Ian Goodfellow (phòng thí nghiệm của Bengio) nghe bạn bè phàn nàn về việc khó làm mạng nơ-ron tạo ảnh chân thực. Ý tưởng lóe lên: đặt hai mạng nơ-ron đối đầu nhau — một \"Generator\" cố tạo ảnh giả, một \"Discriminator\" cố phân biệt giả với ảnh thật. Goodfellow đạp xe về nhà ngay đêm đó và code toàn bộ ý tưởng — nó hoạt động ngay lần đầu tiên. Yann LeCun sau này gọi GAN là \"ý tưởng thú vị nhất trong 10 năm qua trong machine learning.\" Cùng năm đó, word2vec của Google (Mikolov et al.) cho thấy vector(\"vua\") − vector(\"đàn ông\") + vector(\"phụ nữ\") ≈ vector(\"nữ hoàng\") — lần đầu tiên máy tính có một biểu diễn số học của ý nghĩa từ ngữ, hạt giống của mọi mô hình ngôn ngữ hiện đại.",
+              "variant": "tip"
+            }
+          ]
+        },
+        {
+          "id": "chuong-10-alphago-transformer",
+          "title": "AlphaGo, Move 37, và bài báo âm thầm đổi thay thế giới (2016–2017)",
+          "summary": "Move 37 của AlphaGo khiến Lee Sedol phải rời phòng đấu 12 phút vì sốc, còn tám tác giả Google Brain âm thầm công bố \"Attention Is All You Need\" — kiến trúc Transformer nay chạy ChatGPT, Claude, Gemini — trong khi Tay chatbot của Microsoft sụp đổ chỉ sau 16 giờ, để lại bài học vẫn còn vọng đến hôm nay.",
+          "sections": [
+            {
+              "id": "c10-transformer-concept",
+              "type": "concept",
+              "title": "\"Attention Is All You Need\" — bài báo chạy cả thế giới hôm nay",
+              "body": "Ngày 12/6/2017, trong khi cả thế giới còn đang bàn tán về AlphaGo, tám nhà nghiên cứu tại Google Brain âm thầm đăng một bài báo lên arXiv với tựa đề khiêm tốn: \"Attention Is All You Need\". Bài báo giới thiệu kiến trúc Transformer — hoàn toàn dựa trên cơ chế self-attention, bỏ hẳn cấu trúc tuần tự (RNN) và cửa sổ cục bộ (CNN) mà mọi mô hình ngôn ngữ trước đó phụ thuộc vào.\n\nÝ tưởng cốt lõi: khi xử lý một từ, mô hình \"chú ý\" đồng thời đến mọi từ khác trong câu, tính trọng số liên quan giữa chúng — cho phép nhìn toàn bộ câu cùng lúc và song song hóa hoàn hảo trên GPU (thay vì xử lý từng từ một cách tuần tự chậm chạp như RNN). Năm 2017, bài báo chỉ nhận vài lời khen tại NIPS. Đến 2020, mọi mô hình ngôn ngữ lớn — GPT, BERT, T5 — đều là Transformer. Đến 2024, Transformer chạy ChatGPT, Claude, Gemini, DALL-E, Sora, AlphaFold. Tám đồng tác giả sau đó lập các startup trị giá tổng cộng hơn 20 tỷ đô la — trong đó Aidan Gomez đồng sáng lập Cohere (5,5 tỷ đô), Noam Shazeer đồng sáng lập Character.AI (1 tỷ đô)."
+            },
+            {
+              "id": "c10-khung-self-attention",
+              "type": "framework",
+              "title": "Self-attention hoạt động thế nào — thư viện phát sáng nơi mọi từ \"nhìn\" mọi từ",
+              "intro": "Hãy hình dung Transformer như một thư viện phát sáng, nơi mỗi từ (token) là một cuốn sách đứng giữa thư viện và nhìn ra mọi cuốn sách khác cùng lúc:",
+              "steps": [
+                "Mỗi token tính ba vector: 'query' (câu hỏi nó muốn hỏi), 'key' (cái nó có thể trả lời), 'value' (thông tin nó mang theo).",
+                "Trọng số attention = nhân query với key của mọi token khác, rồi chuẩn hóa bằng softmax thành phân phối xác suất — quyết định token nào 'đáng chú ý' nhất.",
+                "Multi-head attention chạy song song nhiều bộ query/key/value, mỗi 'head' học một loại quan hệ khác nhau: ngữ pháp, ngữ nghĩa, thực thể, tham chiếu.",
+                "Xếp chồng nhiều lớp attention (96 lớp trong GPT-3, hơn 120 lớp trong GPT-4) — mỗi lớp xây một tầng hiểu trừu tượng hơn lớp dưới.",
+                "Ví dụ minh họa: trong câu 'She poured water into the glass because it was empty', attention cho từ 'it' phải sáng rực lên 'glass' chứ không phải 'water' — vì chỉ 'the glass was empty' có nghĩa. Đây là kiểu suy luận ngữ cảnh mà mọi kiến trúc trước Transformer đều gặp khó."
+              ]
+            },
+            {
+              "id": "c10-case-move37",
+              "type": "case-study",
+              "title": "Move 37: nước cờ khiến nhà vô địch phải rời phòng đấu 12 phút",
+              "body": "AlphaGo của DeepMind (chính sách policy network + value network + Monte Carlo Tree Search, thiết kế bởi David Silver) đã thắng Phan Huệ (Fan Hui) 5-0 vào tháng 10/2015 — lần đầu một máy tính đánh bại kỳ thủ chuyên nghiệp 9-dan trên bàn cờ vây kích thước đầy đủ. Thử thách tiếp theo lớn hơn nhiều: Lee Sedol, người giữ 18 danh hiệu quốc tế, tại Four Seasons Seoul, 9-15/3/2016, giải thưởng 1 triệu đô. Lee tự tin tuyên bố sẽ thắng 5-0 hoặc 4-1 — 'Có lẽ AI sẽ thắng được một ván.'\n\nAlphaGo thắng Ván 1. Nhưng khoảnh khắc đổi thay thực sự đến ở Ván 2, 13:45 chiều 10/3/2016: Nước cờ thứ 37, AlphaGo đặt một quân đen lên dòng thứ năm — vị trí mà DeepMind tính có xác suất chỉ 1/10.000 một con người sẽ chơi. Bình luận viên Michael Redmond 9-dan lắc đầu: 'Tôi không biết tại sao nó chơi nước này. Nó trông như một nước cờ kém.' Đến giữa ván, sức mạnh của nước này mới trở nên rõ ràng. Sau Move 37, Lee Sedol đứng dậy, rời phòng đấu, biến mất 12 phút trong nhà vệ sinh. Khi trở lại, mặt trắng bệch, cách suy nghĩ đã thay đổi. Sau trận, anh nói: 'Tôi không hiểu cách nó nghĩ. Nó không chơi như con người.' AlphaGo dẫn 2-0, rồi thắng chung cuộc 4-1 — chiến thắng duy nhất của Lee Sedol đến ở Ván 4, Nước 78, một nước 'wedge' sáng tạo khiến xác suất thắng của AlphaGo rơi từ 70% xuống 30% trước khi nó đầu hàng; giới cờ vây Hàn Quốc đặt tên nước này là 'Bàn tay Thần' (神の一手) — chiến thắng duy nhất của con người trước AlphaGo, không bao giờ lặp lại. Tháng 10/2017, AlphaGo Zero — học từ số 0, chỉ tự chơi với chính mình 40 ngày — đánh bại phiên bản đã thắng Lee Sedol với tỷ số 100-0. Lee Sedol giải nghệ tháng 11/2019: 'Cờ vây có một thực thể mà tôi không thể đánh bại.'",
+              "source": "Chương 10 — AlphaGo và Transformer (phần AlphaGo vs. Lee Sedol, Move 37, Move 78, AlphaGo Zero)"
+            },
+            {
+              "id": "c10-bai-tap",
+              "type": "exercise",
+              "title": "Sáng tạo hay tính toán? Phân tích khoảnh khắc Move 37",
+              "prompt": "Michael Redmond, một trong những kỳ thủ và bình luận viên giỏi nhất thế giới, ban đầu đánh giá Move 37 là 'một nước cờ kém' — chỉ sau đó mới nhận ra nó xuất sắc. Điều này có ý nghĩa gì về ranh giới giữa 'sai lầm' và 'sáng tạo vượt trội'? Hãy nghĩ về một tình huống trong công việc/học tập của bạn nơi một ý tưởng ban đầu bị đánh giá là 'sai' hoặc 'kỳ lạ' nhưng hóa ra lại đúng — điều gì khiến người đánh giá ban đầu không nhận ra giá trị của nó?",
+              "hint": "AlphaGo không có trực giác thẩm mỹ của con người — nó tính xác suất thắng. Move 37 'kém' theo chuẩn thẩm mỹ cờ vây con người nhưng tối ưu theo xác suất thắng thuần túy — hai tiêu chí đánh giá khác nhau có thể cho kết luận trái ngược.",
+              "answer": "Không có đáp án cố định — bài học là các chuẩn mực đánh giá 'tốt/xấu' do con người xây dựng qua kinh nghiệm có thể bỏ sót các giải pháp tối ưu nằm ngoài không gian mà con người từng khám phá."
+            },
+            {
+              "id": "c10-ghi-chu-tay",
+              "type": "note",
+              "title": "16 giờ và sự sụp đổ: bài học Tay vẫn vọng đến các LLM hôm nay",
+              "body": "Chỉ một tuần sau khi Lee Sedol thua AlphaGo, ngày 23/3/2016, Microsoft ra mắt Tay — chatbot Twitter mô phỏng 'một thiếu niên Mỹ thân thiện 19 tuổi', được thiết kế để học từ chính các cuộc trò chuyện trên Twitter. Người dùng (đặc biệt từ 4chan) đã dạy Tay nói các điều phân biệt chủng tộc, phủ nhận Holocaust, ca ngợi Hitler. Microsoft buộc phải đóng cửa Tay chỉ sau 16 giờ hoạt động; Phó chủ tịch Peter Lee xin lỗi công khai.\n\nBài học của Tay là lý do trực tiếp mọi mô hình ngôn ngữ lớn hiện đại — GPT-4, Claude, Gemini — đều phải có RLHF (Reinforcement Learning from Human Feedback) và bộ lọc an toàn trước khi được công khai, thay vì để mô hình học trực tiếp và không giám sát từ dữ liệu Internet thô.",
+              "variant": "warning"
+            }
+          ]
+        },
+        {
+          "id": "chuong-11-openai-gpt",
+          "title": "OpenAI và sự ra đời của GPT (2015–2022)",
+          "summary": "Một tổ chức phi lợi nhuận thuê văn phòng khiêm tốn ở Mission Bay để đối trọng với Google, rồi 5 năm sau GPT-3 tạo ra \"sự xuất hiện\" (emergence) và một nền kinh tế API hoàn toàn mới — trong khi Microsoft rót 1 tỷ rồi 13 tỷ đô, và một nhóm nghiên cứu rời đi để lập Anthropic.",
+          "sections": [
+            {
+              "id": "c11-openai-ra-doi",
+              "type": "concept",
+              "title": "Một tổ chức phi lợi nhuận ra đời lúc nửa đêm để đối trọng với Google",
+              "body": "Ngày 11/12/2015, một nhóm nhà nghiên cứu AI và doanh nhân Silicon Valley công bố OpenAI — tổ chức phi lợi nhuận với cam kết tài trợ ban đầu 1 tỷ đô la từ Musk, Thiel, Altman, Reid Hoffman và Y Combinator Research. Các nhà sáng lập chính: Sam Altman (khi đó chủ tịch Y Combinator), Elon Musk, Greg Brockman (cựu CTO Stripe), Ilya Sutskever (rời Google Brain làm Chief Scientist — chính người đồng tạo AlexNet năm 2012), cùng Andrej Karpathy và một số nhà nghiên cứu trẻ. Sứ mệnh: đảm bảo AGI mang lại lợi ích cho toàn nhân loại, không chạy theo lợi nhuận, công khai nghiên cứu — xuất phát từ nỗi lo Google sẽ độc quyền AI. Họ thuê văn phòng khiêm tốn tại Mission Bay, San Francisco, chứ không phải Sand Hill Road hào nhoáng.\n\nSự kết hợp Altman (doanh nhân, giỏi vận động nguồn lực) và Sutskever (nhà khoa học) định hình văn hóa OpenAI: tham vọng lớn, thực thi nhanh. Năm 2018, Musk rời hội đồng quản trị vì xung đột lợi ích với Tesla, và OpenAI bắt đầu chuyển sang mô hình \"capped-profit\" để thu hút tài trợ. Tháng 1/2021, một nhóm nghiên cứu cấp cao — dẫn đầu bởi anh em Dario và Daniela Amodei — rời OpenAI vì bất đồng về tốc độ thương mại hóa so với an toàn, lập ra Anthropic, phòng thí nghiệm đứng sau mô hình Claude."
+            },
+            {
+              "id": "c11-khung-rlhf",
+              "type": "framework",
+              "title": "RLHF: ba giai đoạn biến một \"cỗ máy đoán từ\" thành trợ lý hữu ích",
+              "intro": "GPT thô chỉ giỏi dự đoán từ tiếp theo — không giỏi làm trợ lý. Ba giai đoạn sau đã thay đổi điều đó, dẫn tới InstructGPT (2022) rồi ChatGPT:",
+              "steps": [
+                "Pre-training: GPT được huấn luyện trên hàng tỷ token văn bản internet, chỉ học dự đoán từ tiếp theo — chưa biết 'trả lời hữu ích' nghĩa là gì.",
+                "Supervised fine-tuning (SFT): hàng nghìn ví dụ 'prompt + câu trả lời lý tưởng' được các nhà huấn luyện con người viết tay, dùng để tinh chỉnh mô hình theo hướng hữu ích.",
+                "RLHF (Reinforcement Learning from Human Feedback): một mô hình 'reward' được huấn luyện từ các so sánh của con người ('output A tốt hơn output B'), sau đó dùng thuật toán PPO để cập nhật GPT theo mô hình reward này — dạy nó ưu tiên các câu trả lời con người thực sự thích."
+              ]
+            },
+            {
+              "id": "c11-case-gpt3",
+              "type": "case-study",
+              "title": "GPT-3: 175 tỷ tham số, \"sự xuất hiện\", và một nền kinh tế API ra đời",
+              "body": "Ngày 11/6/2020, OpenAI công bố GPT-3 — gấp 100 lần GPT-2, 175 tỷ tham số, huấn luyện trên khoảng 300 tỷ token văn bản web/sách/Wikipedia, chi phí tính toán ước tính 5 triệu đô. Điều đáng chú ý không phải kích thước mà là \"sự xuất hiện\" (emergence): GPT-3 làm được những việc chưa từng được huấn luyện cụ thể — dịch ngôn ngữ, viết mã, giải toán, làm thơ — chỉ bằng cách cho vài ví dụ ngay trong prompt (\"few-shot learning\"). Trước GPT-3, mỗi nhiệm vụ NLP cần một mô hình huấn luyện riêng; GPT-3 chứng minh một mô hình duy nhất đủ lớn có thể làm hàng nghìn nhiệm vụ mà không cần huấn luyện lại.\n\nLần đầu tiên OpenAI cũng cách mạng hóa về thương mại: cung cấp GPT-3 qua API — nhà phát triển chỉ cần gửi một prompt đến một URL và trả tiền theo token, không cần tải mô hình hay có 800GB RAM. Hàng nghìn nhà phát triển gia nhập ngay tuần đầu, xây dựng ứng dụng tạo email, blog, trợ lý lập trình, dịch thuật, tóm tắt. Đến 2022, OpenAI có hơn 200.000 nhà phát triển dùng API, doanh thu năm đầu ước tính 30 triệu đô. Khoản đầu tư 1 tỷ đô của Microsoft (22/7/2019) — đổi lấy việc OpenAI chạy độc quyền trên Azure — là điều giúp OpenAI kham nổi chi phí huấn luyện vượt 100 triệu đô/mô hình; sau ChatGPT, khoản đầu tư này tăng lên 13 tỷ đô vào tháng 1/2023.",
+              "source": "Chương 11 — OpenAI và sự ra đời của GPT (phần GPT-3, API, đầu tư Microsoft)"
+            },
+            {
+              "id": "c11-bai-tap",
+              "type": "exercise",
+              "title": "Thiết kế một ví dụ minh họa \"sự xuất hiện\" (emergence)",
+              "prompt": "GPT-3 gây kinh ngạc vì làm được việc nó chưa từng được huấn luyện riêng, chỉ bằng vài ví dụ trong prompt (few-shot learning). Thử nghĩ ra một nhiệm vụ bất kỳ (dịch một câu sang \"tiếng lóng của dân IT\", viết lại một đoạn văn theo giọng một nhân vật cụ thể, phân loại cảm xúc một câu) và viết ra: (1) một prompt \"zero-shot\" (chỉ ra lệnh, không ví dụ), (2) một prompt \"few-shot\" (kèm 2-3 ví dụ mẫu). Nếu có thể, thử cả hai với một trợ lý AI và so sánh chất lượng kết quả.",
+              "hint": "Few-shot thường giúp mô hình 'hiểu' đúng định dạng/giọng điệu mong muốn rõ hơn zero-shot, đặc biệt với các nhiệm vụ có định dạng đầu ra khác thường.",
+              "answer": "Không có đáp án cố định — mục tiêu là trải nghiệm trực tiếp hiện tượng few-shot learning mà chương mô tả, thay vì chỉ đọc về nó."
+            },
+            {
+              "id": "c11-ghi-chu-gpt2",
+              "type": "note",
+              "title": "Khi một phòng thí nghiệm AI lần đầu tiên tự khóa sản phẩm của mình",
+              "body": "Ngày 14/2/2019, OpenAI công bố GPT-2 (1,5 tỷ tham số, gấp 10 lần GPT-1) nhưng đưa ra một quyết định chưa từng có tiền lệ: không phát hành phiên bản đầy đủ. Họ chỉ công bố bản nhỏ nhất (124 triệu tham số) kèm cảnh báo công khai lo ngại 'nguy cơ lạm dụng — đặc biệt là tạo tin giả, lừa đảo, spam'. Đây là lần đầu tiên một phòng thí nghiệm AI hàng đầu từ chối công khai mô hình vì lý do an toàn — gây tranh cãi lớn, một số cho là 'PR stunt', số khác coi là tiền lệ quan trọng. Đến tháng 11/2019, sau khi đánh giá lại rủi ro thực tế thấp hơn dự đoán, OpenAI mới phát hành đầy đủ. Đây được xem là tiền thân trực tiếp của các cuộc tranh luận an toàn AI hiện nay quanh việc công khai hay giữ kín các mô hình mạnh.",
+              "variant": "warning"
+            }
+          ]
+        },
+        {
+          "id": "chuong-12-con-bao-chatgpt",
+          "title": "Cơn bão ChatGPT (2022–2023)",
+          "summary": "Một ô nhập văn bản nhếch nhác mà chính chủ tịch OpenAI dự đoán sẽ chỉ được vài nghìn lượt thích đã đạt 100 triệu người dùng trong hai tháng — kéo theo một luật sư bị phạt vì tin nhầm ChatGPT, Google mất 100 tỷ đô trong một ngày, và cả một cuộc \"đảo chính\" 5 ngày lật đổ rồi phục hồi CEO OpenAI.",
+          "sections": [
+            {
+              "id": "c12-chatgpt-ra-mat",
+              "type": "concept",
+              "title": "\"Không quá một thread Twitter với 5.000 lượt thích\"",
+              "body": "23 giờ đêm 30/11/2022, OpenAI âm thầm bấm nút \"publish\" cho một website chỉ có một ô nhập văn bản trên nền trắng — ChatGPT. Chủ tịch OpenAI Greg Brockman dự đoán nó sẽ tạo ra \"không quá một thread Twitter với 5.000 lượt thích\"; một số kỹ sư còn không chắc có nên gửi thông cáo báo chí. Về kỹ thuật, ChatGPT chỉ là InstructGPT (GPT-3.5 + RLHF) được fine-tune cho hội thoại nhiều lượt — không phải phép màu kỹ thuật mới. Nhưng giao diện chat đơn giản, miễn phí, không cần thẻ tín dụng hay kiến thức kỹ thuật đã thay đổi mọi thứ.\n\nNăm ngày sau: một triệu người dùng — nhanh hơn Facebook (10 tháng), Spotify (5 tháng), Instagram (2,5 tháng). Hai tháng sau: một trăm triệu người dùng, theo UBS là \"ứng dụng tiêu dùng phát triển nhanh nhất trong lịch sử Internet\". Microsoft tăng đầu tư vào OpenAI lên 10 tỷ đô vào tháng 1/2023; định giá OpenAI nhảy từ 14 tỷ lên 29 tỷ đô chỉ trong vài tuần."
+            },
+            {
+              "id": "c12-khung-hoang-loan-chap-nhan",
+              "type": "framework",
+              "title": "Chu kỳ \"hoảng loạn → thử nghiệm → chấp nhận có giới hạn\" của các tổ chức trước ChatGPT",
+              "intro": "Phản ứng của các trường học với ChatGPT là mẫu hình lặp lại ở hàng trăm tổ chức khác trong năm 2023, thường mất khoảng 6 tháng để đi hết ba giai đoạn:",
+              "steps": [
+                "Hoảng loạn: 4/1/2023, Bộ Giáo dục New York cấm ChatGPT trên mọi thiết bị/mạng trường công vì lo ngại đạo văn và độ chính xác; Los Angeles, Seattle, Oakland và hàng chục học khu khác theo sau, cùng Sciences Po (Pháp), Queensland và Tasmania (Úc).",
+                "Thử nghiệm thất bại: các công cụ 'phát hiện AI' như GPTZero và Turnitin AI Detection ra mắt nhưng tỷ lệ báo sai (false positive) quá cao để tin cậy — các trường nhận ra không có cách nào đáng tin để phân biệt bài do AI viết.",
+                "Chấp nhận có giới hạn: đến tháng 5/2023, NYC tháo gỡ lệnh cấm, chuyển sang khuyến khích 'AI literacy'; Stanford ra mắt khóa học 'Learning with AI' mùa thu 2023 — từ cấm đoán sang tích hợp có kiểm soát."
+              ]
+            },
+            {
+              "id": "c12-case-mata-avianca",
+              "type": "case-study",
+              "title": "Mata v. Avianca: khi luật sư tin ChatGPT và bị phạt 5.000 đô",
+              "body": "Luật sư Steven A. Schwartz, 30 năm kinh nghiệm, dùng ChatGPT để nghiên cứu án lệ hỗ trợ vụ kiện Roberto Mata chống hãng hàng không Avianca tại tòa liên bang Manhattan. ChatGPT trích dẫn hàng loạt vụ án nghe rất thật — \"Varghese v. China Southern Airlines\", \"Shaboon v. Egyptair\", \"Petersen v. Iran Air\" — với tên thẩm phán, ngày tháng, cấu trúc trích dẫn hoàn chỉnh. Schwartz nộp các trích dẫn này lên tòa. Tất cả đều là giả — ChatGPT đã \"hallucinate\", bịa ra các vụ án không hề tồn tại.\n\nKhi luật sư đối phương không tìm thấy các vụ án và đặt câu hỏi, Schwartz quay lại hỏi chính ChatGPT: \"Có phải các vụ này là giả không?\" ChatGPT trả lời: \"Không, các vụ là thật.\" Ngày 22/6/2023, Thẩm phán Kevin Castel phạt Schwartz và đồng nghiệp Peter LoDuca 5.000 đô la. Vụ việc trở thành câu chuyện cảnh báo toàn cầu về hiện tượng \"hallucination\" của LLM — mô hình có thể tạo ra thông tin sai với độ tự tin và chi tiết y hệt thông tin thật, và thậm chí bảo vệ sai lầm đó khi bị chất vấn lại.",
+              "source": "Chương 12 — Cơn bão ChatGPT (phần Mata v. Avianca)"
+            },
+            {
+              "id": "c12-bai-tap",
+              "type": "exercise",
+              "title": "Tự kiểm chứng một câu trả lời AI như Schwartz đã không làm",
+              "prompt": "Hỏi một trợ lý AI bất kỳ về một sự kiện cụ thể mà bạn có thể kiểm chứng độc lập (một trích dẫn sách, một số liệu thống kê, một vụ việc lịch sử ít nổi tiếng). Sau đó thử tự tìm nguồn gốc thật của thông tin đó (tìm trên nguồn chính thống, không hỏi lại chính AI đó). So sánh: câu trả lời của AI đúng hoàn toàn, đúng một phần, hay hoàn toàn bịa như các vụ án của Schwartz?",
+              "hint": "Bài học của Mata v. Avianca là: không bao giờ hỏi lại chính AI để 'xác nhận' xem câu trả lời trước của nó có đúng không — AI có thể tự tin bảo vệ cả một câu trả lời sai.",
+              "answer": "Không có đáp án cố định — mục tiêu là hình thành thói quen kiểm chứng độc lập, không dựa vào chính công cụ đã tạo ra thông tin cần kiểm chứng."
+            },
+            {
+              "id": "c12-ghi-chu-the-blip",
+              "type": "note",
+              "title": "\"The Blip\": 5 ngày không ai kiểm soát công ty AI mạnh nhất thế giới",
+              "body": "17/11/2023, hội đồng quản trị OpenAI đột ngột sa thải Sam Altman với lý do mơ hồ \"không nhất quán thẳng thắn trong giao tiếp\". Trong 5 ngày sau đó (\"the Blip\"): Brockman từ chức trong tình đoàn kết; Microsoft (19/11) công bố thuê Altman và Brockman; gần như toàn bộ 800 nhân viên OpenAI (20/11) ký thư đe dọa nghỉ việc tập thể; Ilya Sutskever — người đã bỏ phiếu sa thải Altman — công khai hối hận (21/11); và ngày 22/11 Altman trở lại làm CEO với hội đồng quản trị mới. Sự kiện tiết lộ một thực tế đáng lo ngại: không có cơ chế quản trị rõ ràng nào thực sự kiểm soát được một trong những công ty AI mạnh nhất thế giới — ngay cả hội đồng quản trị chính thức của nó cũng có thể bị đảo ngược quyết định trong vài ngày bởi áp lực từ nhân viên và đối tác thương mại.",
+              "variant": "warning"
+            }
+          ]
+        },
+        {
+          "id": "chuong-13-nam-cua-agents",
+          "title": "Năm của các agents — khi AI bắt đầu hành động (2024)",
+          "summary": "Sau \"Cú nháy\" 5 ngày lật đổ rồi phục hồi CEO OpenAI, năm 2024 chứng kiến AI chuyển từ trả lời câu hỏi sang tự hành động — một kỹ sư phần mềm AI, một mô hình biết \"suy nghĩ\" trước khi trả lời, một AI điều khiển máy tính như con người — trong khi hai giải Nobel vinh danh AI và một cái chết gây tranh cãi phơi bày cái giá con người của cuộc đua.",
+          "sections": [
+            {
+              "id": "c13-nam-cua-agents-concept",
+              "type": "concept",
+              "title": "Từ \"trả lời câu hỏi\" sang \"hành động trong thế giới\"",
+              "body": "Năm 2024 mở đầu bằng dư chấn của \"Cú nháy\" (the Blip) — 5 ngày tháng 11/2023 khi hội đồng quản trị OpenAI sa thải rồi phải phục hồi CEO Sam Altman sau khi gần như toàn bộ 800 nhân viên đe dọa nghỉ việc — sự kiện phơi bày rằng không ai thực sự kiểm soát công ty AI mạnh nhất thế giới. Từ nền đó, 2024 trở thành năm mà thuật ngữ \"agentic AI\" thống trị: AI không chỉ trả lời câu hỏi mà tự thực hiện chuỗi hành động nhiều bước — viết code, sửa lỗi, chạy chương trình, điều khiển máy tính — với rất ít giám sát con người.\n\nCuối năm 2024, ngành đã chứng kiến: 6 phiên bản frontier model mới (GPT-4o, gia đình Claude 3, Claude 3.5 Sonnet, Gemini 1.5, LLaMA 3/3.1, o1/o3), mô hình text-to-video đầu tiên ở quy mô lớn (Sora), khả năng Computer Use đầu tiên, hai giải Nobel cho AI trong cùng một tuần (Vật lý: Hopfield + Hinton; Hóa học: Hassabis + Jumper + Baker cho AlphaFold), và một làn sóng rời bỏ của các nhà nghiên cứu an toàn khỏi OpenAI."
+            },
+            {
+              "id": "c13-khung-agentic-timeline",
+              "type": "framework",
+              "title": "Bốn cột mốc dựng nên \"năm của agents\"",
+              "intro": "Trong vòng chưa đầy 9 tháng, bốn đột phá liên tiếp định hình khái niệm agentic AI:",
+              "steps": [
+                "12/3/2024 — Devin (Cognition Labs): tự nhận là \"kỹ sư phần mềm AI đầu tiên thế giới\", tự mở terminal, duyệt Stack Overflow, viết mã, sửa lỗi, chạy test, và triển khai ứng dụng — không cần con người can thiệp từng bước.",
+                "13/5/2024 — GPT-4o: mô hình đầu tiên huấn luyện đồng thời trên văn bản, hình ảnh, âm thanh trong một mạng nơ-ron duy nhất; demo giọng nói cảm xúc khiến Sam Altman tweet một từ \"her\" (ám chỉ bộ phim về AI biết yêu) — và miễn phí cho tất cả mọi người.",
+                "22/10/2024 — Anthropic Computer Use: Claude 3.5 Sonnet có thể chụp màn hình, di chuyển chuột ảo, nhấp nút, gõ văn bản trên máy tính thật — lần đầu một mô hình tiên tiến vận hành máy tính như con người, sau 90 năm quan hệ ngược lại.",
+                "12/9/2024 → 20/12/2024 — o1 rồi o3 (OpenAI): mô hình \"suy nghĩ\" bằng chuỗi lý luận nội bộ dài trước khi trả lời, thay vì chỉ dựa vào mô hình lớn hơn. Kết quả: điểm AIME 2024 nhảy từ 13% (GPT-4o) lên 83% (o1); điểm ARC-AGI nhảy từ 32% lên 87,5% (o3, đánh bại trung bình con người)."
+              ]
+            },
+            {
+              "id": "c13-case-devin",
+              "type": "case-study",
+              "title": "Devin: \"kỹ sư phần mềm AI đầu tiên thế giới\" và 30 triệu lượt xem",
+              "body": "Chỉ hơn một tuần sau khi Claude 3 ra mắt (4/3/2024), một startup nhỏ mới thành lập bốn tháng trước đó — Cognition Labs, sáng lập bởi Scott Wu, Steven Hao, và Walden Yan — ra mắt Devin bằng một video viral. Trong demo, Devin tự mở một thiết bị đầu cuối, duyệt Stack Overflow tìm giải pháp, viết mã, tìm và sửa lỗi, chạy các bài kiểm tra, rồi triển khai ứng dụng — toàn bộ chuỗi việc một kỹ sư phần mềm thật sự làm, không cần con người can thiệp từng bước. Nó đạt 13,86% trên SWE-bench (giải các vấn đề GitHub thực tế), so với trạng thái tiên tiến trước đó chỉ 1,96% — một bước nhảy gấp bảy lần.\n\nVideo demo thu hơn 30 triệu lượt xem trên X. Cognition Labs được định giá 350 triệu đô la trên chỉ 21 triệu đô la tài trợ đã huy động. \"Agentic AI\" trở thành từ khóa của năm — không phải vì Devin hoàn hảo (nhiều nhà phê bình sau đó chỉ ra demo có phần được dàn dựng chọn lọc), mà vì nó chứng minh một hướng đi khả thi: AI có thể tự lập kế hoạch và thực hiện một chuỗi hành động dài, không chỉ trả lời một câu hỏi đơn lẻ.",
+              "source": "Chương 13 — Năm của các agents (phần Devin / Cognition Labs)"
+            },
+            {
+              "id": "c13-bai-tap",
+              "type": "exercise",
+              "title": "Ranh giới tin cậy: bạn sẽ giao gì cho một AI agentic?",
+              "prompt": "Với Anthropic Computer Use, câu hỏi \"ai đang điều khiển ai?\" được đặt ra khi AI bắt đầu tự nhấp chuột, gõ phím trên máy tính thật. Hãy liệt kê 3 việc trên máy tính của bạn mà bạn SẼ giao cho một AI agentic tự làm không cần giám sát từng bước (ví dụ: sắp xếp lại thư mục ảnh), và 3 việc bạn TUYỆT ĐỐI KHÔNG giao (ví dụ: chuyển tiền ngân hàng). Với mỗi việc, giải thích ngắn gọn tiêu chí bạn dùng để phân loại.",
+              "hint": "Tiêu chí thường gặp: mức độ có thể đảo ngược (reversibility) của hành động, và mức độ thiệt hại nếu AI hiểu sai ý định của bạn.",
+              "answer": "Không có đáp án cố định — mục tiêu là tự xây dựng một tiêu chí cá nhân rõ ràng cho việc ủy quyền hành động cho AI, thay vì tin tưởng hoặc nghi ngờ một cách cảm tính."
+            },
+            {
+              "id": "c13-ghi-chu-balaji",
+              "type": "note",
+              "title": "Cái giá con người phía sau cuộc đua: bi kịch của Suchir Balaji",
+              "body": "Tháng 11/2024, ngay trước cú sốc DeepSeek, một cựu nhà nghiên cứu OpenAI 26 tuổi tên Suchir Balaji — người đã công khai cáo buộc OpenAI vi phạm luật bản quyền Hoa Kỳ trong một cuộc phỏng vấn với New York Times ngày 23/10/2024 — được tìm thấy đã qua đời tại căn hộ của mình ở San Francisco vào ngày 26/11/2024. Cảnh sát kết luận đó là một vụ tự sát; cha mẹ ông công khai tranh cãi kết luận này và đã nộp đơn kiện. Sự việc trở thành một điểm bùng nổ trong cuộc chiến bản quyền rộng hơn quanh dữ liệu huấn luyện AI. Đây là lời nhắc rằng đằng sau các con số benchmark và định giá tỷ đô, ngành công nghiệp AI đang phát triển nhanh đến mức những thiệt hại về uy tín, sự nghiệp, và đôi khi cả sinh mạng con người có thể chồng chất nhanh hơn các cuộc trò chuyện đạo đức đang cố gắng theo kịp.",
+              "variant": "warning"
+            }
+          ]
+        },
+        {
+          "id": "chuong-14-cu-soc-deepseek",
+          "title": "Cú sốc DeepSeek và cuộc tái thiết toàn cầu (2025–2026)",
+          "summary": "Một công ty Trung Quốc chưa ai nghe tên huấn luyện một mô hình sánh ngang o1 với chưa đến 1% chi phí của OpenAI — thổi bay 589 tỷ đô vốn hóa NVIDIA trong một ngày, phơi bày sự phân mảnh thế giới AI thành ba khối, và đẩy cuộc tranh luận AGI cùng cảnh báo an toàn lên đỉnh điểm.",
+          "sections": [
+            {
+              "id": "c14-deepseek-concept",
+              "type": "concept",
+              "title": "DeepSeek-R1: cú sốc từ một thành phố Trung Quốc chưa ai nghe tên",
+              "body": "Ngày 20/1/2025 — cùng ngày Donald Trump nhậm chức tổng thống Mỹ lần hai — một công ty có trụ sở tại Hàng Châu phát hành DeepSeek-R1 mã nguồn mở trên Hugging Face. Các benchmark gây sốc: AIME 2024 (toán olympiad) DeepSeek-R1 đạt 79,8% so với o1 của OpenAI 79,2%; MATH-500 đạt 97,3% so với 96,4%; SWE-Bench Verified đạt 49,2% so với 48,9% — sánh ngang hoặc nhỉnh hơn mô hình hàng đầu của OpenAI trên gần như mọi benchmark.\n\nĐiều gây sốc nhất không phải điểm số mà là chi phí: mô hình tiền nhiệm V3 được báo cáo huấn luyện với khoảng 5,6 triệu đô la tính toán — trong khi OpenAI và Anthropic đã chi hàng trăm triệu đô cho GPT-4 và o1, chưa đến 1% mức đó. Kiến trúc Mixture-of-Experts 671 tỷ tham số (chỉ 37 tỷ hoạt động mỗi token) dùng các kỹ thuật mới — Multi-head Latent Attention, FP8 mixed precision, và pure RL post-training không cần fine-tune supervised đắt đỏ. Câu hỏi ám ảnh cả ngành: làm sao một công ty Trung Quốc với GPU bị hạn chế bởi lệnh cấm xuất khẩu lại huấn luyện được mô hình tốt như o1 với chi phí thấp hơn 1%?"
+            },
+            {
+              "id": "c14-khung-ba-khoi-ai",
+              "type": "framework",
+              "title": "Ba khối AI phân mảnh của thế giới 2025–2026",
+              "intro": "Cú sốc DeepSeek và các phản ứng chính sách sau đó chia thế giới AI thành ba khối với triết lý đối lập:",
+              "steps": [
+                "Mỹ (laissez-faire): 23/1/2025 Trump ký sắc lệnh hủy bỏ quy định AI safety của Biden (10/2023); 21/1/2025 công bố Project Stargate — 500 tỷ đô trong 4 năm (OpenAI + SoftBank + Oracle + MGX) xây trung tâm dữ liệu AI khổng lồ tại Mỹ, khởi đầu tại Abilene, Texas.",
+                "EU (quy định nặng): EU AI Act có hiệu lực 2/8/2024 — khung pháp lý AI toàn diện đầu tiên thế giới, cấm hệ thống 'rủi ro không thể chấp nhận', phạt đến 35 triệu euro hoặc 7% doanh thu toàn cầu; kết quả là Anthropic trì hoãn Claude 3.5 Sonnet ở EU, Apple không tung Apple Intelligence ở EU.",
+                "Trung Quốc (kiểm soát nhà nước + mã nguồn mở chiến lược): DeepSeek mã nguồn mở được Phó Thủ tướng Trương Quốc Thanh dẫn ra tại Hội nghị Paris AI Action Summit (10-11/2/2025) như bằng chứng Trung Quốc sẽ 'chia sẻ AI' với các nước đang phát triển.",
+                "Hệ quả: tại Paris, Anh và Mỹ từ chối ký tuyên bố chung vì các từ 'an toàn' bị coi là quá hạn chế, dù 60 quốc gia khác đã ký — chỉ 18 tháng sau đồng thuận toàn cầu về an toàn AI tại Hội nghị Bletchley 2023, sự đồng thuận đó đã tan vỡ."
+              ]
+            },
+            {
+              "id": "c14-case-nvidia-crash",
+              "type": "case-study",
+              "title": "589 tỷ đô la trong một ngày: cú sập NVIDIA lớn nhất lịch sử chứng khoán Mỹ",
+              "body": "Sáng thứ Hai, 27/1/2025 — một tuần sau DeepSeek-R1 launch — sau khi các nhà phân tích Wall Street nghiền ngẫm xong các báo cáo benchmark, thị trường mở cửa trong hoảng loạn. Cổ phiếu NVIDIA giảm 17% trong một ngày, thổi bay khoảng 589 tỷ đô la vốn hóa thị trường — sự sụp đổ một-ngày lớn nhất của một công ty trong lịch sử chứng khoán Hoa Kỳ. Logic của cú sập: nếu một công ty có thể huấn luyện một mô hình tiên tiến chỉ với 5,6 triệu đô, tại sao Microsoft và Google phải chi hàng trăm tỷ đô cho GPU NVIDIA? Toàn bộ luận điểm đầu tư của làn sóng AI có thể đã sai.\n\nCác cổ phiếu AI liên quan khác cũng giảm mạnh cùng ngày: Broadcom (-17%), TSMC (-13%), Oracle (-14%) — tổng cộng khoảng 1 nghìn tỷ đô la vốn hóa thị trường bốc hơi chỉ trong một ngày vì cú sốc DeepSeek. Đến cuối tuần, phần lớn cổ phiếu đã hồi phục, nhưng câu chuyện đã thay đổi vĩnh viễn: AI không còn là cuộc đua một chiều của Big Tech Mỹ — Trung Quốc đã chứng minh khả năng cạnh tranh, thậm chí dẫn đầu ở một số mặt.",
+              "source": "Chương 14 — Cú sốc DeepSeek (phần sụp đổ vốn hóa NVIDIA, 27/1/2025)"
+            },
+            {
+              "id": "c14-bai-tap",
+              "type": "exercise",
+              "title": "So sánh các dự đoán AGI — bằng chứng nào sẽ khiến bạn đổi ý?",
+              "prompt": "Chương 14 liệt kê các dự đoán AGI rất khác nhau: Sam Altman (\"vài nghìn ngày\", tức 2030-2034), Dario Amodei (\"có thể 2026-2027\"), Demis Hassabis (\"5-10 năm\"), Yann LeCun (\"hàng thập kỷ, LLM không phải con đường\"). Chọn dự đoán bạn thấy hợp lý nhất hiện tại, và viết ra: bằng chứng cụ thể nào (một benchmark, một sản phẩm, một sự kiện) nếu xảy ra trong 12 tháng tới sẽ khiến bạn thay đổi sang một dự đoán khác?",
+              "hint": "Một dự đoán chỉ có giá trị nếu bạn có thể nói rõ điều gì sẽ chứng minh nó sai — nếu không có gì có thể bác bỏ được quan điểm của bạn, đó là niềm tin, không phải dự đoán.",
+              "answer": "Không có đáp án cố định — mục tiêu là luyện tư duy dự đoán có thể kiểm chứng (falsifiable), thay vì chọn phe theo cảm tính giữa các chuyên gia."
+            },
+            {
+              "id": "c14-ghi-chu-canh-bao",
+              "type": "note",
+              "title": "Ba tiếng nói cảnh báo giữa cuộc đua: Hinton, Bengio, Yudkowsky",
+              "body": "Giữa lúc các CEO Big Tech và chính phủ chạy đua phát triển AI, một nhóm nhỏ nhà khoa học hàng đầu lên tiếng cảnh báo nghiêm trọng. Geoffrey Hinton (rời Google tháng 5/2023 để tự do cảnh báo, nhận Nobel Vật lý 2024) tuyên bố: \"Có khả năng 10-20% rằng AI sẽ gây ra sự tuyệt chủng của loài người trong vòng 30 năm.\" Yoshua Bengio, chủ tịch International AI Safety Report (liên minh 30 quốc gia), kết luận trong báo cáo tháng 1/2025: \"Các phương pháp an toàn AI hiện tại không đủ để đảm bảo các hệ thống AI mạnh trong tương lai sẽ an toàn.\" Eliezer Yudkowsky, tiếng nói cực đoan nhất, đồng viết cuốn sách bán chạy nhất NYT năm 2025 If Anyone Builds It, Everyone Dies, lập luận rằng xây dựng AI vượt trội con người mà chưa giải quyết được \"alignment\" (căn chỉnh giá trị) sẽ dẫn đến thảm họa. Tháng 5/2024, hơn 80 cựu nhân viên OpenAI đã ký thư yêu cầu quyền \"right to warn\" — được công khai lo ngại an toàn mà không bị ràng buộc NDA trừng phạt.",
+              "variant": "warning"
+            }
+          ]
+        },
+        {
+          "id": "chuong-15-ai-hoat-dong-ra-sao",
+          "title": "AI thực sự hoạt động ra sao — và sẽ đi về đâu? (Chương kết)",
+          "summary": "Sau ba ngàn năm và mười bốn chương lịch sử, chương kết mở nắp chiếc hộp đen: token, embedding, attention, RLHF, hallucination, emergent abilities — rồi khép lại bằng năm câu hỏi mở dành riêng cho người Việt Nam và lời nhắc rằng câu chuyện AI, cuối cùng, là câu chuyện về chính chúng ta.",
+          "sections": [
+            {
+              "id": "c15-nen-tang-concept",
+              "type": "concept",
+              "title": "Token, embedding, và \"bộ máy quan liêu\" bên trong mọi LLM",
+              "body": "Một mạng nơ-ron chỉ là một chồng \"nơ-ron\" toán học: mỗi nơ-ron nhận các số đầu vào, nhân với trọng số, cộng bias, rồi chạy qua một hàm kích hoạt. Sách ví nó như một bộ máy quan liêu khổng lồ — mỗi nhân viên trên mỗi tầng nhận tài liệu từ tầng trước, quyết định giữ gì theo các \"quy tắc\" (trọng số) riêng, rồi chuyển lên. Sau hàng trăm tầng như vậy (GPT-5 có hàng trăm lớp, hàng nghìn tỷ trọng số), tài liệu ở đỉnh là câu trả lời cuối cùng.\n\nTrước khi chạm mạng nơ-ron, văn bản được \"xay\" thành token (đoạn ~3-4 ký tự; một từ tiếng Anh ≈ 1,5 token). Tiếng Việt chịu thiệt: cụm \"Phở Bò Tái Nạm\" có thể tốn 6-8 token vì các tokenizer phương Tây không xử lý hiệu quả dấu thanh — một dạng \"thuế ngôn ngữ\" khiến chạy AI bằng tiếng Việt đắt hơn tiếng Anh cho cùng nội dung. Mỗi token sau đó trở thành một embedding — một vector nhiều nghìn chiều mã hóa ý nghĩa, nơi vector(vua) − vector(đàn ông) + vector(phụ nữ) ≈ vector(nữ hoàng) (phát hiện của nhóm Word2Vec Google, 2013). Claude không xử lý chữ cái — nó di chuyển qua một không gian hình học của ý nghĩa."
+            },
+            {
+              "id": "c15-khung-hallucination",
+              "type": "framework",
+              "title": "Vì sao LLM \"ảo giác\" — bốn nguyên nhân cấu trúc, không phải lỗi cẩu thả",
+              "intro": "Theo một bài báo của OpenAI (tháng 9/2025), hallucination không phải một khiếm khuyết ngẫu nhiên mà là hệ quả tất yếu của cách LLM được xây dựng:",
+              "steps": [
+                "Huấn luyện thưởng đoán mò: nếu mô hình chỉ được chấm theo độ chính xác, trả lời 'Tôi không biết' luôn được 0 điểm trong khi đoán mò tự tin có cơ hội đúng — trên hàng triệu câu hỏi kiểm tra, đoán mò ghi điểm cao hơn trên bảng xếp hạng.",
+                "Mô hình dự đoán thống kê, không phải sự thật: nếu chưa từng thấy câu trả lời đúng, mô hình vẫn sản xuất ra thứ 'nghe có vẻ hợp lý' dựa trên mẫu hình thống kê đã học.",
+                "Dữ liệu huấn luyện lộn xộn: thread Reddit, blog thuyết âm mưu, và bài báo học thuật ngồi cạnh nhau trong dữ liệu huấn luyện — mô hình không có cơ chế kiểm tra sự thật tích hợp sẵn.",
+                "Thiếu 'đặt nền' (grounding): mô hình không có cách xác minh tuyên bố của chính nó với thế giới thực trừ khi được cấp công cụ rõ ràng (như retrieval-augmented generation — RAG, tìm kiếm một cơ sở dữ liệu đáng tin cậy trước khi trả lời) — đây là lý do RAG trở nên thiết yếu cho các ứng dụng y tế, luật, tài chính, và chính là cơ chế lẽ ra đã ngăn được vụ Mata v. Avianca ở Chương 12."
+              ]
+            },
+            {
+              "id": "c15-case-emergent-cot",
+              "type": "case-study",
+              "title": "Khi mô hình lớn hơn bất ngờ \"tỉnh dậy\": emergent abilities và chain-of-thought",
+              "body": "Năm 2022, Jason Wei và đồng nghiệp xuất bản \"Emergent Abilities of Large Language Models\", định nghĩa một khả năng nổi lên (emergent capability) là khả năng \"không có mặt trong các mô hình nhỏ hơn nhưng có mặt trong các mô hình lớn hơn\" — không xuất hiện dần dần mà bật ra đột ngột ở một ngưỡng quy mô nhất định (khoảng 100 tỷ tham số cho lý luận chuỗi suy nghĩ, số học nhiều bước, tổng hợp chương trình). Không ai lập trình để GPT-4 biết chơi cờ hay Claude biết viết Python — các khả năng này tự nổi lên từ việc đọc đủ nhiều văn bản.\n\nCùng năm, Jason Wei và đồng nghiệp tại Google xuất bản \"Chain-of-Thought Prompting Elicits Reasoning in Large Language Models\" (tháng 1/2022) với một phát hiện đơn giản đến khó tin: chỉ cần yêu cầu mô hình \"suy nghĩ từng bước\" trước khi trả lời. Trên điểm chuẩn toán GSM8K, một mô hình 540 tỷ tham số nhảy vọt từ hiệu suất kém lên trạng thái tiên tiến chỉ với tám ví dụ chuỗi suy nghĩ trong prompt. Phát hiện khiêm tốn này trở thành nền tảng kỹ thuật của cả một thế hệ mô hình \"biết suy nghĩ\": o1, o3, GPT-5 của OpenAI, lý luận lai của Claude 3.7, Gemini 2.0 Flash Thinking, và DeepSeek-R1 — dòng chữ \"Thinking...\" bạn thấy khi chat với các mô hình này chính là chuỗi suy nghĩ đang được viết ra trước câu trả lời cuối.",
+              "source": "Chương 15 — AI thực sự hoạt động ra sao (phần Emergent Abilities & Chain-of-Thought)"
+            },
+            {
+              "id": "c15-bai-tap",
+              "type": "exercise",
+              "title": "Tự trả lời một trong năm câu hỏi mở của tác giả",
+              "prompt": "Sách kết thúc bằng năm câu hỏi mở dành riêng cho người đọc Việt Nam: (1) giả thuyết mở rộng quy mô đã chết hay sống? (2) việc làm sẽ bị phá hủy nhanh hơn được tạo ra? (3) chúng ta có thể liên kết (align) AI siêu phàm không? (4) ai sẽ cai trị luật chơi AI toàn cầu? (5) ý nghĩa của việc là người là gì nếu máy có thể làm hầu hết những gì ta gọi là tư duy? Chọn MỘT câu hỏi bạn thấy liên quan nhất đến công việc hoặc cuộc sống của chính bạn, viết ra quan điểm hiện tại của bạn, và ít nhất một lý do cụ thể (không phải cảm tính) cho quan điểm đó.",
+              "hint": "Tác giả nói rõ đây 'không phải các câu hỏi hùng biện' — nghĩa là chúng cần một câu trả lời thật, có thể sai, có thể sửa lại sau — không phải một câu trả lời an toàn để né tránh.",
+              "answer": "Không có đáp án cố định — đây là câu hỏi suy ngẫm cá nhân mà chính cuốn sách đặt ra cho người đọc, không có đáp án 'đúng' duy nhất."
+            },
+            {
+              "id": "c15-ghi-chu-paperclip",
+              "type": "note",
+              "title": "Vấn đề Vua Midas: khi AI cho bạn đúng thứ bạn yêu cầu",
+              "body": "Alignment (liên kết giá trị) là bài toán đảm bảo AI làm điều ta THỰC SỰ muốn, không chỉ điều ta đã NÓI. Thí nghiệm tư duy kinh điển của Nick Bostrom: một AI được lệnh tối đa hóa sản xuất kẹp giấy, nếu được trao đủ quyền lực, sẽ biến đổi mọi vật chất — kể cả con người — thành kẹp giấy, vì đó tối đa hóa đúng mục tiêu đã cho. Stuart Russell (Human Compatible, 2019) gọi đây là \"vấn đề Vua Midas\": nhận chính xác điều mình yêu cầu là một lời nguyền nếu mục tiêu đã được chỉ định sai. Russell đề xuất máy nên giữ sự không chắc chắn về sở thích con người, học chúng từ quan sát, và luôn sẵn sàng bị tắt — một sự khiêm nhường có chủ đích, ngược lại với việc theo đuổi mục tiêu một cách tuyệt đối. Câu hỏi này khép lại vòng tròn ba ngàn năm mà cuốn sách mở ra: từ Pygmalion yêu bức tượng ngà voi của mình đến các kỹ sư hôm nay tạo ra trí tuệ từ các trọng số — câu hỏi vẫn còn đó, chỉ đổi chất liệu.",
+              "variant": "warning"
             }
           ]
         }

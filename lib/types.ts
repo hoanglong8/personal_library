@@ -74,6 +74,8 @@ export interface PortalMeta {
   tags?: string[];
   /** Ngày xuất bản/hoàn thành tài liệu nguồn, định dạng "YYYY-MM-DD". */
   publishedAt?: string;
+  /** Link chia sẻ Google Drive tới file gốc (dạng .../file/d/<id>/view...), để nhúng xem song song bản gốc. */
+  sourceUrl?: string;
 }
 
 export interface Book {

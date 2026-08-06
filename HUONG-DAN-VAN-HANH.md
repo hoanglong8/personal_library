@@ -14,7 +14,11 @@ sách mới, và deploy — để đọc lại khi cần mà không phải hỏi
   (ref `lamaeusnlxnlcfahtube`), không nằm trong repo.
 - **Hosting**: Vercel project `hoanglong8s-projects/creat_gitbook_ca_nhan`.
 - Một portal chứa được **nhiều sách** — mỗi sách là một phần tử trong mảng
-  `books` của `portal.json`, có URL riêng `/<slug-sách>`.
+  `books` của `portal.json`, có URL riêng `/<slug-sách>`. Hiện có 2 sách:
+  `/viet-sach-cung-claude` (Hoàng Trần) và `/lich-su-ai` (Trần Đức Hoàng).
+- Sách có `meta.sourceUrl` (link Google Drive) sẽ tự có nút nổi
+  "📄 Xem bản gốc" — mở panel nhúng PDF gốc song song với nội dung đã viết
+  lại. Cả 2 sách hiện có đều đã bật tính năng này.
 
 ## 2. Sửa nội dung một sách đang có
 
@@ -50,8 +54,13 @@ tự động cập nhật trang đang chạy.
 5. Deploy lại (mục 4).
 
 Chi tiết máy móc hơn (quy tắc đặt `slug`, cách viết `author`/`tags`/
-`publishedAt` trung thực) nằm ở
+`publishedAt`/`sourceUrl` trung thực) nằm ở
 `~/.claude/skills/foxai-learning-portal/references/content-structuring.md`.
+
+**Muốn bật "Xem bản gốc" cho sách mới?** Đưa Claude link chia sẻ Google
+Drive tới file gốc (đặt quyền chia sẻ **"Anyone with the link"**, không thì
+panel nhúng sẽ báo lỗi truy cập) — Claude điền vào `meta.sourceUrl`, không
+cần sửa code gì thêm.
 
 ## 4. Deploy
 
