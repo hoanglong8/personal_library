@@ -68,6 +68,12 @@ export interface PortalMeta {
   sourceLabel: string;
   disclaimer?: string;
   stats: PortalStat[];
+  /** Tên tác giả tài liệu nguồn, nếu xác định được. */
+  author?: string;
+  /** Thẻ chủ đề để lọc/tìm kiếm ở trang thư viện, vd ["AI", "Kỹ năng viết"]. */
+  tags?: string[];
+  /** Ngày xuất bản/hoàn thành tài liệu nguồn, định dạng "YYYY-MM-DD". */
+  publishedAt?: string;
 }
 
 export interface Book {
