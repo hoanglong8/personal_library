@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
-import { getPortal } from "@/lib/content";
+import { getSite } from "@/lib/content";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -11,9 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Viết Sách Cùng Claude — Portal thực hành",
-  description:
-    "Portal học tập tương tác chuyển thể từ cẩm nang Viết Sách Cùng Claude.",
+  title: "Thư viện Portal",
+  description: "Portal học tập tương tác, sinh bởi foxai-learning-portal.",
 };
 
 export default function RootLayout({
@@ -21,7 +20,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { meta } = getPortal();
+  const { siteTitle } = getSite();
 
   return (
     <html lang="vi" className={`${inter.variable} h-full`} suppressHydrationWarning>
@@ -36,7 +35,7 @@ export default function RootLayout({
         <header className="sticky top-0 z-10 border-b border-border bg-surface/90 backdrop-blur">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
             <Link href="/" className="font-mono text-sm font-medium text-ink">
-              {meta.title}
+              {siteTitle}
             </Link>
             <ThemeToggle />
           </div>

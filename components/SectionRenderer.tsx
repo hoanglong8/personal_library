@@ -6,7 +6,13 @@ import ExerciseCard from "./ExerciseCard";
 import NoteCallout from "./NoteCallout";
 import CommentThread from "./CommentThread";
 
-export default function SectionRenderer({ section }: { section: Section }) {
+export default function SectionRenderer({
+  section,
+  bookSlug,
+}: {
+  section: Section;
+  bookSlug: string;
+}) {
   return (
     <div id={section.id} className="scroll-mt-24">
       {section.type === "concept" && <ConceptBlock section={section} />}
@@ -14,7 +20,7 @@ export default function SectionRenderer({ section }: { section: Section }) {
       {section.type === "case-study" && <CaseStudyCard section={section} />}
       {section.type === "exercise" && <ExerciseCard section={section} />}
       {section.type === "note" && <NoteCallout section={section} />}
-      <CommentThread sectionId={section.id} />
+      <CommentThread bookSlug={bookSlug} sectionId={section.id} />
     </div>
   );
 }

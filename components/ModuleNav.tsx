@@ -4,9 +4,11 @@ import type { Module } from "@/lib/types";
 export default function ModuleNav({
   modules,
   activeId,
+  bookSlug,
 }: {
   modules: Module[];
   activeId: string;
+  bookSlug: string;
 }) {
   return (
     <nav className="hidden lg:block sticky top-20 h-fit w-56 shrink-0 text-sm">
@@ -16,7 +18,7 @@ export default function ModuleNav({
           return (
             <li key={m.id}>
               <Link
-                href={`/modules/${m.id}`}
+                href={`/${bookSlug}/modules/${m.id}`}
                 className={`-ml-px block border-l-2 py-1.5 pl-4 transition-colors ${
                   active
                     ? "border-accent text-accent font-medium"

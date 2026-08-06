@@ -4,14 +4,19 @@ import type { PortalMeta, Module } from "@/lib/types";
 export default function Hero({
   meta,
   firstModule,
+  bookSlug,
 }: {
   meta: PortalMeta;
   firstModule?: Module;
+  bookSlug: string;
 }) {
   return (
     <section className="border-b border-border bg-surface">
       <div className="mx-auto max-w-5xl px-6 py-16">
-        <p className="text-xs font-mono uppercase tracking-widest text-accent">
+        <Link href="/" className="text-xs text-paper-400 hover:text-accent">
+          ← Thư viện
+        </Link>
+        <p className="mt-4 text-xs font-mono uppercase tracking-widest text-accent">
           {meta.sourceLabel}
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
@@ -29,7 +34,7 @@ export default function Hero({
 
         {firstModule && (
           <Link
-            href={`/modules/${firstModule.id}`}
+            href={`/${bookSlug}/modules/${firstModule.id}`}
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-accent-ink hover:opacity-90 transition-opacity"
           >
             Bắt đầu: {firstModule.title} →

@@ -70,7 +70,14 @@ export interface PortalMeta {
   stats: PortalStat[];
 }
 
-export interface Portal {
+export interface Book {
+  slug: string;
   meta: PortalMeta;
   modules: Module[];
+}
+
+export interface SiteData {
+  siteTitle: string;
+  siteSubtitle?: string;
+  books: Book[];
 }

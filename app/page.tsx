@@ -1,14 +1,7 @@
-import Hero from "@/components/Hero";
-import ModuleGrid from "@/components/ModuleGrid";
-import { getPortal } from "@/lib/content";
+import BookGrid from "@/components/BookGrid";
+import { getBooks } from "@/lib/content";
 
 export default function HomePage() {
-  const { meta, modules } = getPortal();
-
-  return (
-    <>
-      <Hero meta={meta} firstModule={modules[0]} />
-      <ModuleGrid modules={modules} />
-    </>
-  );
+  const books = getBooks();
+  return <BookGrid books={books} />;
 }

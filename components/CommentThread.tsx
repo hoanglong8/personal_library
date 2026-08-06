@@ -5,13 +5,20 @@ import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 
 interface Comment {
   id: string;
+  book_id: string;
   section_id: string;
   author_name: string;
   body: string;
   created_at: string;
 }
 
-export default function CommentThread({ sectionId }: { sectionId: string }) {
+export default function CommentThread({
+  bookSlug,
+  sectionId,
+}: {
+  bookSlug: string;
+  sectionId: string;
+}) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [name, setName] = useState("");
   const [body, setBody] = useState("");
@@ -26,14 +33,18 @@ export default function CommentThread({ sectionId }: { sectionId: string }) {
     client
       .from("comments")
       .select("*")
+      .eq("book_id", bookSlug)
       .eq("section_id", sectionId)
       .order("created_at", { ascending: true })
       .then(({ data }) => {
         if (active && data) setComments(data as Comment[]);
       });
 
+    // Realtime filters support one column condition, so the subscription is
+    // scoped by section_id only; book_id is re-checked in the callback to
+    // avoid cross-book leakage when two books happen to reuse a section id.
     const channel = client
-      .channel(`comments:${sectionId}`)
+      .channel(`comments:${bookSlug}:${sectionId}`)
       .on(
         "postgres_changes",
         {
@@ -43,7 +54,9 @@ export default function CommentThread({ sectionId }: { sectionId: string }) {
           filter: `section_id=eq.${sectionId}`,
         },
         (payload) => {
-          setComments((prev) => [...prev, payload.new as Comment]);
+          const row = payload.new as Comment;
+          if (row.book_id !== bookSlug) return;
+          setComments((prev) => [...prev, row]);
         }
       )
       .subscribe();
@@ -52,13 +65,14 @@ export default function CommentThread({ sectionId }: { sectionId: string }) {
       active = false;
       client.removeChannel(channel);
     };
-  }, [sectionId]);
+  }, [bookSlug, sectionId]);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!supabase || !body.trim()) return;
     setStatus("sending");
     const { error } = await supabase.from("comments").insert({
+      book_id: bookSlug,
       section_id: sectionId,
       author_name: name.trim() || "Ẩn danh",
       body: body.trim(),
