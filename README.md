@@ -6,7 +6,7 @@ Dự án tạo các gitbook cá nhân để phục vụ học tập, nghiên c�
 ## Portal học tập
 
 Next.js 16 + Tailwind v4 + Supabase, scaffolded bởi skill Claude Code
-`foxai-learning-portal`. Site live: **https://creatgitbookcanhan.vercel.app**
+`foxai-learning-portal`. Site live: **https://thuvien-so.vercel.app**
 — portal chứa nhiều sách, mỗi sách dựng từ một tài liệu nguồn (PDF/DOCX/
 XLSX), có tìm kiếm/lọc tag ở trang chủ và bình luận thật qua Supabase.
 
