@@ -1,5 +1,17 @@
 # Top 50 kỹ năng Claude & repo GitHub cho Cladue AI
 
+## Claude Skills (Kỹ năng Claude)
+
+01 — Xử lý PDF — Đọc, trích xuất bảng, điền biểu mẫu, hợp nhất/phân chia. Kỹ năng hữu ích nhất cho nhân viên tri thức. [https://github.com/anthropics/skills/tree/main/skills/pdf](https://github.com/anthropics/skills/tree/main/skills/pdf)
+
+02 — DOCX — Tạo & chỉnh sửa tài liệu Word với theo dõi thay đổi, bình luận, định dạng. [https://github.com/anthropics/skills/tree/main/skills/docx](https://github.com/anthropics/skills/tree/main/skills/docx)
+
+03 — PPTX — Trình chiếu slide từ ngôn ngữ tự nhiên. Bố cục, biểu đồ, ghi chú diễn giả. [https://github.com/anthropics/skills/tree/main/skills/pptx](https://github.com/anthropics/skills/tree/main/skills/pptx)
+
+04 — XLSX — Công thức, phân tích, biểu đồ qua tiếng Anh đơn giản. [https://github.com/anthropics/skills/tree/main/skills/xlsx](https://github.com/anthropics/skills/tree/main/skills/xlsx)
+
+05 — Đồng tạo tác Tài liệu — Viết cộng tác thực sự. Người viết, Claude phản hồi, qua lại. [doc-coauthoringnh](https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring)
+
 ## Thiết kế & Sáng tạo 🎨
 
 06 — Thiết kế Frontend — Thoát khỏi thẩm mỹ "AI slop". Hệ thống thiết kế thực sự, kiểu chữ đậm.
@@ -86,5 +98,70 @@ Quản lý dự án của AI. Cung cấp PRD → các nhiệm vụ có cấu tr�
 35 — Langflow — Visual drag-and-drop for agent pipelines. 140k stars. [https://github.com/langflow-ai/langflow](https://github.com/langflow-ai/langflow)
 
 36 — Huginn — Self-hosted web agents. Monitoring, alerts. Privacy-first. [https://github.com/huginn/huginn](https://github.com/huginn/huginn)
+
+## Search & Data
+
+37 — GPT Researcher — Nghiên cứu tự động → báo cáo tổng hợp. [https://github.com/assafelovic/gpt-researcher](https://github.com/assafelovic/gpt-researcher)
+
+38 — Firecrawl — Bất kỳ trang web nào → dữ liệu sẵn sàng cho LLM. [https://github.com/mendableai/firecrawl](https://github.com/mendableai/firecrawl)
+
+39 — Vanna AI — Ngôn ngữ tự nhiên → SQL. [https://github.com/vanna-ai/vanna](https://github.com/vanna-ai/vanna)
+
+## Dev Tools
+
+40 — Codebase Memory MCP — Cơ sở mã → đồ thị tri thức bền vững. [https://github.com/DeusData/codebase-memory-mcp](https://github.com/DeusData/codebase-memory-mcp)
+
+41 — DSPy — Lập trình (không phải prompt) các mô hình nền tảng. [https://github.com/stanfordnlp/dspy](https://github.com/stanfordnlp/dspy)
+
+42 — Spec Kit (GitHub) — Phát triển dựa trên spec. Viết spec, AI tạo mã. Hơn 50k sao. [https://github.com/github/spec-kit](https://github.com/github/spec-kit)
+
+43 — NVIDIA NemoClaw — Sandbox an toàn cho các tác nhân tự trị. [https://github.com/NVIDIA/NemoClaw](https://github.com/NVIDIA/NemoClaw)
+
+## Bộ sưu tập Tuyển chọn
+
+44 — Awesome Claude Skills — Danh sách kỹ năng được tuyển chọn tốt nhất. Hơn 22k sao. [https://github.com/travisvn/awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills)
+
+45 — Anthropic Skills Repo — Các triển khai tham khảo chính thức. [https://github.com/anthropics/skills](https://github.com/anthropics/skills)
+
+46 — Awesome Agents — Hơn 100 công cụ tác nhân mã nguồn mở. [https://github.com/kyrolabs/awesome-agents](https://github.com/kyrolabs/awesome-agents)
+
+47 — MAGI//ARCHIVE — Nguồn cấp dữ liệu hàng ngày về các repo AI mới. [https://tom-doerr.github.io/repo_posts/](https://tom-doerr.github.io/repo_posts/)
+
+## Điều phối Tác nhân & Đa Tác nhân
+
+gstack — Claude Code như một nhóm kỹ thuật ảo [https://github.com/garrytan/gstack](https://github.com/garrytan/gstack)
+
+cmux — Nhiều tác nhân Claude song song [https://github.com/craigsc/cmux](https://github.com/craigsc/cmux)
+
+figaro — Điều phối hạm đội tác nhân Claude trên desktop [https://github.com/byt3bl33d3r/figaro](https://github.com/byt3bl33d3r/figaro)
+
+claude-squad — Tác nhân terminal trong các phiên song song [https://github.com/smtg-ai/claude-squad](https://github.com/smtg-ai/claude-squad)
+
+deer-flow (ByteDance) — Tác nhân phụ và sandbox thông qua kỹ năng [https://github.com/bytedance/deer-flow](https://github.com/bytedance/deer-flow)
+
+SWE-AF — Một lệnh gọi API khởi động nhóm kỹ thuật [https://github.com/Agent-Field/SWE-AF](https://github.com/Agent-Field/SWE-AF)
+
+AIlice — Tác vụ phức tạp → tác nhân động [https://github.com/myshell-ai/AIlice](https://github.com/myshell-ai/AIlice)
+
+Agent Alchemy — Claude Code + plugin + trình quản lý tác vụ [https://github.com/sequenzia/agent-alchemy](https://github.com/sequenzia/agent-alchemy)
+
+## MCP & Tích hợp 🔗
+
+MCP Playwright — Tự động hóa trình duyệt cho LLM [https://github.com/executeautomation/mcp-playwright](https://github.com/executeautomation/mcp-playwright)
+
+stealth-browser-mcp — Tự động hóa trình duyệt không thể phát hiện [https://github.com/vibheksoni/stealth-browser-mcp](https://github.com/vibheksoni/stealth-browser-mcp)
+
+fastmcp — Xây dựng máy chủ MCP bằng Python tối giản [https://github.com/jlowin/fastmcp](https://github.com/jlowin/fastmcp)
+
+markdownify-mcp — PDF, hình ảnh, âm thanh → Markdown [https://github.com/zcaceres/markdownify-mcp](https://github.com/zcaceres/markdownify-mcp)
+
+## Marketing & SEO
+
+17 — Kỹ năng Tiếp thị của Corey Haines — Hơn 20 kỹ năng: CRO, viết quảng cáo, SEO, chuỗi email, tăng trưởng. [https://github.com/coreyhaines31/marketingskills
+](https://github.com/coreyhaines31/marketingskills
+)
+18 — Claude SEO — Kiểm toán toàn bộ trang web, xác thực schema. 12 kỹ năng phụ. [https://github.com/AgriciDaniel/claude-seo](https://github.com/AgriciDaniel/claude-seo)
+
+19 — Nguyên tắc Thương hiệu — Mã hóa thương hiệu của bạn thành một kỹ năng. Tự động áp dụng mọi nơi. [https://github.com/.../tree/main/skills/brand-guidelines](https://github.com/.../tree/main/skills/brand-guidelines)
 
 
