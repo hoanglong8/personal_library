@@ -80,6 +80,8 @@ export interface PortalMeta {
   domain?: string;
   /** id của CategoryField (lib/categories.ts) trong domain trên. */
   field?: string;
+  /** Ảnh thumbnail cho bài viết trên trang chủ — đường dẫn cục bộ (file đặt trong public/thumbnails/, ví dụ "/thumbnails/ten-file.jpg") hoặc một link ảnh public bất kỳ. Bỏ trống thì hiển thị ảnh mặc định theo tông màu của portal. */
+  thumbnail?: string;
 }
 
 export interface Book {

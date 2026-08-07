@@ -20,8 +20,8 @@ export default function CategorySidebar({
   onSelectField: (id: string | null) => void;
 }) {
   return (
-    <aside className="mb-8 lg:mb-0 lg:w-64 lg:shrink-0 lg:sticky lg:top-20 lg:self-start">
-      <h2 className="font-mono text-xs uppercase tracking-widest text-paper-400">
+    <aside className="mb-8 lg:mb-0 lg:w-72 lg:shrink-0 lg:sticky lg:top-20 lg:self-start">
+      <h2 className="font-mono text-sm uppercase tracking-widest text-paper-400">
         Chủ đề
       </h2>
       <nav className="mt-3 space-y-3">
@@ -31,7 +31,7 @@ export default function CategorySidebar({
             onSelectDomain(null);
             onSelectField(null);
           }}
-          className={`block w-full rounded-lg px-2 py-1.5 text-left text-sm transition-colors ${
+          className={`block w-full rounded-lg px-2 py-2 text-left text-base transition-colors ${
             !selectedDomain
               ? "bg-accent-soft font-medium text-accent"
               : "text-ink-soft hover:text-ink"
@@ -50,12 +50,12 @@ export default function CategorySidebar({
                   onSelectDomain(isActiveDomain ? null : domain.id);
                   onSelectField(null);
                 }}
-                className={`flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-left text-sm font-medium transition-colors ${
+                className={`flex w-full items-center justify-between rounded-lg px-2 py-2 text-left text-base font-medium transition-colors ${
                   isActiveDomain ? "bg-accent-soft text-accent" : "text-ink hover:text-accent"
                 }`}
               >
                 <span>{domain.label}</span>
-                <span className="font-mono text-xs text-paper-400">
+                <span className="font-mono text-sm text-paper-400">
                   {countByDomain[domain.id] ?? 0}
                 </span>
               </button>
@@ -70,12 +70,12 @@ export default function CategorySidebar({
                         onSelectDomain(domain.id);
                         onSelectField(active ? null : field.id);
                       }}
-                      className={`flex w-full items-center justify-between rounded-lg px-2 py-1 text-left text-xs transition-colors ${
+                      className={`flex w-full items-center justify-between rounded-lg px-2 py-1.5 text-left text-sm transition-colors ${
                         active ? "font-medium text-accent" : "text-paper-400 hover:text-ink"
                       }`}
                     >
                       <span>{field.label}</span>
-                      <span className="font-mono">{countByField[field.id] ?? 0}</span>
+                      <span className="font-mono text-xs">{countByField[field.id] ?? 0}</span>
                     </button>
                   );
                 })}

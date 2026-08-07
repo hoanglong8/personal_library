@@ -1603,6 +1603,231 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "top-repo-github-cho-claude",
+      "meta": {
+        "title": "Top 50+ repo GitHub & kỹ năng cho Claude — bản đồ công cụ cho AI Native",
+        "subtitle": "Hệ thống hóa 63 kỹ năng, MCP server và framework mã nguồn mở đáng chú ý cho người dùng Claude, chia theo 13 nhóm ứng dụng.",
+        "sourceLabel": "Nguồn: \"Tổng hợp các kỹ năng Claude & repo GitHub hữu ích cho AI Native\" — github.com/hoanglong8/personal_library",
+        "disclaimer": "Nội dung tổng hợp và sắp xếp lại từ danh sách nguồn cho mục đích tra cứu nhanh; số sao và trạng thái bảo trì của mỗi repo có thể đã thay đổi — kiểm tra lại trên GitHub trước khi cài đặt.",
+        "stats": [
+          {
+            "label": "mục kỹ năng & repo",
+            "value": "63"
+          },
+          {
+            "label": "nhóm chủ đề",
+            "value": "13"
+          },
+          {
+            "label": "kỹ năng chính thức Anthropic",
+            "value": "5"
+          }
+        ],
+        "tags": [
+          "Claude",
+          "Claude Skills",
+          "MCP",
+          "GitHub",
+          "AI Agent",
+          "Công cụ AI"
+        ],
+        "domain": "cong-nghe-thong-tin",
+        "field": "cong-cu-ung-dung-ai"
+      },
+      "modules": [
+        {
+          "id": "ban-do-cong-cu",
+          "title": "Bản đồ 63 kỹ năng & repo GitHub cho Claude",
+          "summary": "Sắp lại danh sách nguồn thành 13 nhóm ứng dụng — từ kỹ năng chính thức của Anthropic đến MCP server và framework đa tác nhân mã nguồn mở — kèm gợi ý phối hợp và cảnh báo cần kiểm chứng trước khi cài đặt.",
+          "sections": [
+            {
+              "id": "tc-gioi-thieu",
+              "type": "concept",
+              "title": "Vì sao cần một bản đồ công cụ",
+              "body": "Kỹ năng của Claude (Claude Skill) về cơ bản là một thư mục chứa file SKILL.md mô tả khi nào và cách dùng kỹ năng đó, cộng thêm script hoặc tài liệu tham khảo đi kèm — Claude đọc mô tả ngắn của mọi kỹ năng đã cài, và chỉ tải nội dung đầy đủ của kỹ năng nào liên quan đến việc đang làm. Danh sách dưới đây không chỉ gồm skill theo đúng nghĩa kỹ thuật đó: nó trộn ba loại tài nguyên khác nhau — kỹ năng chính thức từ Anthropic, máy chủ MCP (Model Context Protocol) kết nối Claude với công cụ ngoài, và các framework hoặc ứng dụng mã nguồn mở phối hợp tốt với Claude dù không phải là skill.\n\nNguồn gốc là một danh sách 63 mục do cộng đồng biên soạn, chia theo 13 nhóm chủ đề. Bài này giữ nguyên toàn bộ 63 mục và đường dẫn GitHub gốc, chỉ sắp lại theo nhóm để dễ tra cứu — mục tiêu là giúp người mới dùng Claude Desktop hoặc Claude Code biết bắt đầu từ đâu, thay vì phải tự lọc qua từng repo."
+            },
+            {
+              "id": "tc-fw-claude-skills",
+              "type": "framework",
+              "title": "Kỹ năng chính thức từ Anthropic (Claude Skills)",
+              "intro": "Năm kỹ năng do chính Anthropic phát hành trong kho anthropics/skills — điểm khởi đầu an toàn nhất vì được duy trì chính thức.",
+              "steps": [
+                "01 — Xử lý PDF: đọc, trích xuất bảng, điền biểu mẫu, hợp nhất/phân chia file. Kỹ năng hữu ích nhất cho công việc văn phòng hàng ngày. github.com/anthropics/skills/tree/main/skills/pdf",
+                "02 — DOCX: tạo và chỉnh sửa tài liệu Word với theo dõi thay đổi, bình luận, định dạng. github.com/anthropics/skills/tree/main/skills/docx",
+                "03 — PPTX: dựng slide trình chiếu từ mô tả bằng ngôn ngữ tự nhiên — bố cục, biểu đồ, ghi chú diễn giả. github.com/anthropics/skills/tree/main/skills/pptx",
+                "04 — XLSX: công thức, phân tích dữ liệu, biểu đồ, điều khiển bằng tiếng Anh đơn giản. github.com/anthropics/skills/tree/main/skills/xlsx",
+                "05 — Đồng tạo tác tài liệu (doc-coauthoring): viết cộng tác thực sự — người viết, Claude phản hồi, qua lại nhiều vòng. github.com/anthropics/skills/tree/main/skills/doc-coauthoring"
+              ]
+            },
+            {
+              "id": "tc-fw-thiet-ke",
+              "type": "framework",
+              "title": "Thiết kế & Sáng tạo",
+              "steps": [
+                "06 — Thiết kế Frontend: thoát khỏi thẩm mỹ \"AI slop\", hướng tới hệ thống thiết kế thực sự và kiểu chữ có cá tính. github.com/anthropics/skills",
+                "07 — Thiết kế Canvas: đồ họa mạng xã hội, áp phích, bìa sách — nhập văn bản, xuất PNG/PDF. github.com/anthropics/skills/tree/main/skills/canvas-design",
+                "08 — Nghệ thuật thuật toán: họa tiết fractal, bố cục hình học dựng bằng p5.js. github.com/anthropics/skills/tree/main/skills/algorithmic-art",
+                "09 — Theme Factory: tạo hàng loạt bảng phối màu chỉ từ một prompt. github.com/anthropics/skills/tree/main/skills/theme-factory",
+                "10 — Web Artifacts Builder: dựng máy tính, bảng điều khiển tương tác bằng ngôn ngữ tự nhiên, không cần biết frontend. github.com/anthropics/skills/tree/main/skills/web-artifacts-builder"
+              ]
+            },
+            {
+              "id": "tc-fw-phat-trien",
+              "type": "framework",
+              "title": "Phát triển & Kỹ thuật",
+              "steps": [
+                "11 — Superpowers: hơn 20 kỹ năng đã kiểm chứng cho TDD, gỡ lỗi, quy trình từ lên kế hoạch đến thực thi. github.com/obra/superpowers",
+                "12 — Gỡ lỗi hệ thống: phân tích nguyên nhân gốc rễ trước khi sửa, theo quy trình 4 giai đoạn (đánh giá S9.2 trên SkillHub). hermes.ai.vn/docs/user-guide/skills/bundled/software-development/software-development-systematic-debugging",
+                "13 — Tìm kiếm tập tin: thành thạo ripgrep kết hợp ast-grep (đánh giá S9.0). github.com/massgen/massgen",
+                "14 — Tối ưu hóa ngữ cảnh: giảm chi phí token, các thủ thuật KV-cache — 13,9 nghìn sao. github.com/muratcankoylan/Agent-Skills-for-Context-Engineering",
+                "15 — Trình tạo kỹ năng chính thức (skill-creator): mô tả một quy trình làm việc, nhận về file SKILL.md hoàn chỉnh trong khoảng 5 phút. github.com/anthropics/skills/tree/main/skills/skill-creator",
+                "16 — Remotion Best Practices: tạo video bằng AI. github.com/remotion-dev/remotion"
+              ]
+            },
+            {
+              "id": "tc-fw-marketing",
+              "type": "framework",
+              "title": "Marketing & SEO",
+              "steps": [
+                "17 — Bộ kỹ năng tiếp thị của Corey Haines: hơn 20 kỹ năng — CRO, viết quảng cáo, SEO, chuỗi email, tăng trưởng. github.com/coreyhaines31/marketingskills",
+                "18 — Claude SEO: kiểm toán toàn bộ trang web, xác thực schema, gồm 12 kỹ năng phụ. github.com/AgriciDaniel/claude-seo",
+                "19 — Nguyên tắc thương hiệu (brand-guidelines): mã hóa bộ nhận diện thương hiệu thành một kỹ năng, tự áp dụng ở mọi nơi Claude tạo nội dung. Đường dẫn trong danh sách nguồn bị rút gọn thành .../tree/main/skills/brand-guidelines — nhiều khả năng thuộc kho anthropics/skills nhưng URL đầy đủ chưa xác nhận được."
+              ]
+            },
+            {
+              "id": "tc-fw-hoc-tap",
+              "type": "framework",
+              "title": "Kiến thức & Học tập",
+              "steps": [
+                "20 — Tích hợp NotebookLM: cầu nối giữa Claude và NotebookLM — tóm tắt, sơ đồ tư duy, thẻ ghi nhớ. github.com/PleasePrompto/notebooklm-skill",
+                "21 — Obsidian Skills: do CEO của Obsidian biên soạn — tự động gắn thẻ, tự động liên kết, thao tác gốc vault. github.com/kepano/obsidian-skills",
+                "22 — Máy chủ Excel MCP: thao tác file Excel mà không cần cài Microsoft Excel. github.com/haris-musa/excel-mcp-server",
+                "23 — skillsmp.com: kho duyệt hơn 80 nghìn kỹ năng do cộng đồng đóng góp.",
+                "24 — Tavily: công cụ tìm kiếm dựng riêng cho tác nhân AI, trả về dữ liệu có cấu trúc sạch thay vì danh sách liên kết — bốn công cụ con (tìm kiếm, trích xuất, thu thập, lập bản đồ), kết nối qua MCP từ xa trong khoảng một phút. github.com/tavily-ai/tavily-mcp",
+                "25 — Context7: chèn tài liệu thư viện mới nhất thẳng vào ngữ cảnh của LLM, chỉ cần thêm cụm \"use context7\" vào prompt — hỗ trợ Next.js, React, Supabase, MongoDB và hàng nghìn thư viện khác. github.com/upstash/context7",
+                "26 — Task Master AI: biến một PRD thành các tác vụ có cấu trúc và phụ thuộc rõ ràng để Claude thực thi lần lượt — chạy được trên Cursor, Claude Code, Windsurf. github.com/eyaltoledano/claude-task-master"
+              ]
+            },
+            {
+              "id": "tc-fw-agent-frameworks",
+              "type": "framework",
+              "title": "Agent Frameworks",
+              "steps": [
+                "27 — OpenClaw: tác nhân AI có khả năng lan truyền, bền bỉ, đa kênh, tự viết kỹ năng riêng — hơn 210 nghìn sao. github.com/openclaw/openclaw",
+                "28 — AutoGPT: nền tảng tác nhân đầy đủ cho các tác vụ chạy dài. github.com/Significant-Gravitas/AutoGPT",
+                "29 — LangGraph: mô hình hóa tác nhân dưới dạng đồ thị, điều phối đa tác nhân — 26,8 nghìn sao. github.com/langchain-ai/langgraph",
+                "30 — OWL: hợp tác đa tác nhân, đứng đầu chuẩn đánh giá GAIA. github.com/camel-ai/owl",
+                "31 — Dify: trình xây dựng ứng dụng LLM mã nguồn mở — quy trình làm việc, RAG, tác nhân gộp trong một nền tảng. github.com/langgenius/dify",
+                "32 — CrewAI: điều phối đa tác nhân theo vai trò, mục tiêu, câu chuyện nền riêng cho từng tác nhân. github.com/crewAIInc/crewAI",
+                "33 — CopilotKit: nhúng copilot AI trực tiếp vào ứng dụng React. github.com/CopilotKit/CopilotKit"
+              ]
+            },
+            {
+              "id": "tc-fw-local-ai",
+              "type": "framework",
+              "title": "Local AI",
+              "steps": [
+                "34 — Ollama: chạy LLM cục bộ chỉ với một lệnh. github.com/ollama/ollama",
+                "35 — Open WebUI: giao diện kiểu ChatGPT nhưng tự lưu trữ (self-hosted). github.com/open-webui/open-webui",
+                "36 — LlamaFile: đóng gói LLM thành một tệp thực thi duy nhất, không phụ thuộc ngoài. github.com/Mozilla-Ocho/llamafile",
+                "37 — Unsloth: tinh chỉnh (fine-tune) mô hình nhanh hơn 2 lần, giảm 70% bộ nhớ sử dụng. github.com/unslothai/unsloth"
+              ]
+            },
+            {
+              "id": "tc-fw-workflow",
+              "type": "framework",
+              "title": "Workflow & Automation",
+              "steps": [
+                "38 — n8n: nền tảng automation mã nguồn mở, hơn 400 tích hợp cộng thêm các node AI. github.com/n8n-io/n8n",
+                "39 — Langflow: kéo-thả trực quan để dựng pipeline tác nhân — 140 nghìn sao. github.com/langflow-ai/langflow",
+                "40 — Huginn: tác nhân web tự lưu trữ, phục vụ giám sát và cảnh báo, ưu tiên quyền riêng tư. github.com/huginn/huginn"
+              ]
+            },
+            {
+              "id": "tc-fw-search-data",
+              "type": "framework",
+              "title": "Search & Data",
+              "steps": [
+                "41 — GPT Researcher: tự động nghiên cứu và tổng hợp thành báo cáo. github.com/assafelovic/gpt-researcher",
+                "42 — Firecrawl: chuyển bất kỳ trang web nào thành dữ liệu sẵn sàng cho LLM. github.com/mendableai/firecrawl",
+                "43 — Vanna AI: chuyển ngôn ngữ tự nhiên thành câu lệnh SQL. github.com/vanna-ai/vanna"
+              ]
+            },
+            {
+              "id": "tc-fw-dev-tools",
+              "type": "framework",
+              "title": "Dev Tools",
+              "steps": [
+                "44 — Codebase Memory MCP: biến codebase thành một đồ thị tri thức bền vững. github.com/DeusData/codebase-memory-mcp",
+                "45 — DSPy: lập trình (thay vì chỉ viết prompt) cho các mô hình nền tảng. github.com/stanfordnlp/dspy",
+                "46 — Spec Kit (GitHub): phát triển theo hướng đặc tả — viết spec, để AI sinh mã — hơn 50 nghìn sao. github.com/github/spec-kit",
+                "47 — NVIDIA NemoClaw: sandbox an toàn dành cho các tác nhân tự trị. github.com/NVIDIA/NemoClaw"
+              ]
+            },
+            {
+              "id": "tc-fw-bo-suu-tap",
+              "type": "framework",
+              "title": "Bộ sưu tập tuyển chọn",
+              "steps": [
+                "48 — Awesome Claude Skills: danh sách kỹ năng được tuyển chọn kỹ, hơn 22 nghìn sao. github.com/travisvn/awesome-claude-skills",
+                "49 — Anthropic Skills Repo: các triển khai tham khảo chính thức từ Anthropic. github.com/anthropics/skills",
+                "50 — Awesome Agents: hơn 100 công cụ tác nhân mã nguồn mở được tuyển chọn. github.com/kyrolabs/awesome-agents",
+                "51 — MAGI//ARCHIVE: nguồn cấp dữ liệu hàng ngày về các repo AI mới xuất hiện. tom-doerr.github.io/repo_posts"
+              ]
+            },
+            {
+              "id": "tc-fw-dieu-phoi",
+              "type": "framework",
+              "title": "Điều phối Tác nhân & Đa Tác nhân",
+              "steps": [
+                "52 — gstack: dùng Claude Code như một nhóm kỹ thuật ảo. github.com/garrytan/gstack",
+                "53 — cmux: chạy nhiều tác nhân Claude song song. github.com/craigsc/cmux",
+                "54 — figaro: điều phối cả một hạm đội tác nhân Claude trên desktop. github.com/byt3bl33d3r/figaro",
+                "55 — claude-squad: chạy các tác nhân terminal trong nhiều phiên song song. github.com/smtg-ai/claude-squad",
+                "56 — deer-flow (ByteDance): tác nhân phụ và sandbox hoạt động thông qua cơ chế kỹ năng. github.com/bytedance/deer-flow",
+                "57 — SWE-AF: khởi động cả một nhóm kỹ thuật ảo chỉ bằng một lệnh gọi API. github.com/Agent-Field/SWE-AF",
+                "58 — AIlice: tách tác vụ phức tạp thành các tác nhân con, sinh ra động theo nhu cầu. github.com/myshell-ai/AIlice",
+                "59 — Agent Alchemy: kết hợp Claude Code với plugin và trình quản lý tác vụ riêng. github.com/sequenzia/agent-alchemy"
+              ]
+            },
+            {
+              "id": "tc-fw-mcp",
+              "type": "framework",
+              "title": "MCP & Tích hợp",
+              "steps": [
+                "60 — MCP Playwright: tự động hóa trình duyệt cho LLM qua Playwright. github.com/executeautomation/mcp-playwright",
+                "61 — stealth-browser-mcp: tự động hóa trình duyệt né các cơ chế phát hiện bot — xem ghi chú cảnh báo bên dưới trước khi dùng. github.com/vibheksoni/stealth-browser-mcp",
+                "62 — fastmcp: xây máy chủ MCP tối giản bằng Python. github.com/jlowin/fastmcp",
+                "63 — markdownify-mcp: chuyển PDF, hình ảnh, âm thanh thành Markdown. github.com/zcaceres/markdownify-mcp"
+              ]
+            },
+            {
+              "id": "tc-goi-y-phoi-hop",
+              "type": "case-study",
+              "title": "Một cách phối ba mảnh thành quy trình nghiên cứu cá nhân",
+              "body": "Ba mục trong danh sách trên có thể ăn khớp với nhau nếu mục tiêu là dựng một quy trình nghiên cứu — ghi chép cá nhân: Tavily (24) đóng vai công cụ tìm kiếm có cấu trúc cho tác nhân, Context7 (25) đảm bảo Claude luôn có tài liệu thư viện mới nhất khi viết code liên quan, còn Obsidian Skills (21) hoặc tích hợp NotebookLM (20) đóng vai nơi lưu và liên kết lại ghi chú sau mỗi phiên nghiên cứu.\n\nCách phối này hợp lý về mặt logic — mỗi công cụ đúng chức năng cần cho vai trò được gán — nhưng đây là suy luận dựa trên mô tả trong danh sách nguồn, chưa phải kết quả đã tự cài đặt và chạy thử tổ hợp cụ thể này.",
+              "source": "Gợi ý biên soạn thêm, không thuộc danh sách nguồn"
+            },
+            {
+              "id": "tc-bai-tap",
+              "type": "exercise",
+              "title": "Chọn và thử nghiệm nhanh",
+              "prompt": "Chọn đúng hai mục trong danh sách trên phù hợp nhất với công việc bạn đang làm hàng tuần — một mục thuộc nhóm chính thức của Anthropic (mục 01-05, 15 hoặc 49) và một mục thuộc nhóm còn lại. Đọc README của cả hai repo, cài trên một dự án thử nghiệm (không phải dự án thật), rồi chạy thử một tác vụ thật với chúng.",
+              "hint": "Ưu tiên repo có commit gần đây và issue được phản hồi — đó là dấu hiệu dự án còn được bảo trì tốt hơn là chỉ nhìn số sao.",
+              "answer": "Không có đáp án cố định — kết quả mong đợi là bạn biết công cụ nào thực sự hợp với quy trình làm việc của mình, không chỉ dựa vào mô tả."
+            },
+            {
+              "id": "tc-canh-bao",
+              "type": "note",
+              "title": "Kiểm chứng trước khi cài — đặc biệt với công cụ tự động hóa trình duyệt",
+              "body": "Số sao trên GitHub phản ánh mức độ chú ý, không phải mức độ an toàn hay còn được bảo trì. Trước khi cấp quyền chạy lệnh, đọc file hoặc gọi mạng cho một MCP server hay kỹ năng bên thứ ba, hãy kiểm tra giấy phép, ngày cập nhật gần nhất, và đúng những gì nó yêu cầu quyền truy cập. Với các công cụ tự động hóa trình duyệt như MCP Playwright (60) hay đặc biệt là stealth-browser-mcp (61) — công cụ được mô tả là né được cơ chế phát hiện bot — chỉ nên dùng trên trang mình có quyền, hoặc nơi điều khoản dịch vụ cho phép tự động hóa; dùng để né kiểm tra chống bot trên dịch vụ cấm việc đó là vi phạm điều khoản sử dụng của trang đó.",
+              "variant": "warning"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

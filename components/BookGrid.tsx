@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Book } from "@/lib/types";
 import { CATEGORY_TREE } from "@/lib/categories";
 import CategorySidebar from "./CategorySidebar";
+import BookThumbnail from "./BookThumbnail";
 
 type SortOrder = "newest" | "oldest" | "title";
 
@@ -75,7 +76,7 @@ export default function BookGrid({ books }: { books: Book[] }) {
   }
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-14 lg:flex lg:items-start lg:gap-10">
+    <section className="mx-auto max-w-[1800px] px-4 py-14 sm:px-6 lg:flex lg:items-start lg:gap-8">
       <CategorySidebar
         tree={CATEGORY_TREE}
         countByDomain={countByDomain}
@@ -141,52 +142,53 @@ export default function BookGrid({ books }: { books: Book[] }) {
             Không tìm thấy sách phù hợp — thử đổi từ khoá hoặc bỏ bớt bộ lọc.
           </p>
         ) : (
-          <div className="mt-4 grid gap-5 sm:grid-cols-2">
+          <div className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((book) => {
             const date = formatDate(book.meta.publishedAt);
             return (
               <Link
                 key={book.slug}
                 href={`/${book.slug}`}
-                className="group rounded-xl border border-border bg-surface p-6 transition-colors hover:border-accent"
+                className="group overflow-hidden rounded-xl border border-border bg-surface transition-colors hover:border-accent"
               >
-                <span className="font-mono text-xs uppercase tracking-widest text-accent">
-                  {book.meta.sourceLabel}
-                </span>
-                <h2 className="mt-1.5 text-xl font-medium text-ink group-hover:text-accent transition-colors">
-                  {book.meta.title}
-                </h2>
-                <p className="mt-1.5 text-sm text-ink-soft line-clamp-2">
-                  {book.meta.subtitle}
-                </p>
+                <BookThumbnail src={book.meta.thumbnail} alt={book.meta.title} />
 
-                {(book.meta.author || date) && (
-                  <p className="mt-2 text-xs text-paper-400">
-                    {book.meta.author}
-                    {book.meta.author && date ? " · " : ""}
-                    {date}
+                <div className="p-6">
+                  <h2 className="text-xl font-medium text-ink group-hover:text-accent transition-colors">
+                    {book.meta.title}
+                  </h2>
+                  <p className="mt-1.5 text-sm text-ink-soft line-clamp-2">
+                    {book.meta.subtitle}
                   </p>
-                )}
 
-                {book.meta.tags && book.meta.tags.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {book.meta.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-accent-soft px-2 py-0.5 font-mono text-[11px] text-accent"
-                      >
-                        #{tag}
+                  {(book.meta.author || date) && (
+                    <p className="mt-2 text-xs text-paper-400">
+                      {book.meta.author}
+                      {book.meta.author && date ? " · " : ""}
+                      {date}
+                    </p>
+                  )}
+
+                  {book.meta.tags && book.meta.tags.length > 0 && (
+                    <div className="mt-2 flex flex-wrap gap-1.5">
+                      {book.meta.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-accent-soft px-2 py-0.5 font-mono text-[11px] text-accent"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs font-mono text-paper-400">
+                    {book.meta.stats.map((s) => (
+                      <span key={s.label}>
+                        <span className="text-ink">{s.value}</span> {s.label}
                       </span>
                     ))}
                   </div>
-                )}
-
-                <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs font-mono text-paper-400">
-                  {book.meta.stats.map((s) => (
-                    <span key={s.label}>
-                      <span className="text-ink">{s.value}</span> {s.label}
-                    </span>
-                  ))}
                 </div>
               </Link>
             );
