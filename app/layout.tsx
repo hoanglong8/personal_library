@@ -37,7 +37,15 @@ export default function RootLayout({
             <Link href="/" className="font-mono text-sm font-medium text-ink">
               {siteTitle}
             </Link>
-            <ThemeToggle />
+            <div className="flex items-center gap-4">
+              <Link
+                href="/chen-anh"
+                className="text-xs text-paper-400 hover:text-accent transition-colors"
+              >
+                Chèn ảnh
+              </Link>
+              <ThemeToggle />
+            </div>
           </div>
         </header>
         <main className="flex-1">{children}</main>

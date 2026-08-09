@@ -43,7 +43,7 @@ biểu tượng bút chì → sửa → Commit. Rủi ro: gõ sai cú pháp JSON
 phẩy/ngoặc) sẽ làm site **build lỗi và không deploy được** — nếu không
 chắc, dùng Cách A hoặc nhờ Claude kiểm tra lại trước khi push.
 
-Sau khi sửa xong, xem mục 4 để đưa bản mới lên site live — sửa file không
+Sau khi sửa xong, xem mục 5 để đưa bản mới lên site live — sửa file không
 tự động cập nhật trang đang chạy.
 
 ## 3. Thêm một sách mới
@@ -57,7 +57,7 @@ tự động cập nhật trang đang chạy.
    sinh, không cần sửa code.
 4. Không cần tạo Supabase project mới — một project phục vụ mọi sách nhờ
    cột `book_id` cách ly bình luận theo từng sách.
-5. Deploy lại (mục 4).
+5. Deploy lại (mục 5).
 
 Chi tiết máy móc hơn (quy tắc đặt `slug`, cách viết `author`/`tags`/
 `publishedAt`/`sourceUrl` trung thực) nằm ở
@@ -74,9 +74,32 @@ Claude điền `meta.domain`/`meta.field` bằng đúng `id` có sẵn trong
 `lib/categories.ts` (không tự đặt tên domain mới). Nếu chưa có nhánh phù
 hợp trong cây hiện tại, nói Claude mở rộng `lib/categories.ts` trước.
 
-## 4. Deploy
+## 4. Chèn ảnh — thumbnail và ảnh trong bài
 
-### 4a. Deploy thủ công (đang dùng, luôn chạy được)
+Trang **`/chen-anh`** (link "Chèn ảnh" ở header) là công cụ tự phục vụ:
+dán link ảnh có sẵn, hoặc chọn file từ máy để tải lên — cả hai cách đều
+trả về một link ảnh công khai kèm nút "Chép link". Trang này **chỉ tạo
+link ảnh**, không tự gắn vào sách nào — đưa link đó cho Claude Code (hoặc
+tự dán vào `content/portal.json`) để thực sự dùng làm:
+
+- **Ảnh đại diện (thumbnail)** của một sách: điền vào `meta.thumbnail`.
+  Sách không có `thumbnail` sẽ tự hiện ảnh mặc định theo tông màu portal.
+- **Ảnh chèn giữa nội dung bài viết**: thêm một section kiểu
+  `{ "type": "image", "url": "...", "alt": "...", "caption": "..." }` vào
+  mảng `sections` của module, ở đúng vị trí muốn ảnh xuất hiện.
+
+**Tải ảnh lên** dùng Supabase Storage (bucket `portal-images`, cùng
+project Supabase phục vụ bình luận) — **cần chạy một lần**
+`supabase/storage-setup.sql` trong Supabase SQL Editor trước khi tab "Tải
+ảnh lên" hoạt động (tab "Dán link có sẵn" luôn hoạt động, không phụ thuộc
+bước này). Bucket giới hạn sẵn 5MB/ảnh và chỉ nhận jpg/png/webp/gif/svg,
+mở tự do không cần đăng nhập — cùng triết lý "mở, không xác thực" như
+bảng bình luận (xem mục 6). Nếu bị lạm dụng sau này, siết policy insert
+trong `storage-setup.sql` (ví dụ yêu cầu `auth.uid()`).
+
+## 5. Deploy
+
+### 5a. Deploy thủ công (đang dùng, luôn chạy được)
 
 ```bash
 cd creat_gitbook_ca_nhan
@@ -86,7 +109,7 @@ npx vercel --prod
 
 Lệnh này build và đẩy thẳng lên Vercel production, không phụ thuộc Git.
 
-### 4b. Bật tự động deploy khi push GitHub (chưa nối — làm 1 lần)
+### 5b. Bật tự động deploy khi push GitHub (chưa nối — làm 1 lần)
 
 Hiện tại push code lên GitHub **không** tự động deploy — lần đầu nối
 Vercel với repo qua CLI đã báo lỗi *"Failed to connect repo to project"*
@@ -101,10 +124,10 @@ Applications → Vercel → Repository access** và thêm quyền cho repo này.
 
 Sau khi nối xong: mỗi lần `git push` lên nhánh `main` (dù bạn tự sửa trên
 GitHub hay Claude push giúp) site sẽ tự build và deploy — không cần chạy
-lệnh 4a nữa. Tự kiểm tra bằng cách push một thay đổi nhỏ và xem tab
+lệnh 5a nữa. Tự kiểm tra bằng cách push một thay đổi nhỏ và xem tab
 **Deployments** trên Vercel có chạy job mới không.
 
-## 5. Quản lý bình luận (Supabase)
+## 6. Quản lý bình luận (Supabase)
 
 - Xem/xoá bình luận: **supabase.com/dashboard** → project
   `viet-sach-cung-claude-portal` → **Table Editor** → bảng `comments`.
@@ -117,7 +140,7 @@ lệnh 4a nữa. Tự kiểm tra bằng cách push một thay đổi nhỏ và x
   đầu chưa thu hồi, vào **supabase.com/dashboard/account/tokens** thu hồi
   — token đó có quyền tạo/xoá project, không nên để tồn tại lâu.
 
-## 6. Checklist trước khi coi một lần cập nhật là "xong"
+## 7. Checklist trước khi coi một lần cập nhật là "xong"
 
 - [ ] `npm run build` sạch (không lỗi type/JSON).
 - [ ] `npm run lint` sạch.
@@ -126,7 +149,7 @@ lệnh 4a nữa. Tự kiểm tra bằng cách push một thay đổi nhỏ và x
 - [ ] Sau khi deploy: tự mở link production, kiểm tra đúng nội dung vừa
       sửa/thêm — đừng tin log "Deployment ready" là đủ.
 
-## 7. Tham chiếu nhanh
+## 8. Tham chiếu nhanh
 
 | Thứ | Giá trị |
 |---|---|

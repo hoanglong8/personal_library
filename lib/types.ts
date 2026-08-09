@@ -3,7 +3,8 @@ export type SectionType =
   | "framework"
   | "case-study"
   | "exercise"
-  | "note";
+  | "note"
+  | "image";
 
 export type NoteVariant = "tip" | "warning" | "definition";
 
@@ -43,12 +44,21 @@ export interface NoteSection extends BaseSection {
   variant: NoteVariant;
 }
 
+export interface ImageSection extends BaseSection {
+  type: "image";
+  /** URL công khai của ảnh — dán link có sẵn, hoặc link lấy từ trang /chen-anh sau khi tải ảnh lên. */
+  url: string;
+  alt: string;
+  caption?: string;
+}
+
 export type Section =
   | ConceptSection
   | FrameworkSection
   | CaseStudySection
   | ExerciseSection
-  | NoteSection;
+  | NoteSection
+  | ImageSection;
 
 export interface Module {
   id: string;

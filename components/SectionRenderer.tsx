@@ -4,6 +4,7 @@ import FrameworkCard from "./FrameworkCard";
 import CaseStudyCard from "./CaseStudyCard";
 import ExerciseCard from "./ExerciseCard";
 import NoteCallout from "./NoteCallout";
+import ImageBlock from "./ImageBlock";
 import CommentThread from "./CommentThread";
 
 export default function SectionRenderer({
@@ -20,6 +21,7 @@ export default function SectionRenderer({
       {section.type === "case-study" && <CaseStudyCard section={section} />}
       {section.type === "exercise" && <ExerciseCard section={section} />}
       {section.type === "note" && <NoteCallout section={section} />}
+      {section.type === "image" && <ImageBlock section={section} />}
       <CommentThread bookSlug={bookSlug} sectionId={section.id} />
     </div>
   );
