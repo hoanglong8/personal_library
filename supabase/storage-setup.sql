@@ -21,12 +21,12 @@ on conflict (id) do update set
   file_size_limit = excluded.file_size_limit,
   allowed_mime_types = excluded.allowed_mime_types;
 
--- Anyone can read/view images in this bucket (needed for the public site
--- to render them, and for the get_public_url() links pasted into
--- portal.json to work without auth).
-create policy "portal-images are publicly readable"
-  on storage.objects for select
-  using (bucket_id = 'portal-images');
+-- No SELECT policy needed: public buckets (public = true above) already
+-- serve object reads via the public URL without going through RLS. Adding
+-- a broad SELECT policy on storage.objects would only let clients LIST/
+-- enumerate every uploaded file's metadata — Supabase's own dashboard
+-- linter flags this as unnecessary exposure for a public bucket, so it's
+-- deliberately left out.
 
 -- Anyone (anon key) can upload to this bucket — no auth required by
 -- design, matching the comments policy. Tighten this (e.g. require
