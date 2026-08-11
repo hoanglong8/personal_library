@@ -1,105 +1,132 @@
 # Hướng dẫn vận hành Portal "Thư viện số"
 
-Portal học tập chạy tại **https://thuvien-so.vercel.app** (domain cũ
-`https://creatgitbookcanhan.vercel.app` vẫn còn sống, trỏ cùng
-deployment — chưa gỡ để tránh hỏng link đã chia sẻ trước đó), dựng bởi
-skill `foxai-learning-portal` (`~/.claude/skills/foxai-learning-portal`
-trên máy có Claude Code). Tài liệu này ghi lại cách sửa nội dung, thêm
-sách mới, và deploy — để đọc lại khi cần mà không phải hỏi lại từ đầu.
+Portal chạy tại **https://thuvien-so.vercel.app** (alias cũ
+`https://creatgitbookcanhan.vercel.app` vẫn sống, trỏ cùng deployment).
+Bắt đầu từ skill `foxai-learning-portal`, sau đó nâng cấp qua nhiều giai
+đoạn (xem `.claude/plans/roadmap-thu-vien-so.md` để biết lịch sử/lý do
+từng quyết định kiến trúc). Tài liệu này ghi lại cách vận hành hiện tại —
+đọc lại khi cần thay vì hỏi lại từ đầu.
 
 ## 1. Kiến trúc tóm tắt
 
-- **Code + nội dung**: repo GitHub `hoanglong8/creat_gitbook_ca_nhan`,
-  Next.js 16. Toàn bộ nội dung sách nằm trong **một file**:
-  `content/portal.json`.
-- **Bình luận**: lưu trên Supabase project `viet-sach-cung-claude-portal`
-  (ref `lamaeusnlxnlcfahtube`), không nằm trong repo.
-- **Hosting**: Vercel project `hoanglong8s-projects/creat_gitbook_ca_nhan`.
-- Một portal chứa được **nhiều sách** — mỗi sách là một phần tử trong mảng
-  `books` của `portal.json`, có URL riêng `/<slug-sách>`. Hiện có 2 sách:
-  `/viet-sach-cung-claude` (Hoàng Trần) và `/lich-su-ai` (Trần Đức Hoàng).
-- Sách có `meta.sourceUrl` (link Google Drive) sẽ tự có nút nổi
-  "📄 Xem bản gốc" — mở panel nhúng PDF gốc song song với nội dung đã viết
-  lại. Cả 2 sách hiện có đều đã bật tính năng này.
-- Trang chủ có **panel chủ đề bên trái** (`components/CategorySidebar.tsx`)
-  phân loại sách theo cây cố định ở `lib/categories.ts`: Khoa học tự nhiên,
-  Khoa học xã hội, Nhân học, Công nghệ thông tin (mỗi domain có vài nhánh
-  con). Gán qua `meta.domain`/`meta.field` trong `portal.json` — xem mục 3.
+- **Code**: repo GitHub `hoanglong8/personal_library` (đổi tên từ
+  `creat_gitbook_ca_nhan` — remote đã cập nhật, GitHub tự redirect nếu ai
+  còn dùng tên cũ), Next.js 16, thư mục local
+  `E:\Github_Opensource\GitBook_ca_nhan\creat_gitbook_ca_nhan`.
+- **Nội dung sách — nguồn dữ liệu thật là Supabase Postgres (bảng
+  `books`), KHÔNG PHẢI `content/portal.json`** — file đó chỉ còn là bản
+  lưu trữ lịch sử của lần migrate đầu tiên, sửa file đó không có tác dụng
+  gì với site đang chạy. Mọi thay đổi nội dung đi qua `/admin/edit/[slug]`
+  hoặc AI job queue (`/admin/jobs`), xem mục 2-3.
+- **Auth**: 2 tầng tách biệt — độc giả đăng nhập công khai bằng magic link
+  (Supabase Auth), admin nhận diện bằng biến môi trường `ADMIN_EMAIL`
+  (không phải 1 tầng quyền riêng trong Supabase). Mọi Route Handler admin
+  verify qua `Authorization: Bearer <token>`, xem `lib/adminAuth.ts`.
+- **Hosting**: Vercel project `hoanglong8s-projects/creat_gitbook_ca_nhan`
+  (tên project trên Vercel KHÔNG đổi theo tên repo GitHub).
+- **Supabase project**: `viet-sach-cung-claude-portal` (ref
+  `lamaeusnlxnlcfahtube`) — chứa toàn bộ bảng: `books`, `comments`,
+  `reading_progress`, `bookmarks`, `ai_jobs`, storage bucket
+  `portal-images`.
+- Một portal chứa nhiều sách, mỗi sách 1 URL `/<slug>`. Sách có
+  `meta.sourceUrl` (link Google Drive) tự có nút "📄 Xem bản gốc". Panel
+  chủ đề bên trái trang chủ phân loại theo `lib/categories.ts`.
 
 ## 2. Sửa nội dung một sách đang có
 
-Nội dung (chương, case study, khung kiến thức, bài tập, tag, tác giả...)
-nằm trong `content/portal.json`, theo kiểu dữ liệu ở `lib/types.ts`. Có 2
-cách sửa:
+**Cách A — trang biên tập (khuyến nghị, không cần Claude Code):**
+`/admin/edit/<slug>` (link "Sửa nội dung" ở `/admin/drafts`, hoặc gõ thẳng
+URL) — sửa tiêu đề/mô tả/tag/thumbnail, sửa từng mục theo đúng loại
+(concept/framework/case-study/note/exercise/image), xoá mục, thêm ảnh
+(nút "Thêm ảnh vào cuối chương", lấy link ở `/chen-anh`), hoặc nhập cả 1
+chương mới từ file `.md` (nút "+ Nhập chương mới từ file .md" — dòng `#`
+đầu file → tên chương, `##` → mục mới, `![alt](link)` → khối ảnh đúng vị
+trí). Bấm **Lưu** để ghi thẳng vào Postgres — nếu sách đang công khai,
+thay đổi lên site ngay lập tức, không cần build/deploy lại.
 
-**Cách A — nhờ Claude Code (khuyến nghị):** mở Claude Code trong thư mục
-project, mô tả muốn đổi gì ("sửa đoạn case study ở chương 3", "thêm tag
-mới cho sách", "đổi tên tác giả"...). Claude sửa đúng field trong JSON,
-`npm run build` để kiểm cú pháp trước khi commit, rồi hỏi bạn có muốn
-deploy luôn không.
+**Cách B — AI Job Queue** (`/admin/jobs`): các job "Gắn tag"/"Tóm
+tắt"/"Phân loại" đề xuất chỉnh sửa cho sách **đã publish**, đi qua bước
+duyệt riêng ở `/admin/drafts` trước khi áp dụng — xem mục 3.
 
-**Cách B — tự sửa trên GitHub.com:** vào repo → `content/portal.json` →
-biểu tượng bút chì → sửa → Commit. Rủi ro: gõ sai cú pháp JSON (thiếu dấu
-phẩy/ngoặc) sẽ làm site **build lỗi và không deploy được** — nếu không
-chắc, dùng Cách A hoặc nhờ Claude kiểm tra lại trước khi push.
+**Cách C — nhờ Claude Code**: mô tả muốn đổi gì, Claude sửa trực tiếp qua
+Supabase (cần `SUPABASE_SERVICE_ROLE_KEY` trong `.env.local`) hoặc hướng
+dẫn qua UI ở trên.
 
-Sau khi sửa xong, xem mục 5 để đưa bản mới lên site live — sửa file không
-tự động cập nhật trang đang chạy.
+Không còn "Cách sửa `content/portal.json` trên GitHub.com" — sửa file đó
+không ảnh hưởng gì tới site nữa.
 
 ## 3. Thêm một sách mới
 
-1. Đưa file nguồn (PDF/DOCX/XLSX) cho Claude Code, nói muốn thêm vào
-   portal đang có (không phải tạo portal mới).
-2. Claude trích nội dung + soạn thành một `book` object mới (title,
-   author, tags, modules...), thêm vào cuối mảng `books` trong
-   `content/portal.json` — **không đụng vào sách cũ**.
-3. `npm run build && npm run lint` phải sạch — route mới `/<slug-mới>` tự
-   sinh, không cần sửa code.
-4. Không cần tạo Supabase project mới — một project phục vụ mọi sách nhờ
-   cột `book_id` cách ly bình luận theo từng sách.
-5. Deploy lại (mục 5).
+**3 cách, tuỳ nguồn nội dung:**
 
-Chi tiết máy móc hơn (quy tắc đặt `slug`, cách viết `author`/`tags`/
-`publishedAt`/`sourceUrl` trung thực) nằm ở
-`~/.claude/skills/foxai-learning-portal/references/content-structuring.md`.
+1. **Từ file `.md` đã có sẵn (dịch tay, hoặc công cụ ngoài như
+   silaBook)**: `/admin/import` — điền tên/slug/ngôn ngữ, chọn "Bản dịch
+   của: [sách gốc]" nếu đây là bản dịch (để nút chuyển ngôn ngữ nhận diện
+   đúng), tải lên 1 hoặc nhiều file `.md` (mỗi file = 1 chương) → tạo sách
+   **nháp** → chuyển sang `/admin/edit/<slug>` để rà lại → duyệt/publish ở
+   `/admin/drafts`.
+2. **Dịch tự động bằng AI**: `/admin/jobs` → job "Dịch thuật" → chọn sách
+   gốc + mã ngôn ngữ đích → "Xử lý ngay" → ra sách nháp (đã đánh dấu "chưa
+   xác nhận") → rà lại + duyệt/publish như trên.
+3. **Từ tài liệu Google Drive**: `/admin/jobs` → job "Nhập từ Google
+   Drive" → tự đọc 1 Google Doc **chưa từng ingest** trong folder đã cấu
+   hình (`GOOGLE_DRIVE_INGEST_FOLDER_URL`), tóm tắt thành 1 chương (không
+   bịa nội dung không có trong tài liệu gốc) → sách nháp.
 
-**Muốn bật "Xem bản gốc" cho sách mới?** Đưa Claude link chia sẻ Google
-Drive tới file gốc (đặt quyền chia sẻ **"Anyone with the link"**, không thì
-panel nhúng sẽ báo lỗi truy cập) — Claude điền vào `meta.sourceUrl`, không
-cần sửa code gì thêm.
+Mọi sách mới đều ở trạng thái **draft** (chưa duyệt, chưa công khai) —
+xem mục "Vòng đời 1 sách" bên dưới.
 
-**Muốn sách mới hiện đúng chỗ trong panel chủ đề bên trái?** Nói Claude
-sách thuộc lĩnh vực nào (vd "sách này về Vật lý" hoặc "về AI/công nghệ") —
-Claude điền `meta.domain`/`meta.field` bằng đúng `id` có sẵn trong
-`lib/categories.ts` (không tự đặt tên domain mới). Nếu chưa có nhánh phù
-hợp trong cây hiện tại, nói Claude mở rộng `lib/categories.ts` trước.
+**Muốn sách hiện đúng chỗ trong panel chủ đề bên trái?** Sửa
+`meta.domain`/`meta.field` ở trang edit, dùng đúng `id` có sẵn trong
+`lib/categories.ts` (không tự đặt tên domain mới).
 
-## 4. Chèn ảnh — thumbnail và ảnh trong bài
+## 4. Vòng đời 1 sách (draft → reviewed → published)
 
-Trang **`/chen-anh`** (link "Chèn ảnh" ở header) là công cụ tự phục vụ:
-dán link ảnh có sẵn, hoặc chọn file từ máy để tải lên — cả hai cách đều
-trả về một link ảnh công khai kèm nút "Chép link". Trang này **chỉ tạo
-link ảnh**, không tự gắn vào sách nào — đưa link đó cho Claude Code (hoặc
-tự dán vào `content/portal.json`) để thực sự dùng làm:
+```
+draft (mới, AI/nhập tay tạo ra, chưa ai xem)
+  --[Duyệt ở /admin/drafts]--> reviewed (nội dung đã duyệt, CHƯA công khai)
+  --[Publish ở /admin/drafts]--> published (công khai trên trang chủ)
+  --[Ngừng công khai]--> reviewed (rút khỏi trang chủ, giữ nguyên nội dung)
+```
 
-- **Ảnh đại diện (thumbnail)** của một sách: điền vào `meta.thumbnail`.
-  Sách không có `thumbnail` sẽ tự hiện ảnh mặc định theo tông màu portal.
-- **Ảnh chèn giữa nội dung bài viết**: thêm một section kiểu
-  `{ "type": "image", "url": "...", "alt": "...", "caption": "..." }` vào
-  mảng `sections` của module, ở đúng vị trí muốn ảnh xuất hiện.
+Sách **đã publish** mà bị 1 job AI (tag/summarize/classify) đề xuất sửa:
+đề xuất nằm ở cột riêng (`pending_data`), **không đụng vào bản đang công
+khai** cho tới khi bấm Duyệt ở `/admin/drafts` — Duyệt lúc đó áp dụng
+thẳng, sách vẫn ở `published` xuyên suốt (không qua lại `draft`).
 
-**Tải ảnh lên** dùng Supabase Storage (bucket `portal-images`, cùng
-project Supabase phục vụ bình luận) — **cần chạy một lần**
-`supabase/storage-setup.sql` trong Supabase SQL Editor trước khi tab "Tải
-ảnh lên" hoạt động (tab "Dán link có sẵn" luôn hoạt động, không phụ thuộc
-bước này). Bucket giới hạn sẵn 5MB/ảnh và chỉ nhận jpg/png/webp/gif/svg,
-mở tự do không cần đăng nhập — cùng triết lý "mở, không xác thực" như
-bảng bình luận (xem mục 6). Nếu bị lạm dụng sau này, siết policy insert
-trong `storage-setup.sql` (ví dụ yêu cầu `auth.uid()`).
+`/admin/drafts` chia 3 khu vực đúng theo vòng đời trên: **Chờ duyệt**,
+**Đã duyệt chờ công khai**, **Đang công khai**.
 
-## 5. Deploy
+## 5. Chèn ảnh — thumbnail và ảnh trong bài
 
-### 5a. Deploy thủ công (đang dùng, luôn chạy được)
+Trang **`/chen-anh`** (link "Chèn ảnh" ở header): dán link ảnh có sẵn,
+hoặc tải file từ máy lên Supabase Storage (bucket `portal-images`, cần đã
+chạy `supabase/storage-setup.sql` 1 lần) — trả về 1 link ảnh công khai.
+Dùng link đó ở trang edit (`meta.thumbnail`, hoặc nút "Thêm ảnh vào cuối
+chương") — không cần sửa JSON tay nữa.
+
+## 6. AI Job Queue (`/admin/jobs`)
+
+5 loại job, đều gọi Gemini (`GEMINI_API_KEY`, model mặc định
+`gemini-flash-latest` — dùng alias `-latest`, không hard-code phiên bản
+cụ thể, tránh lặp lại lỗi model bị Google deprecate):
+
+| Job | Input | Kết quả |
+|---|---|---|
+| Gắn tag | 1 sách đã publish | đề xuất `meta.tags` mới |
+| Tóm tắt | 1 sách đã publish | đề xuất `meta.subtitle` mới |
+| Phân loại | 1 sách đã publish | đề xuất `meta.domain`/`field` (ép đúng `lib/categories.ts`, không cho AI tự bịa) |
+| Dịch thuật | 1 sách + mã ngôn ngữ | 1 sách nháp mới, giữ nguyên `module.id`/`section.id` để liên kết đa ngôn ngữ |
+| Nhập từ Drive | folder Drive đã cấu hình | 1 sách nháp mới, tự bỏ qua file đã ingest trước đó |
+
+Job bấm "Xử lý ngay" chạy đồng bộ trong 1 request (không có worker nền) —
+nếu job kẹt ở `processing` quá 90 giây (vd Vercel timeout), nút tự đổi
+thành "có thể đã bị treo — bấm để thử lại", không cần sửa tay qua
+Supabase.
+
+## 7. Deploy
+
+### 7a. Deploy thủ công (đang dùng, luôn chạy được)
 
 ```bash
 cd creat_gitbook_ca_nhan
@@ -107,73 +134,62 @@ npm install && npm run build && npm run lint   # phải sạch
 npx vercel --prod
 ```
 
-Lệnh này build và đẩy thẳng lên Vercel production, không phụ thuộc Git.
-Vercel tự cập nhật `creatgitbookcanhan.vercel.app` (domain mặc định của
-project), **nhưng KHÔNG tự cập nhật `thuvien-so.vercel.app`** — domain đó
-là alias gán tay, không tự theo dõi "production". Phát hiện ngày
-2026-08-10: sau 1 lần `vercel --prod`, `creatgitbookcanhan.vercel.app` đã
-có tính năng mới nhưng `thuvien-so.vercel.app` vẫn phục vụ 1 bản deploy cũ
-(404 ở các route mới) cho tới khi chạy lệnh gán lại alias — **luôn chạy
-thêm bước này sau mỗi lần `vercel --prod`**:
+**Luôn chạy thêm bước này ngay sau đó** — `thuvien-so.vercel.app` là alias
+gán tay, không tự theo production:
 
 ```bash
-# lấy URL bản deploy vừa tạo từ output lệnh trên (dòng "Production ...")
+# lấy URL bản deploy vừa tạo từ dòng "Production ..." ở output lệnh trên
 npx vercel alias set <url-bản-deploy-vừa-tạo> thuvien-so.vercel.app
 ```
 
-Sau đó luôn kiểm chứng bằng `curl` thật vào `thuvien-so.vercel.app` (không
-chỉ tin log "Deployment ready" hay log gán alias) trước khi báo deploy
-xong. Muốn hết phải nhớ bước này: vào **Vercel Dashboard → project →
-Settings → Domains**, đặt `thuvien-so.vercel.app` làm domain chính
-("Production") thay vì chỉ là alias rời — việc này chỉ user tự làm được
-qua dashboard.
+Rồi kiểm chứng bằng `curl` thật vào `thuvien-so.vercel.app` — không tin
+log "Deployment ready" hay log gán alias là đủ. Muốn hết phải nhớ bước
+này: **Vercel Dashboard → project → Settings → Domains**, đặt
+`thuvien-so.vercel.app` làm domain chính ("Production").
 
-### 5b. Bật tự động deploy khi push GitHub (chưa nối — làm 1 lần)
+### 7b. Deploy tự động khi push GitHub (chưa nối)
 
-Hiện tại push code lên GitHub **không** tự động deploy — lần đầu nối
-Vercel với repo qua CLI đã báo lỗi *"Failed to connect repo to project"*
-(nhiều khả năng do Vercel GitHub App chưa được cấp quyền truy cập repo
-này). Đây là thao tác cấp quyền tài khoản, Claude không tự làm thay được.
-Để bật, tự bạn vào:
+Push code lên GitHub **không** tự động deploy (Vercel GitHub App chưa
+được cấp quyền truy cập repo `personal_library`). Muốn bật: **Vercel
+Dashboard → project `creat_gitbook_ca_nhan` → Settings → Git → Connect
+Git Repository** → chọn `hoanglong8/personal_library`.
 
-**Vercel Dashboard → chọn project `creat_gitbook_ca_nhan` → Settings →
-Git → Connect Git Repository** → chọn `hoanglong8/creat_gitbook_ca_nhan`.
-Nếu Vercel chưa thấy repo trong danh sách, vào **GitHub → Settings →
-Applications → Vercel → Repository access** và thêm quyền cho repo này.
+**Biến môi trường trên Vercel** (Project Settings → Environment
+Variables, môi trường Production) — khác hẳn `.env.local`, phải set riêng
+mỗi khi thêm biến mới, dễ quên: `NEXT_PUBLIC_SUPABASE_URL`,
+`NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`,
+`GEMINI_API_KEY`, `ADMIN_EMAIL`, `GOOGLE_SA_EMAIL`,
+`GOOGLE_SA_PRIVATE_KEY`, `GOOGLE_DRIVE_INGEST_FOLDER_URL`.
 
-Sau khi nối xong: mỗi lần `git push` lên nhánh `main` (dù bạn tự sửa trên
-GitHub hay Claude push giúp) site sẽ tự build và deploy — không cần chạy
-lệnh 5a nữa. Tự kiểm tra bằng cách push một thay đổi nhỏ và xem tab
-**Deployments** trên Vercel có chạy job mới không.
-
-## 6. Quản lý bình luận (Supabase)
+## 8. Quản lý bình luận (Supabase)
 
 - Xem/xoá bình luận: **supabase.com/dashboard** → project
-  `viet-sach-cung-claude-portal` → **Table Editor** → bảng `comments`.
-  Cột `book_id` cho biết bình luận thuộc sách nào.
-- Bình luận hiện mở tự do (không cần đăng nhập, không kiểm duyệt trước khi
-  hiện) — đúng thiết kế ban đầu. Nếu sau này cần duyệt trước khi hiện
-  công khai, xem mục "Chạy schema" trong
-  `references/supabase-setup.md` (thêm cột `approved`, sửa policy).
-- **Việc còn nợ**: nếu Personal Access Token Supabase dùng để setup ban
-  đầu chưa thu hồi, vào **supabase.com/dashboard/account/tokens** thu hồi
-  — token đó có quyền tạo/xoá project, không nên để tồn tại lâu.
+  `viet-sach-cung-claude-portal` → **Table Editor** → bảng `comments`
+  (cột `book_id` cho biết thuộc sách nào).
+- Bình luận mở tự do (không cần đăng nhập, không kiểm duyệt trước khi
+  hiện) — khác với `reading_progress`/`bookmarks` (RLS riêng theo
+  `auth.uid()`, chỉ chủ tài khoản đọc/sửa được của mình).
 
-## 7. Checklist trước khi coi một lần cập nhật là "xong"
+## 9. Checklist trước khi coi một lần cập nhật là "xong"
 
-- [ ] `npm run build` sạch (không lỗi type/JSON).
+- [ ] `npm run build` sạch (không lỗi type).
 - [ ] `npm run lint` sạch.
-- [ ] Mở `npm run dev` xem local trước khi deploy, nhất là sau khi sửa
-      tay trên GitHub.
-- [ ] Sau khi deploy: tự mở link production, kiểm tra đúng nội dung vừa
-      sửa/thêm — đừng tin log "Deployment ready" là đủ.
+- [ ] Mở `npm run dev` xem local trước khi deploy.
+- [ ] SQL migration mới (nếu có, trong `supabase/*.sql`) đã chạy trên
+      Supabase Dashboard thật, không chỉ viết file.
+- [ ] Biến môi trường mới (nếu có) đã set trên **cả** `.env.local`
+      **và** Vercel Production — thiếu 1 trong 2 nơi rất dễ bị bỏ sót.
+- [ ] Sau deploy: `npx vercel alias set` lại `thuvien-so.vercel.app`, rồi
+      tự `curl`/mở link production kiểm tra đúng nội dung — đừng tin log
+      "Deployment ready" là đủ.
 
-## 8. Tham chiếu nhanh
+## 10. Tham chiếu nhanh
 
 | Thứ | Giá trị |
 |---|---|
 | Site live | https://thuvien-so.vercel.app (alias cũ: https://creatgitbookcanhan.vercel.app) |
-| Repo GitHub | https://github.com/hoanglong8/creat_gitbook_ca_nhan |
+| Repo GitHub | https://github.com/hoanglong8/personal_library |
 | Vercel project | `hoanglong8s-projects/creat_gitbook_ca_nhan` |
 | Supabase project | `viet-sach-cung-claude-portal` (ref `lamaeusnlxnlcfahtube`) |
-| Skill nguồn | `~/.claude/skills/foxai-learning-portal` |
+| Roadmap/lịch sử quyết định | `.claude/plans/roadmap-thu-vien-so.md` |
+| Skill nguồn ban đầu | `~/.claude/skills/foxai-learning-portal` |
