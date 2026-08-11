@@ -1,11 +1,7 @@
 import { notFound } from "next/navigation";
 import Hero from "@/components/Hero";
 import ModuleGrid from "@/components/ModuleGrid";
-import { getBook, getBookSlugs } from "@/lib/content";
-
-export function generateStaticParams() {
-  return getBookSlugs().map((book) => ({ book }));
-}
+import { getBook } from "@/lib/content";
 
 export default async function BookHomePage({
   params,
@@ -13,12 +9,12 @@ export default async function BookHomePage({
   params: Promise<{ book: string }>;
 }) {
   const { book: bookSlug } = await params;
-  const book = getBook(bookSlug);
+  const book = await getBook(bookSlug);
   if (!book) notFound();
 
   return (
     <>
-      <Hero meta={book.meta} firstModule={book.modules[0]} bookSlug={bookSlug} />
+      <Hero meta={book.meta} modules={book.modules} firstModule={book.modules[0]} bookSlug={bookSlug} />
       <ModuleGrid modules={book.modules} bookSlug={bookSlug} />
     </>
   );

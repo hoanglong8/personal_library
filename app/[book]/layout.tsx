@@ -11,7 +11,7 @@ export default async function BookLayout({
   params: Promise<{ book: string }>;
 }) {
   const { book: bookSlug } = await params;
-  const book = getBook(bookSlug);
+  const book = await getBook(bookSlug);
   if (!book) notFound();
 
   const embedUrl = book.meta.sourceUrl ? toDriveEmbedUrl(book.meta.sourceUrl) : null;

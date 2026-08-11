@@ -92,6 +92,12 @@ export interface PortalMeta {
   field?: string;
   /** Ảnh thumbnail cho bài viết trên trang chủ — đường dẫn cục bộ (file đặt trong public/thumbnails/, ví dụ "/thumbnails/ten-file.jpg") hoặc một link ảnh public bất kỳ. Bỏ trống thì hiển thị ảnh mặc định theo tông màu của portal. */
   thumbnail?: string;
+  /** Mã ngôn ngữ của bản này, vd "vi", "en" — dùng để LanguageSwitcher hiện đúng nhãn. Bỏ trống nghĩa là chưa xác định (coi như "vi", vì đó là ngôn ngữ mặc định của portal hiện tại). */
+  lang?: string;
+  /** id chung giữa các bản dịch của cùng 1 sách gốc — LanguageSwitcher tra các sách khác trong portal.json có cùng translationGroup để hiện link chuyển ngôn ngữ. Quy ước: đặt bằng slug của bản gốc. */
+  translationGroup?: string;
+  /** id file Google Drive nguồn (chỉ có ở sách tạo từ job "ingest") — dùng để job ingest sau này biết file này đã được xử lý rồi, không tạo bản nháp trùng cho cùng 1 tài liệu. */
+  driveFileId?: string;
 }
 
 export interface Book {

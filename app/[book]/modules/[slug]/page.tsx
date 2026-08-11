@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ModuleNav from "@/components/ModuleNav";
+import SectionToc from "@/components/SectionToc";
+import ModuleSearch from "@/components/ModuleSearch";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SectionRenderer from "@/components/SectionRenderer";
-import { getBook, getModule, getAllModuleParams, getAdjacentModules } from "@/lib/content";
-
-export function generateStaticParams() {
-  return getAllModuleParams();
-}
+import MarkReadButton from "@/components/MarkReadButton";
+import { getBook, getModule, getAdjacentModules } from "@/lib/content";
 
 export default async function ModulePage({
   params,
@@ -14,43 +14,57 @@ export default async function ModulePage({
   params: Promise<{ book: string; slug: string }>;
 }) {
   const { book: bookSlug, slug } = await params;
-  const book = getBook(bookSlug);
-  const mod = getModule(bookSlug, slug);
+  const [book, mod] = await Promise.all([getBook(bookSlug), getModule(bookSlug, slug)]);
   if (!book || !mod) notFound();
 
-  const { prev, next } = getAdjacentModules(bookSlug, slug);
+  const { prev, next } = await getAdjacentModules(bookSlug, slug);
 
   return (
-    <div className="mx-auto flex max-w-5xl gap-10 px-6 py-10">
-      <ModuleNav modules={book.modules} activeId={slug} bookSlug={bookSlug} />
+    <div className="mx-auto max-w-[1800px] px-4 py-10 sm:px-6">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-6">
+        <ModuleSearch sections={mod.sections} />
+        <LanguageSwitcher
+          bookSlug={bookSlug}
+          translationGroup={book.meta.translationGroup}
+          currentModuleId={slug}
+        />
+      </div>
 
-      <article className="min-w-0 flex-1">
-        <h1 className="text-3xl font-semibold text-ink">{mod.title}</h1>
-        <p className="mt-2 text-ink-soft">{mod.summary}</p>
+      <div className="lg:flex lg:items-start lg:gap-8">
+        <ModuleNav modules={book.modules} activeId={slug} bookSlug={bookSlug} />
 
-        <div className="mt-10 space-y-10">
-          {mod.sections.map((section) => (
-            <SectionRenderer key={section.id} section={section} bookSlug={bookSlug} />
-          ))}
-        </div>
+        <article className="mx-auto min-w-0 max-w-3xl flex-1">
+          <h1 className="text-3xl font-semibold text-ink">{mod.title}</h1>
+          <p className="mt-2 text-ink-soft">{mod.summary}</p>
 
-        <div className="mt-14 flex items-center justify-between border-t border-border pt-6 text-sm">
-          {prev ? (
-            <Link href={`/${bookSlug}/modules/${prev.id}`} className="text-accent hover:underline">
-              ← {prev.title}
-            </Link>
-          ) : (
-            <span />
-          )}
-          {next ? (
-            <Link href={`/${bookSlug}/modules/${next.id}`} className="text-accent hover:underline">
-              {next.title} →
-            </Link>
-          ) : (
-            <span />
-          )}
-        </div>
-      </article>
+          <div className="mt-10 space-y-10">
+            {mod.sections.map((section) => (
+              <SectionRenderer key={section.id} section={section} bookSlug={bookSlug} />
+            ))}
+          </div>
+
+          <MarkReadButton bookSlug={bookSlug} moduleId={slug} />
+
+          <div className="mt-6 flex items-center justify-between border-t border-border pt-6 text-sm">
+            {prev ? (
+              <Link href={`/${bookSlug}/modules/${prev.id}`} className="text-accent hover:underline">
+                ← {prev.title}
+              </Link>
+            ) : (
+              <span />
+            )}
+            {next ? (
+              <Link href={`/${bookSlug}/modules/${next.id}`} className="text-accent hover:underline">
+                {next.title} →
+              </Link>
+            ) : (
+              <span />
+            )}
+          </div>
+        </article>
+
+        <SectionToc sections={mod.sections} />
+      </div>
     </div>
   );
 }

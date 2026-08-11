@@ -108,6 +108,25 @@ npx vercel --prod
 ```
 
 Lệnh này build và đẩy thẳng lên Vercel production, không phụ thuộc Git.
+Vercel tự cập nhật `creatgitbookcanhan.vercel.app` (domain mặc định của
+project), **nhưng KHÔNG tự cập nhật `thuvien-so.vercel.app`** — domain đó
+là alias gán tay, không tự theo dõi "production". Phát hiện ngày
+2026-08-10: sau 1 lần `vercel --prod`, `creatgitbookcanhan.vercel.app` đã
+có tính năng mới nhưng `thuvien-so.vercel.app` vẫn phục vụ 1 bản deploy cũ
+(404 ở các route mới) cho tới khi chạy lệnh gán lại alias — **luôn chạy
+thêm bước này sau mỗi lần `vercel --prod`**:
+
+```bash
+# lấy URL bản deploy vừa tạo từ output lệnh trên (dòng "Production ...")
+npx vercel alias set <url-bản-deploy-vừa-tạo> thuvien-so.vercel.app
+```
+
+Sau đó luôn kiểm chứng bằng `curl` thật vào `thuvien-so.vercel.app` (không
+chỉ tin log "Deployment ready" hay log gán alias) trước khi báo deploy
+xong. Muốn hết phải nhớ bước này: vào **Vercel Dashboard → project →
+Settings → Domains**, đặt `thuvien-so.vercel.app` làm domain chính
+("Production") thay vì chỉ là alias rời — việc này chỉ user tự làm được
+qua dashboard.
 
 ### 5b. Bật tự động deploy khi push GitHub (chưa nối — làm 1 lần)
 

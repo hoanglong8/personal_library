@@ -6,6 +6,7 @@ import ExerciseCard from "./ExerciseCard";
 import NoteCallout from "./NoteCallout";
 import ImageBlock from "./ImageBlock";
 import CommentThread from "./CommentThread";
+import BookmarkButton from "./BookmarkButton";
 
 export default function SectionRenderer({
   section,
@@ -22,6 +23,9 @@ export default function SectionRenderer({
       {section.type === "exercise" && <ExerciseCard section={section} />}
       {section.type === "note" && <NoteCallout section={section} />}
       {section.type === "image" && <ImageBlock section={section} />}
+      <div className="mt-3">
+        <BookmarkButton bookSlug={bookSlug} sectionId={section.id} />
+      </div>
       <CommentThread bookSlug={bookSlug} sectionId={section.id} />
     </div>
   );

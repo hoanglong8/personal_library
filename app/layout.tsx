@@ -3,7 +3,10 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import "./globals.css";
 import ThemeToggle from "@/components/ThemeToggle";
-import { getSite } from "@/lib/content";
+import AuthWidget from "@/components/AuthWidget";
+import TuSachLink from "@/components/TuSachLink";
+import AdminLink from "@/components/AdminLink";
+import { SITE_TITLE } from "@/lib/content";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,8 +23,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { siteTitle } = getSite();
-
   return (
     <html lang="vi" className={`${inter.variable} h-full`} suppressHydrationWarning>
       <head>
@@ -32,24 +33,27 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col antialiased">
-        <header className="sticky top-0 z-10 border-b border-border bg-surface/90 backdrop-blur">
+        <header className="sticky top-0 z-10 border-b border-border bg-surface/90 backdrop-blur print:hidden">
           <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-3">
             <Link href="/" className="font-mono text-sm font-medium text-ink">
-              {siteTitle}
+              {SITE_TITLE}
             </Link>
             <div className="flex items-center gap-4">
+              <TuSachLink />
+              <AdminLink />
               <Link
                 href="/chen-anh"
                 className="text-xs text-paper-400 hover:text-accent transition-colors"
               >
                 Chèn ảnh
               </Link>
+              <AuthWidget />
               <ThemeToggle />
             </div>
           </div>
         </header>
         <main className="flex-1">{children}</main>
-        <footer className="border-t border-border py-8 text-center text-xs text-paper-400">
+        <footer className="border-t border-border py-8 text-center text-xs text-paper-400 print:hidden">
           Tạo bằng foxai-learning-portal · Nội dung tổng hợp từ tài liệu nguồn.
         </footer>
       </body>

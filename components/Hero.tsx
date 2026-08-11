@@ -1,12 +1,15 @@
 import Link from "next/link";
 import type { PortalMeta, Module } from "@/lib/types";
+import HeroActions from "./HeroActions";
 
 export default function Hero({
   meta,
+  modules,
   firstModule,
   bookSlug,
 }: {
   meta: PortalMeta;
+  modules: Module[];
   firstModule?: Module;
   bookSlug: string;
 }) {
@@ -44,6 +47,8 @@ export default function Hero({
         {meta.disclaimer && (
           <p className="mt-6 text-xs text-paper-400">{meta.disclaimer}</p>
         )}
+
+        <HeroActions bookSlug={bookSlug} modules={modules} />
       </div>
     </section>
   );
