@@ -422,6 +422,21 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
           placeholder="Link ảnh thumbnail (không bắt buộc — lấy ở trang Chèn ảnh)"
           className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
         />
+        <div>
+          <input
+            value={data.meta.sourceUrl ?? ""}
+            onChange={(e) =>
+              setData({ ...data, meta: { ...data.meta, sourceUrl: e.target.value || undefined } })
+            }
+            placeholder="Link tài liệu gốc (không bắt buộc) — Drive, Docs, Sheets, Slides, hoặc link https bất kỳ"
+            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+          />
+          <p className="mt-1 text-xs text-paper-400">
+            Bật nút nổi &quot;Xem bản gốc&quot; trên trang sách. Link Google Drive/Docs/Sheets/
+            Slides cần đặt quyền chia sẻ &quot;Anyone with the link&quot;. Link dịch vụ khác cần
+            là https và cho phép tải trực tiếp (không yêu cầu đăng nhập).
+          </p>
+        </div>
       </div>
 
       <div className="mt-6 flex items-center justify-between">
