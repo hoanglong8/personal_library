@@ -216,12 +216,103 @@ model mặc định đổi biến môi trường từ `AI_JOB_MODEL_ID` sang
   - Bản nháp "BƯỚC NGOẶT..." đang chờ ở `/admin/drafts` — nội dung lịch
     sử/chính trị nhạy cảm, để user tự đọc và quyết định Duyệt/Từ chối,
     không tự publish thay.
-- **Giai đoạn 1 (auth người đọc + khoá link tải + tiến độ/bookmark + đa
-  ngôn ngữ)**: chưa bắt đầu, chờ Giai đoạn 0 build xanh trên production.
-- **Giai đoạn 2 (AI job queue), Giai đoạn 3 (backup độc lập)**: chưa bắt
-  đầu.
-- **Giai đoạn 4 (RAG/Q&A)**: chủ động hoãn theo quyết định của bạn, chỉ
-  giữ chỗ kiến trúc (pgvector có sẵn trong Postgres, không cần đổi engine).
+## Giai đoạn 2 — mở rộng thêm sau khi hoàn thành ban đầu (2026-08-11/12)
+
+Sau khi 5/5 job type chạy thật, user yêu cầu thêm 1 loạt cải tiến UX/tính
+năng, tất cả đã code + deploy production:
+
+1. Tủ sách (`/tu-sach`) gộp bookmark theo tên sách, bấm mới xổ ra.
+2. AI Job Queue: 5 nút job hiện trực tiếp (bỏ dropdown), ô tìm sách kiểu
+   gõ-để-lọc thay dropdown (chuẩn bị cho danh sách sách lớn dần).
+3. Thêm trạng thái thứ 3 `reviewed` cho `books.status` (trước chỉ có
+   draft/published) — tách "Duyệt" (chấp nhận nội dung) khỏi "Publish"
+   (công khai lên trang chủ) khỏi "Ngừng công khai" (rút khỏi trang chủ,
+   giữ nguyên nội dung). Migration
+   `supabase/books-add-reviewed-status.sql`. `/admin/drafts` đổi tên
+   "Quản lý nội dung", chia 3 khu vực đúng theo trạng thái.
+4. Layout đọc sách kiểu docs (tham khảo bojieli.github.io/ai-agent-book):
+   `ModuleNav` dịch sát lề trái, thêm `SectionToc` sát lề phải (mục lục
+   section trong chương đang đọc), thanh trên cùng thêm `ModuleSearch`
+   (tìm trong sections của chương hiện tại, không phải tìm toàn văn DOM —
+   tránh xung đột với React) và `LanguageSwitcher` (tự ẩn khi chỉ có 1
+   ngôn ngữ). Đã tự chụp màn hình xác nhận layout đúng trước khi deploy.
+5. **Tính năng biên tập trực tiếp**: `/admin/edit/[slug]` — sửa
+   meta/từng section theo đúng type, thêm/xoá ảnh (liên kết `/chen-anh`),
+   và **nhập nội dung từ file `.md`** (`lib/markdownImport.ts` — H1→tên
+   chương, H2→tên mục, `![alt](url)` tách thành khối ảnh đúng vị trí kể cả
+   nằm giữa dòng văn bản — đã tự viết test script xác nhận parser đúng
+   trước khi deploy). `/admin/import` — tạo **sách mới hoàn toàn** từ
+   nhiều file `.md` (mỗi file = 1 chương), điền `lang`/chọn sách gốc để
+   liên kết `translationGroup` — dùng khi dịch bằng công cụ ngoài (user
+   thử dùng app "silaBook" trên Google AI Studio, xác nhận đó là 1 web app
+   độc lập chứ không phải MCP server như user tưởng — đã tự mở link kiểm
+   tra trước khi kết luận, không đoán).
+6. Header: 1 nút "Admin" duy nhất tách thành 3 link trực tiếp ("AI Job
+   Queue", "Bản nháp", "Nhập sách .md") — bớt 1 cú click.
+
+**Việc phát hiện thêm ngoài yêu cầu, đã tự sửa vì trực tiếp ảnh hưởng độ
+tin cậy hệ thống:**
+- `ai_jobs` có thể kẹt vĩnh viễn ở `processing` nếu route bị Vercel
+  timeout — đã xảy ra thật với job ingest đầu tiên (504 sau 2 phút 39
+  giây dù đo riêng chỉ ~20 giây, không rõ nguyên nhân chính xác). Sửa:
+  `AbortSignal.timeout()` cho mọi fetch ra ngoài + cho phép retry job kẹt
+  >90 giây thay vì phải sửa tay qua Supabase.
+- job "ingest" ban đầu ingest trùng lặp cùng 1 file Drive nếu chạy job 2
+  lần — thêm `meta.driveFileId` để tự lọc file đã từng ingest (draft/
+  reviewed/published), báo lỗi rõ nếu hết file mới.
+- **Toàn bộ code từ đầu phiên (Giai đoạn 0 → hết mục này) chưa từng được
+  push lên GitHub** — mọi deploy đi thẳng `vercel --prod` từ máy local.
+  Phát hiện khi bắt đầu Giai đoạn 3, đã commit + push (2 commit) lên đúng
+  repo thật `hoanglong8/personal_library` (repo đã đổi tên từ
+  `creat_gitbook_ca_nhan` — remote cục bộ cũng đã cập nhật). Đã kiểm tra
+  kỹ không có secret nào lọt vào trước khi push (repo public).
+- `HUONG-DAN-VAN-HANH.md` viết lại toàn bộ — bản cũ vẫn mô tả
+  `content/portal.json` là nguồn dữ liệu (đã sai từ Giai đoạn 0), thiếu
+  hoàn toàn phần admin mới.
+
+## Giai đoạn 3 — Backup độc lập: HOÀN THÀNH MỘT PHẦN (2026-08-12)
+
+- **Đã setup + chạy thật thành công qua GitHub Actions**
+  (`.github/workflows/backup-and-export.yml`,
+  `scripts/backup-export.mjs`): user tự tạo repo private
+  `hoanglong8/personal_library-backups` + Personal Access Token
+  fine-grained (chỉ quyền Contents:write vào đúng repo đó) + lấy
+  `SUPABASE_DB_URL` (Session pooler, không phải Direct connection — xem
+  sự cố bên dưới), thêm 2 secret vào repo public `personal_library`.
+- **3 sự cố thật gặp phải khi chạy CI, đều đã tự chẩn đoán + sửa bằng
+  bằng chứng cụ thể (không đoán mù):**
+  1. `Network is unreachable` tới `db.<ref>.supabase.co` — Supabase
+     Direct Connection giờ chỉ có địa chỉ IPv6, GitHub Actions runner
+     không có IPv6 ra ngoài. Sửa: dùng Session Pooler (có IPv4).
+  2. `password authentication failed` — ô Connection string của Supabase
+     Dashboard có placeholder `[YOUR-PASSWORD]`, phải tự thay bằng mật
+     khẩu database thật (khác anon/service_role key).
+  3. `aborting because of server version mismatch` (server 17.6, pg_dump
+     16.14) — Ubuntu apt mặc định cài `pg_dump` cũ hơn Supabase. Sửa 2
+     lớp: (a) thêm PGDG apt repo, cài `postgresql-client-17`; (b) vẫn
+     thất bại lần đầu vì `pg_dump` trên PATH mặc định vẫn trỏ bản 16 cũ
+     (2 bản cùng tồn tại) — phải tự dò tìm binary bản cao nhất
+     (`/usr/lib/postgresql/*/bin/pg_dump`, sort theo version) và gọi
+     đường dẫn tuyệt đối qua biến `PG_DUMP_BIN`, không dựa vào PATH.
+- **Đã kiểm chứng thật** (tự tải file `.md` từ GitHub Release về, đọc nội
+  dung — không chỉ tin log CI xanh): Release `book-exports` (public, repo
+  `personal_library`) có đúng 4 file `.md` khớp 4 sách published, nội
+  dung đầy đủ đúng thật (vd `viet-sach-cung-claude.md` 697 dòng, đủ 17
+  chương). File `.sql` (private, repo `personal_library-backups`) — user
+  tự xác nhận tồn tại, tên/kích thước khớp log CI (210KB, 359 dòng).
+- **Chưa kiểm chứng — quyết định có chủ đích của user, không phải thiếu
+  sót bị bỏ qua**: chưa thử **restore thật** file `.sql` vào 1 Postgres
+  để xác nhận dữ liệu đọc lại được — Docker Desktop trên máy gặp lỗi
+  ("unable to start", nghi WSL2 backend), phương án thay thế (tạo
+  Supabase project test riêng) bị user chủ động từ chối để chuyển sang
+  việc khác. **Rủi ro còn tồn đọng**: chưa có bằng chứng file `.sql` này
+  thực sự restore được — file "đúng định dạng/đúng kích thước" không
+  đồng nghĩa "chắc chắn restore thành công".
+- Lịch chạy: `cron: "17 19 * * *"` (~02:17 giờ VN hằng ngày) +
+  `workflow_dispatch` (chạy tay bất cứ lúc nào qua tab Actions).
+
+## Giai đoạn 4 (RAG/Q&A) — chủ động hoãn theo quyết định của bạn, chỉ giữ
+chỗ kiến trúc (pgvector có sẵn trong Postgres, không cần đổi engine).
 
 ---
 
