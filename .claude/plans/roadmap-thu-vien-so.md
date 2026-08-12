@@ -416,6 +416,49 @@ chưa có nội dung đầy đủ, hỗ trợ soạn markdown đầy đủ + t�
   (`Hero.tsx`) cho người đọc thấy tác giả/ngày xuất bản. Cân nhắc bổ sung
   nếu có nhu cầu.
 
+## Sau Giai đoạn 3 — Tinh gọn luồng "Tiếp nhận nội dung" + tag search + ngày mặc định (2026-08-12)
+
+User yêu cầu 4 việc nhỏ trong cùng khu quản trị: đổi tên + đổi vị trí nav
+"Nhập sách .md", bỏ yêu cầu tự gõ slug khi tạo sách mới, cho tìm/chọn lại
+tag đã có thay vì gõ tay dễ trùng/lệch chính tả, và tự điền ngày xuất bản
+hôm nay trong khối Footer.
+
+- `components/AdminLink.tsx` bớt lại còn AI Job Queue + Quản lý nội dung;
+  tách link "Nhập sách .md" ra `components/ImportLink.tsx` (đổi nhãn
+  "Tiếp nhận nội dung") để `app/layout.tsx` xếp nó lên đầu — hoán đổi vị
+  trí với `TuSachLink`, đúng yêu cầu "đây là bước đầu tiên" (đưa nội dung
+  vào → duyệt/sửa → mới xuất hiện ở Tủ sách).
+- `app/admin/import/page.tsx`: bỏ hẳn ô nhập slug + state `slugTouched`.
+  Slug giờ luôn tự suy ra từ `slugify(title)`; nếu trùng với sách đã có,
+  `createWithSlug()` tự thử lại với hậu tố số (`-2`, `-3`, ...) tối đa 20
+  lần dựa trên thông báo lỗi "đã tồn tại" từ API `create` có sẵn — không
+  cần thêm bảng tra slug ở client, cũng không bắt admin tự nghĩ tên khác.
+- `components/TagInput.tsx` (mới): ô nhập tag dạng chip, gõ để lọc gợi ý,
+  Enter/dấu phẩy để thêm tag mới hoàn toàn (không giới hạn chỉ chọn từ
+  danh sách có sẵn — vẫn cần tạo được tag đầu tiên cho 1 chủ đề mới),
+  Backspace ở ô trống xoá chip cuối. Gợi ý (`suggestions`) lấy từ
+  `app/admin/edit/[slug]/page.tsx` gọi lại `/api/admin/drafts` (API có sẵn
+  từ trang Quản lý nội dung, trả về mọi sách kể cả draft) rồi gom
+  `meta.tags` của toàn bộ sách thành 1 danh sách distinct — không cần
+  thêm route mới. `data.meta.tags` (mảng) giờ là nguồn sự thật duy nhất,
+  bỏ hẳn state `tagsInput` (chuỗi nối dấu phẩy) và bước parse trong
+  `handleSave`.
+- Ngày xuất bản: khi tải sách vào editor, nếu `meta.publishedAt` rỗng thì
+  điền sẵn ngày hôm nay (`todayISODate()`, tính bằng `new Date()` phía
+  client — không phải trong Workflow script nên không bị cấm) ngay vào
+  state `data` (không chỉ hiển thị placeholder) — admin bấm Lưu mà không
+  đụng vào ô này thì ngày hôm nay sẽ được ghi thật, đúng nghĩa "tự động
+  để... người dùng có thể sửa lại" thay vì chỉ gợi ý suông.
+- **Đã kiểm chứng thật trên production**: mở `/admin/import`, xác nhận
+  chỉ còn ô Tên sách + Mô tả (không còn ô slug); mở
+  `/admin/edit/lich-su-ai`, gõ "a" vào ô tag thấy đúng danh sách gợi ý
+  tổng hợp từ tag của các sách khác (AI Agent, Claude, Claude Skills,
+  Công cụ AI...), bấm chọn "Claude" thêm đúng thành chip mới; mở
+  `/admin/edit/top-repo-github-cho-claude` (sách chưa từng đặt
+  `publishedAt`) thấy ô ngày tự điền đúng 12/08/2026 (ngày server thực
+  hiện request). Không bấm Lưu ở bất kỳ trang test nào — chỉ điều hướng
+  rời trang, tránh ghi tag/ngày thử nghiệm vào sách thật đang publish.
+
 ---
 
 ## Context
