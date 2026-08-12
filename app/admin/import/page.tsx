@@ -21,8 +21,6 @@ interface BookOption {
 export default function ImportBookPage() {
   const router = useRouter();
   const [title, setTitle] = useState("");
-  const [slug, setSlug] = useState("");
-  const [slugTouched, setSlugTouched] = useState(false);
   const [subtitle, setSubtitle] = useState("");
   const [lang, setLang] = useState("en");
   const [translationGroup, setTranslationGroup] = useState("");
@@ -48,11 +46,6 @@ export default function ImportBookPage() {
       });
   }, []);
 
-  function handleTitleChange(value: string) {
-    setTitle(value);
-    if (!slugTouched) setSlug(slugify(value));
-  }
-
   async function handleFiles(e: ChangeEvent<HTMLInputElement>) {
     const files = Array.from(e.target.files ?? []);
     e.target.value = "";
@@ -74,19 +67,39 @@ export default function ImportBookPage() {
       newModules.push({ ...mod, id });
     }
     setModules((prev) => [...prev, ...newModules]);
-    if (!title && files[0]) handleTitleChange(files[0].name.replace(/\.md$/i, ""));
+    if (!title && files[0]) setTitle(files[0].name.replace(/\.md$/i, ""));
   }
 
   function removeModule(i: number) {
     setModules((prev) => prev.filter((_, j) => j !== i));
   }
 
+  // Slug is derived from the title, never typed by the admin — on a
+  // collision (same title used twice) we just retry with a numeric suffix
+  // instead of surfacing the conflict as something the admin has to solve.
+  async function createWithSlug(base: string, data: Omit<Book, "slug">): Promise<string> {
+    for (let attempt = 1; attempt <= 20; attempt++) {
+      const candidate = attempt === 1 ? base : `${base}-${attempt}`;
+      const res = await adminFetch("/api/admin/books/create", {
+        method: "POST",
+        body: JSON.stringify({ slug: candidate, data }),
+      });
+      if (res.ok) return candidate;
+      const body = await res.json().catch(() => ({}));
+      if (!/đã tồn tại/.test(body.error ?? "")) {
+        throw new Error(body.error ?? "Tạo sách thất bại.");
+      }
+    }
+    throw new Error("Không tìm được slug trống sau nhiều lần thử — đổi tên sách và thử lại.");
+  }
+
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
 
-    if (!title.trim() || !slug.trim() || !subtitle.trim()) {
-      setError("Cần điền tiêu đề, slug và mô tả ngắn.");
+    const baseSlug = slugify(title);
+    if (!title.trim() || !baseSlug || !subtitle.trim()) {
+      setError("Cần điền tiêu đề và mô tả ngắn.");
       return;
     }
     if (modules.length === 0) {
@@ -109,44 +122,31 @@ export default function ImportBookPage() {
       modules,
     };
 
-    const res = await adminFetch("/api/admin/books/create", {
-      method: "POST",
-      body: JSON.stringify({ slug: slug.trim(), data }),
-    });
-    const body = await res.json().catch(() => ({}));
-    setSubmitting(false);
-
-    if (!res.ok) {
-      setError(body.error ?? "Tạo sách thất bại.");
-      return;
+    try {
+      const slug = await createWithSlug(baseSlug, data);
+      router.push(`/admin/edit/${slug}`);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Tạo sách thất bại.");
+      setSubmitting(false);
     }
-    router.push(`/admin/edit/${slug.trim()}`);
   }
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-ink">Tạo sách mới từ file .md</h1>
+      <h1 className="text-2xl font-semibold text-ink">Tiếp nhận nội dung</h1>
       <p className="mt-2 text-sm text-paper-400">
         Dùng khi đã dịch/soạn nội dung ở ngoài (vd bằng silaBook hay công cụ khác) và muốn đưa vào
-        portal — mỗi file .md sẽ thành 1 chương. Sách tạo ra ở trạng thái nháp, xem lại ở{" "}
+        portal — mỗi file .md sẽ thành 1 chương. Đường dẫn sách do hệ thống tự đặt theo tên sách.
+        Sách tạo ra ở trạng thái nháp, xem lại ở{" "}
         <span className="text-accent">Sửa nội dung</span> trước khi duyệt/công khai.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-3 rounded-xl border border-border p-5">
         <input
           value={title}
-          onChange={(e) => handleTitleChange(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           placeholder="Tên sách"
           className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-        />
-        <input
-          value={slug}
-          onChange={(e) => {
-            setSlug(e.target.value);
-            setSlugTouched(true);
-          }}
-          placeholder="slug (chỉ chữ thường/số/dấu -)"
-          className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm font-mono outline-none focus:border-accent"
         />
         <textarea
           value={subtitle}

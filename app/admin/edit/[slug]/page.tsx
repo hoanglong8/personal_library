@@ -6,8 +6,17 @@ import { adminFetch } from "@/lib/adminFetch";
 import { slugify } from "@/lib/slugify";
 import { parseMarkdownToModule } from "@/lib/markdownImport";
 import MarkdownFieldEditor from "@/components/MarkdownFieldEditor";
+import TagInput from "@/components/TagInput";
 import { CATEGORY_TREE } from "@/lib/categories";
 import type { Book, Module, Section } from "@/lib/types";
+
+// "YYYY-MM-DD", matching what <input type="date"> reads/writes.
+function todayISODate(): string {
+  const d = new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, "0");
+  const dd = String(d.getDate()).padStart(2, "0");
+  return `${d.getFullYear()}-${mm}-${dd}`;
+}
 
 function newId(prefix: string): string {
   return `${prefix}-${(typeof crypto !== "undefined" && "randomUUID" in crypto
@@ -344,7 +353,7 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
-  const [tagsInput, setTagsInput] = useState("");
+  const [allTags, setAllTags] = useState<string[]>([]);
 
   useEffect(() => {
     adminFetch(`/api/admin/books/${slug}`).then(async (res) => {
@@ -354,10 +363,25 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
         return;
       }
       setStatus(body.book.status);
-      setData(body.book.data);
-      setTagsInput((body.book.data.meta.tags ?? []).join(", "));
+      const loaded = body.book.data as Omit<Book, "slug">;
+      setData({
+        ...loaded,
+        meta: { ...loaded.meta, publishedAt: loaded.meta.publishedAt || todayISODate() },
+      });
     });
   }, [slug]);
+
+  useEffect(() => {
+    adminFetch("/api/admin/drafts").then(async (res) => {
+      if (!res.ok) return;
+      const body = await res.json().catch(() => null);
+      const tags = new Set<string>();
+      for (const row of body?.drafts ?? []) {
+        for (const t of row.data?.meta?.tags ?? []) tags.add(t);
+      }
+      setAllTags([...tags].sort((a, b) => a.localeCompare(b, "vi")));
+    });
+  }, []);
 
   function updateModule(i: number, next: Module) {
     if (!data) return;
@@ -401,15 +425,9 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
     setSaveError(null);
     setSaved(false);
 
-    const tags = tagsInput
-      .split(",")
-      .map((t) => t.trim())
-      .filter(Boolean);
-    const toSave = { ...data, meta: { ...data.meta, tags } };
-
     const res = await adminFetch(`/api/admin/books/${slug}/edit`, {
       method: "POST",
-      body: JSON.stringify({ data: toSave }),
+      body: JSON.stringify({ data }),
     });
     const body = await res.json().catch(() => ({}));
     setSaving(false);
@@ -417,7 +435,6 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
       setSaveError(body.error ?? "Lưu thất bại.");
       return;
     }
-    setData(toSave);
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   }
@@ -472,11 +489,10 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
           placeholder="Mô tả ngắn"
           className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
         />
-        <input
-          value={tagsInput}
-          onChange={(e) => setTagsInput(e.target.value)}
-          placeholder="Tag, cách nhau bởi dấu phẩy"
-          className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+        <TagInput
+          tags={data.meta.tags ?? []}
+          onChange={(tags) => setData({ ...data, meta: { ...data.meta, tags } })}
+          suggestions={allTags}
         />
         <input
           value={data.meta.thumbnail ?? ""}

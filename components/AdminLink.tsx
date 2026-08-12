@@ -24,9 +24,6 @@ export default function AdminLink() {
       <Link href="/admin/drafts" className="text-xs text-paper-400 hover:text-accent transition-colors">
         Quản lý nội dung
       </Link>
-      <Link href="/admin/import" className="text-xs text-paper-400 hover:text-accent transition-colors">
-        Nhập sách .md
-      </Link>
     </>
   );
 }

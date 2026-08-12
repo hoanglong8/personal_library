@@ -6,6 +6,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import AuthWidget from "@/components/AuthWidget";
 import TuSachLink from "@/components/TuSachLink";
 import AdminLink from "@/components/AdminLink";
+import ImportLink from "@/components/ImportLink";
 import { SITE_TITLE } from "@/lib/content";
 
 const inter = Inter({
@@ -39,8 +40,9 @@ export default function RootLayout({
               {SITE_TITLE}
             </Link>
             <div className="flex items-center gap-4">
-              <TuSachLink />
+              <ImportLink />
               <AdminLink />
+              <TuSachLink />
               <Link
                 href="/chen-anh"
                 className="text-xs text-paper-400 hover:text-accent transition-colors"
