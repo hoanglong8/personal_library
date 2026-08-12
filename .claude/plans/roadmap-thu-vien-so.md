@@ -368,6 +368,54 @@ tải/in gốc.
   trước (không bị regression) — chưa test thật với 1 sách dùng nguồn
   ngoài Google (cần user tự thử khi có nhu cầu thật).
 
+## Sau Giai đoạn 3 — Mở rộng giao diện "Quản lý nội dung" (2026-08-12)
+
+User yêu cầu: đổi tên nav "Bản nháp" → "Quản lý nội dung"; trang sửa nội
+dung phải luôn hiện khung cố định (Header/chương/Footer) kể cả khi sách
+chưa có nội dung đầy đủ, hỗ trợ soạn markdown đầy đủ + tải file .md/.txt/
+.docx.
+
+- `components/AdminLink.tsx`: đổi nhãn link.
+- `components/MarkdownFieldEditor.tsx` (mới): bọc `@uiw/react-md-editor`
+  (toolbar bold/italic/heading/list/quote/code/table..., dynamic import
+  `ssr:false` vì thư viện cần `window`) + nút tải file nối vào cuối nội
+  dung hiện có — `.md`/`.txt` đọc thẳng bằng `File.text()`, `.docx` qua
+  `mammoth.extractRawText` (không dùng `convertToHtml` vì content model
+  của app là plain text, không phải rich HTML). 2 thư viện mới trong
+  `package.json`, đã `npm view` kiểm tra tương thích trước khi cài.
+- Áp dụng `MarkdownFieldEditor` cho mọi field nội dung dài trong
+  `SectionEditor`/`ModuleEditor` (`app/admin/edit/[slug]/page.tsx`):
+  concept.body, case-study.body, note.body, framework.intro,
+  exercise.prompt/hint/answer, module.summary — thay toàn bộ `<textarea>`
+  cũ.
+- Nút "+ Thêm ảnh vào cuối chương" tổng quát hoá thành dropdown chọn 1
+  trong 6 loại section (`newSectionOfType`) + nút "+ Thêm mục vào cuối
+  chương" — không còn giới hạn chỉ thêm được ảnh.
+- Nút "+ Thêm chương trống" ở cấp sách (`newEmptyModule`): tạo module mới
+  có sẵn 1 section `concept` + 1 section `exercise` rỗng, đúng yêu cầu
+  "chương chưa có nội dung vẫn phải hiện khung cố định".
+- Khối "Thông tin bổ sung" (Footer) cuối trang: tác giả (`meta.author`),
+  domain/field (2 dropdown phụ thuộc, nguồn từ `lib/categories.ts`,
+  `CATEGORY_TREE`), ngày xuất bản (`meta.publishedAt`), và 1 field mới
+  `meta.footerImage` (thêm vào `lib/types.ts`) cho ảnh minh hoạ cuối sách
+  — tách riêng khỏi `meta.thumbnail` (thumbnail dùng cho card ở trang chủ,
+  nằm trong khối Header).
+- **Đã kiểm chứng thật trên production** (không chỉ tin build/lint sạch):
+  đăng nhập admin thật, mở `/admin/edit/viet-sach-cung-claude`, xác nhận
+  bằng ảnh chụp màn hình: (1) nav đổi đúng "Quản lý nội dung"; (2)
+  concept/framework/exercise hiện đúng toolbar markdown + live preview
+  split-view; (3) khối Footer đọc đúng dữ liệu có sẵn (tác giả "Hoàng
+  Trần", domain "Công nghệ thông tin" → field "Công cụ & Ứng dụng AI");
+  (4) bấm "+ Thêm chương trống" tạo đúng module mới có sẵn khung
+  concept+exercise rỗng, dropdown "+ Thêm mục" hoạt động ngay trong
+  chương đó. Không bấm "Lưu" cho chương test — chỉ điều hướng rời trang để
+  huỷ, tránh ghi rác vào sách thật đang publish.
+- **Phát hiện thêm (chưa xử lý, ngoài phạm vi yêu cầu lần này)**:
+  `meta.author`/`publishedAt`/`domain`/`field`/`footerImage` hiện chỉ có ở
+  editor và trang chủ (`BookGrid.tsx`) — chưa render ở trang chi tiết sách
+  (`Hero.tsx`) cho người đọc thấy tác giả/ngày xuất bản. Cân nhắc bổ sung
+  nếu có nhu cầu.
+
 ---
 
 ## Context
