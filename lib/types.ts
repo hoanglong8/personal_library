@@ -98,6 +98,8 @@ export interface PortalMeta {
   translationGroup?: string;
   /** id file Google Drive nguồn (chỉ có ở sách tạo từ job "ingest") — dùng để job ingest sau này biết file này đã được xử lý rồi, không tạo bản nháp trùng cho cùng 1 tài liệu. */
   driveFileId?: string;
+  /** Ảnh minh hoạ hiển thị ở cuối sách (khối "Thông tin bổ sung"), tách riêng khỏi thumbnail dùng ở trang chủ. */
+  footerImage?: string;
 }
 
 export interface Book {

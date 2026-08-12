@@ -22,7 +22,7 @@ export default function AdminLink() {
         AI Job Queue
       </Link>
       <Link href="/admin/drafts" className="text-xs text-paper-400 hover:text-accent transition-colors">
-        Bản nháp
+        Quản lý nội dung
       </Link>
       <Link href="/admin/import" className="text-xs text-paper-400 hover:text-accent transition-colors">
         Nhập sách .md

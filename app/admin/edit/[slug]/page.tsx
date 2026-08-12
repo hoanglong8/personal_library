@@ -5,14 +5,55 @@ import Link from "next/link";
 import { adminFetch } from "@/lib/adminFetch";
 import { slugify } from "@/lib/slugify";
 import { parseMarkdownToModule } from "@/lib/markdownImport";
+import MarkdownFieldEditor from "@/components/MarkdownFieldEditor";
+import { CATEGORY_TREE } from "@/lib/categories";
 import type { Book, Module, Section } from "@/lib/types";
 
-function newImageSection(): Section {
-  const id = `anh-${(typeof crypto !== "undefined" && "randomUUID" in crypto
+function newId(prefix: string): string {
+  return `${prefix}-${(typeof crypto !== "undefined" && "randomUUID" in crypto
     ? crypto.randomUUID()
     : Math.random().toString(36).slice(2)
   ).slice(0, 8)}`;
-  return { id, type: "image", title: "", url: "", alt: "" };
+}
+
+function newImageSection(): Section {
+  return { id: newId("anh"), type: "image", title: "", url: "", alt: "" };
+}
+
+function newSectionOfType(type: Section["type"]): Section {
+  switch (type) {
+    case "concept":
+      return { id: newId("khai-niem"), type: "concept", title: "", body: "" };
+    case "framework":
+      return { id: newId("khung"), type: "framework", title: "", steps: [] };
+    case "case-study":
+      return { id: newId("tinh-huong"), type: "case-study", title: "", body: "" };
+    case "exercise":
+      return { id: newId("bai-tap"), type: "exercise", title: "", prompt: "" };
+    case "note":
+      return { id: newId("ghi-chu"), type: "note", title: "", body: "", variant: "tip" };
+    case "image":
+    default:
+      return newImageSection();
+  }
+}
+
+const SECTION_TYPE_LABELS: Record<Section["type"], string> = {
+  concept: "Khái niệm",
+  framework: "Khung/quy trình",
+  "case-study": "Tình huống",
+  exercise: "Bài tập",
+  note: "Ghi chú",
+  image: "Ảnh",
+};
+
+function newEmptyModule(): Module {
+  return {
+    id: newId("chuong"),
+    title: "",
+    summary: "",
+    sections: [newSectionOfType("concept"), newSectionOfType("exercise")],
+  };
 }
 
 function SectionEditor({
@@ -47,24 +88,24 @@ function SectionEditor({
       />
 
       {section.type === "concept" && (
-        <textarea
-          value={section.body}
-          onChange={(e) => onChange({ ...section, body: e.target.value })}
-          rows={4}
-          placeholder="Nội dung..."
-          className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-        />
+        <div className="mt-2">
+          <MarkdownFieldEditor
+            value={section.body}
+            onChange={(body) => onChange({ ...section, body })}
+            placeholder="Nội dung..."
+          />
+        </div>
       )}
 
       {section.type === "case-study" && (
         <>
-          <textarea
-            value={section.body}
-            onChange={(e) => onChange({ ...section, body: e.target.value })}
-            rows={4}
-            placeholder="Nội dung..."
-            className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-          />
+          <div className="mt-2">
+            <MarkdownFieldEditor
+              value={section.body}
+              onChange={(body) => onChange({ ...section, body })}
+              placeholder="Nội dung..."
+            />
+          </div>
           <input
             value={section.source ?? ""}
             onChange={(e) => onChange({ ...section, source: e.target.value || undefined })}
@@ -76,13 +117,14 @@ function SectionEditor({
 
       {section.type === "note" && (
         <>
-          <textarea
-            value={section.body}
-            onChange={(e) => onChange({ ...section, body: e.target.value })}
-            rows={3}
-            placeholder="Nội dung..."
-            className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-          />
+          <div className="mt-2">
+            <MarkdownFieldEditor
+              value={section.body}
+              onChange={(body) => onChange({ ...section, body })}
+              placeholder="Nội dung..."
+              minHeight={120}
+            />
+          </div>
           <select
             value={section.variant}
             onChange={(e) =>
@@ -99,13 +141,14 @@ function SectionEditor({
 
       {section.type === "framework" && (
         <>
-          <textarea
-            value={section.intro ?? ""}
-            onChange={(e) => onChange({ ...section, intro: e.target.value || undefined })}
-            rows={2}
-            placeholder="Giới thiệu (không bắt buộc)"
-            className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-          />
+          <div className="mt-2">
+            <MarkdownFieldEditor
+              value={section.intro ?? ""}
+              onChange={(intro) => onChange({ ...section, intro: intro || undefined })}
+              placeholder="Giới thiệu (không bắt buộc)"
+              minHeight={100}
+            />
+          </div>
           <div className="mt-2 space-y-2">
             {section.steps.map((step, i) => (
               <div key={i} className="flex gap-2">
@@ -140,27 +183,30 @@ function SectionEditor({
 
       {section.type === "exercise" && (
         <>
-          <textarea
-            value={section.prompt}
-            onChange={(e) => onChange({ ...section, prompt: e.target.value })}
-            rows={2}
-            placeholder="Câu hỏi/yêu cầu..."
-            className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-          />
-          <textarea
-            value={section.hint ?? ""}
-            onChange={(e) => onChange({ ...section, hint: e.target.value || undefined })}
-            rows={2}
-            placeholder="Gợi ý (không bắt buộc)"
-            className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-          />
-          <textarea
-            value={section.answer ?? ""}
-            onChange={(e) => onChange({ ...section, answer: e.target.value || undefined })}
-            rows={2}
-            placeholder="Đáp án tham khảo (không bắt buộc)"
-            className="mt-2 w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-          />
+          <div className="mt-2">
+            <MarkdownFieldEditor
+              value={section.prompt}
+              onChange={(prompt) => onChange({ ...section, prompt })}
+              placeholder="Câu hỏi/yêu cầu..."
+              minHeight={100}
+            />
+          </div>
+          <div className="mt-2">
+            <MarkdownFieldEditor
+              value={section.hint ?? ""}
+              onChange={(hint) => onChange({ ...section, hint: hint || undefined })}
+              placeholder="Gợi ý (không bắt buộc)"
+              minHeight={100}
+            />
+          </div>
+          <div className="mt-2">
+            <MarkdownFieldEditor
+              value={section.answer ?? ""}
+              onChange={(answer) => onChange({ ...section, answer: answer || undefined })}
+              placeholder="Đáp án tham khảo (không bắt buộc)"
+              minHeight={100}
+            />
+          </div>
         </>
       )}
 
@@ -211,6 +257,7 @@ function ModuleEditor({
   onChange: (next: Module) => void;
 }) {
   const [open, setOpen] = useState(false);
+  const [newSectionType, setNewSectionType] = useState<Section["type"]>("concept");
 
   function updateSection(i: number, next: Section) {
     const sections = [...mod.sections];
@@ -222,8 +269,8 @@ function ModuleEditor({
     onChange({ ...mod, sections: mod.sections.filter((_, j) => j !== i) });
   }
 
-  function addImage() {
-    onChange({ ...mod, sections: [...mod.sections, newImageSection()] });
+  function addSection() {
+    onChange({ ...mod, sections: [...mod.sections, newSectionOfType(newSectionType)] });
   }
 
   return (
@@ -245,12 +292,11 @@ function ModuleEditor({
             placeholder="Tiêu đề chương"
             className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm font-medium outline-none focus:border-accent"
           />
-          <textarea
+          <MarkdownFieldEditor
             value={mod.summary}
-            onChange={(e) => onChange({ ...mod, summary: e.target.value })}
-            rows={2}
+            onChange={(summary) => onChange({ ...mod, summary })}
             placeholder="Tóm tắt chương"
-            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+            minHeight={100}
           />
 
           <div className="space-y-3">
@@ -264,13 +310,26 @@ function ModuleEditor({
             ))}
           </div>
 
-          <button
-            type="button"
-            onClick={addImage}
-            className="rounded-full border border-dashed border-accent/60 px-4 py-1.5 text-xs font-medium text-accent hover:bg-accent-soft"
-          >
-            + Thêm ảnh vào cuối chương
-          </button>
+          <div className="flex flex-wrap items-center gap-2">
+            <select
+              value={newSectionType}
+              onChange={(e) => setNewSectionType(e.target.value as Section["type"])}
+              className="rounded-full border border-border bg-surface px-3 py-1.5 text-xs outline-none focus:border-accent"
+            >
+              {(Object.keys(SECTION_TYPE_LABELS) as Section["type"][]).map((t) => (
+                <option key={t} value={t}>
+                  {SECTION_TYPE_LABELS[t]}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              onClick={addSection}
+              className="rounded-full border border-dashed border-accent/60 px-4 py-1.5 text-xs font-medium text-accent hover:bg-accent-soft"
+            >
+              + Thêm mục vào cuối chương
+            </button>
+          </div>
         </div>
       )}
     </div>
@@ -305,6 +364,11 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
     const modules = [...data.modules];
     modules[i] = next;
     setData({ ...data, modules });
+  }
+
+  function addEmptyModule() {
+    if (!data) return;
+    setData({ ...data, modules: [...data.modules, newEmptyModule()] });
   }
 
   async function handleImportMarkdown(e: ChangeEvent<HTMLInputElement>) {
@@ -443,10 +507,19 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
         <h2 className="text-sm font-mono uppercase tracking-widest text-paper-400">
           Các chương ({data.modules.length})
         </h2>
-        <label className="cursor-pointer rounded-full border border-dashed border-accent/60 px-4 py-1.5 text-xs font-medium text-accent hover:bg-accent-soft">
-          + Nhập chương mới từ file .md
-          <input type="file" accept=".md,text/markdown" onChange={handleImportMarkdown} className="hidden" />
-        </label>
+        <div className="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={addEmptyModule}
+            className="rounded-full border border-dashed border-accent/60 px-4 py-1.5 text-xs font-medium text-accent hover:bg-accent-soft"
+          >
+            + Thêm chương trống
+          </button>
+          <label className="cursor-pointer rounded-full border border-dashed border-accent/60 px-4 py-1.5 text-xs font-medium text-accent hover:bg-accent-soft">
+            + Nhập chương mới từ file .md
+            <input type="file" accept=".md,text/markdown" onChange={handleImportMarkdown} className="hidden" />
+          </label>
+        </div>
       </div>
       <p className="mt-1 text-xs text-paper-400">
         Dòng <code className="font-mono">#</code> đầu file → tên chương; mỗi dòng{" "}
@@ -459,6 +532,90 @@ export default function EditBookPage({ params }: { params: Promise<{ slug: strin
         {data.modules.map((mod, i) => (
           <ModuleEditor key={mod.id || slugify(mod.title)} mod={mod} onChange={(next) => updateModule(i, next)} />
         ))}
+      </div>
+
+      <h2 className="mt-8 text-sm font-mono uppercase tracking-widest text-paper-400">
+        Thông tin bổ sung
+      </h2>
+      <div className="mt-3 space-y-3 rounded-xl border border-border p-5">
+        <input
+          value={data.meta.author ?? ""}
+          onChange={(e) =>
+            setData({ ...data, meta: { ...data.meta, author: e.target.value || undefined } })
+          }
+          placeholder="Tác giả (không bắt buộc)"
+          className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+        />
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <select
+            value={data.meta.domain ?? ""}
+            onChange={(e) =>
+              setData({
+                ...data,
+                meta: { ...data.meta, domain: e.target.value || undefined, field: undefined },
+              })
+            }
+            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+          >
+            <option value="">Lĩnh vực lớn (không bắt buộc)</option>
+            {CATEGORY_TREE.map((d) => (
+              <option key={d.id} value={d.id}>
+                {d.label}
+              </option>
+            ))}
+          </select>
+          <select
+            value={data.meta.field ?? ""}
+            onChange={(e) =>
+              setData({ ...data, meta: { ...data.meta, field: e.target.value || undefined } })
+            }
+            disabled={!data.meta.domain}
+            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent disabled:opacity-50"
+          >
+            <option value="">Chủ đề con (không bắt buộc)</option>
+            {CATEGORY_TREE.find((d) => d.id === data.meta.domain)?.fields.map((f) => (
+              <option key={f.id} value={f.id}>
+                {f.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="mb-1 block text-xs text-paper-400">Ngày xuất bản (không bắt buộc)</label>
+          <input
+            type="date"
+            value={data.meta.publishedAt ?? ""}
+            onChange={(e) =>
+              setData({ ...data, meta: { ...data.meta, publishedAt: e.target.value || undefined } })
+            }
+            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent sm:w-60"
+          />
+        </div>
+        <div className="flex gap-2">
+          <input
+            value={data.meta.footerImage ?? ""}
+            onChange={(e) =>
+              setData({ ...data, meta: { ...data.meta, footerImage: e.target.value || undefined } })
+            }
+            placeholder="Link ảnh minh hoạ cuối sách (không bắt buộc — lấy ở trang Chèn ảnh)"
+            className="flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+          />
+          <Link
+            href="/chen-anh"
+            target="_blank"
+            className="shrink-0 rounded-lg border border-border px-3 py-2 text-xs text-ink-soft hover:border-accent hover:text-accent"
+          >
+            Mở trang Chèn ảnh ↗
+          </Link>
+        </div>
+        {data.meta.footerImage && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={data.meta.footerImage}
+            alt=""
+            className="max-h-40 rounded-lg border border-border object-contain"
+          />
+        )}
       </div>
     </div>
   );
