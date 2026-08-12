@@ -38,8 +38,17 @@ jobs:
         with:
           node-version: 22
 
-      - name: Install postgresql-client (pg_dump)
-        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+      # Ubuntu's default `postgresql-client` package lags behind Supabase's
+      # Postgres version (hit this for real: Supabase runs 17.6, default
+      # apt package only offers 16.x) — pg_dump refuses to dump a server
+      # newer than itself. Add the official PGDG apt repo and install the
+      # matching major version explicitly instead of trusting the distro
+      # default to keep up.
+      - name: Install postgresql-client 17 (pg_dump)
+        run: |
+          sudo apt-get install -y postgresql-common
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get install -y postgresql-client-17
 
       - name: Run backup + export
         env:
