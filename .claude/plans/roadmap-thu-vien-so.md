@@ -459,6 +459,91 @@ hôm nay trong khối Footer.
   hiện request). Không bấm Lưu ở bất kỳ trang test nào — chỉ điều hướng
   rời trang, tránh ghi tag/ngày thử nghiệm vào sách thật đang publish.
 
+## Sau Giai đoạn 3 — Đổi tên/di chuyển các thẻ quản trị, biên tập được sách nháp, gắn dấu sao (2026-08-12)
+
+User yêu cầu 6 việc trong khu quản trị: đổi tên + gộp lại "AI Job Queue"
+thành "Biên tập nội dung" và cho áp dụng job lên cả sách nháp (trước đây
+chỉ áp dụng được cho sách đã publish); chuyển "Nhập từ Google Drive" từ
+trang đó sang "Tiếp nhận nội dung"; đổi tên "Tủ sách" → "Tuyển tập";
+chuyển "Chèn ảnh" từ nav chính vào trong "Biên tập nội dung"; thêm tính
+năng gắn dấu sao cho sách ở "Quản lý nội dung".
+
+- **Đổi tên "AI Job Queue" → "Biên tập nội dung"**: `components/
+  AdminLink.tsx`, `app/admin/page.tsx`, `app/admin/jobs/page.tsx` (heading
+  + dòng mô tả kết quả job trỏ đúng "trang Quản lý nội dung" thay vì tên
+  cũ "Bản nháp").
+- **Job biên tập áp dụng được cho sách nháp**: phát hiện 2 chỗ chặn khi
+  đọc kỹ code trước khi sửa — (1) `app/admin/jobs/page.tsx` lấy danh sách
+  sách để chọn bằng query Supabase thẳng `.eq("status", "published")`
+  (RLS anon key vốn chỉ cho đọc sách published) — đổi sang gọi
+  `adminFetch("/api/admin/drafts")` (API admin có sẵn, trả về mọi trạng
+  thái) giống cách `TagInput`/import page đã làm. (2)
+  `app/api/admin/jobs/[id]/process/route.ts` khi đọc sách để chạy job có
+  `.eq("status", "published")` cứng — bỏ điều kiện này, đổi sang lấy thêm
+  cột `status` để quyết định cách ghi kết quả: nếu sách **đã published**,
+  giữ nguyên hành vi cũ (ghi vào `pending_data`, chờ duyệt qua "Đã duyệt,
+  chờ công khai" — không đổi ngay nội dung đang hiển thị công khai); nếu
+  sách **còn là draft/reviewed** (chưa công khai), ghi thẳng vào `data` —
+  vì sách chưa lên site nên không có gì cần "bảo vệ" bằng bước duyệt
+  riêng, việc admin tự gửi job từ Biên tập nội dung đã CHÍNH LÀ bước duyệt
+  (cùng logic với sửa tay ở `[slug]/edit/route.ts`). Phát hiện quan trọng
+  trong lúc đọc code: nếu chỉ bỏ điều kiện `published` mà không tách 2
+  đường ghi này, job chạy trên 1 sách `status='draft'` sẽ ghi vào
+  `pending_data` nhưng route `approve` lại return sớm ở nhánh
+  `status==='draft'` (chuyển thẳng sang `reviewed`) **mà không bao giờ
+  merge `pending_data`** — nghĩa là kết quả job (tag/tóm tắt/phân loại) sẽ
+  bị lặng lẽ mất khi duyệt bản nháp. Bug này chưa từng xảy ra trước đây vì
+  trước giờ job chỉ chạy được trên sách published; phải tránh né chủ động
+  khi mở rộng phạm vi áp dụng, không phải sửa sau khi phát hiện lỗi.
+- **Chuyển "Nhập từ Google Drive" sang "Tiếp nhận nội dung"**: bớt lựa
+  chọn `ingest` khỏi bộ nút loại job ở Biên tập nội dung (route API
+  `/api/admin/jobs` + job xử lý ở `process/route.ts` vẫn hỗ trợ nguyên
+  `job_type="ingest"`, chỉ bớt ở UI chọn). Thêm component
+  `GoogleDriveIngest` trong `app/admin/import/page.tsx`: 1 ô nhập link
+  folder Drive (để trống dùng folder mặc định) + nút "Nhập từ Drive" gộp
+  2 bước tạo job + xử lý ngay thành 1 lần bấm (thay vì phải tạo job rồi
+  qua danh sách "Job gần đây" bấm xử lý riêng như ở Biên tập nội dung) —
+  hợp lý hơn cho 1 hành động đơn lẻ, sau khi xong tự chuyển sang trang sửa
+  nội dung của sách vừa tạo.
+- **"Tủ sách" → "Tuyển tập"**: `components/TuSachLink.tsx`,
+  `app/tu-sach/page.tsx` (2 heading), `components/BookmarkButton.tsx`
+  (nhãn nút "☆ Lưu vào tuyển tập"). Giữ nguyên route `/tu-sach` — chỉ đổi
+  nhãn hiển thị, không đổi URL (đổi URL sẽ làm hỏng link đã chia sẻ/đã
+  bookmark).
+- **"Chèn ảnh" chuyển vào "Biên tập nội dung"**: bỏ khỏi nav chính
+  (`app/layout.tsx`), thêm link "Chèn ảnh ↗" ở góc phải heading trang
+  `app/admin/jobs/page.tsx`. Trang `/chen-anh` không có gate đăng nhập từ
+  trước — việc này chỉ đổi lối vào từ nav, không thêm/bớt quyền truy cập
+  trực tiếp URL.
+- **Gắn dấu sao cho sách**: thêm field `meta.featured?: boolean` vào
+  `lib/types.ts`; route mới `app/api/admin/books/[slug]/star/route.ts`
+  (đọc `data` hiện tại, đảo `meta.featured`, ghi lại — cùng khuôn mẫu với
+  `[slug]/edit/route.ts`, revalidate nếu sách đang published); component
+  `StarButton` (đặt ở module scope như `MetaDiffLine` sẵn có, không đặt
+  trong thân component cha — tránh định nghĩa lại component con mỗi lần
+  render) hiển thị ★/☆, gắn vào cả 3 nhóm sách trong
+  `app/admin/drafts/page.tsx` (chờ duyệt, đã duyệt chờ công khai, đang
+  công khai); tiêu đề sách có dấu ★ ở đầu khi đã đánh dấu.
+- **Đã kiểm chứng thật trên production**: nav đúng thứ tự "Tiếp nhận nội
+  dung | Biên tập nội dung | Quản lý nội dung | Tuyển tập" (không còn
+  Chèn ảnh); trang Biên tập nội dung chỉ còn 4 loại job (không có
+  "Nhập từ Google Drive"), link "Chèn ảnh ↗" hiện đúng, ô tìm sách gõ tên
+  1 sách có cả bản draft lẫn bản published cho gõ 1 tên trả về cả 2 kết
+  quả — xác nhận danh sách chọn sách đã bao gồm sách nháp; trang Tiếp
+  nhận nội dung có đúng khối "Nhập từ Google Drive" mới; bấm nút sao trên
+  sách "Viết Sách Cùng Claude" thấy chuyển ☆→★ kèm tiêu đề hiện dấu ★,
+  bấm lại về ☆ đúng — đã khôi phục về trạng thái ban đầu (không để lại
+  dấu sao thử nghiệm).
+- **Chưa kiểm chứng (rủi ro thấp, chưa chạy để tránh tốn API/side effect
+  không cần thiết)**: chưa thật sự gửi 1 job tag/tóm tắt/phân loại/dịch
+  thuật lên 1 sách đang ở trạng thái draft và xác nhận kết quả ghi thẳng
+  vào `data` (thay vì `pending_data`) đúng như code — mới xác nhận được
+  qua đọc code + việc sách nháp giờ đã xuất hiện trong danh sách chọn.
+  Cũng chưa bấm thật nút "Nhập từ Drive" ở Tiếp nhận nội dung (logic
+  backend y hệt job `ingest` cũ đã test ở giai đoạn trước, chỉ đổi chỗ
+  hiển thị + gộp 2 bước thành 1 ở client, nhưng luồng gộp create+process
+  liền nhau trong 1 lần bấm thì chưa tự tay chạy qua).
+
 ---
 
 ## Context
