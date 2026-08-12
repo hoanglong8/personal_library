@@ -314,6 +314,33 @@ tin cậy hệ thống:**
 ## Giai đoạn 4 (RAG/Q&A) — chủ động hoãn theo quyết định của bạn, chỉ giữ
 chỗ kiến trúc (pgvector có sẵn trong Postgres, không cần đổi engine).
 
+## Sau Giai đoạn 3 — Ẩn nguồn Google Drive (2026-08-12)
+
+Theo đúng kế hoạch Giai đoạn 2 gốc ("Ẩn nguồn Drive khỏi người đọc") vốn
+chưa từng làm — `app/api/drive-proxy/[bookSlug]/route.ts` (mới): tra
+`meta.sourceUrl` của sách, xác thực bằng Service Account, stream nội dung
+gốc qua domain của portal thay vì nhúng thẳng `drive.google.com`. Google
+Docs/Sheets/Slides được export sang PDF (để trình duyệt tự render bằng
+viewer PDF có sẵn, không cần UI preview riêng của Google — mấu chốt để
+thật sự không có request nào ra ngoài); file đã ở dạng nhị phân (PDF có
+sẵn...) thì stream thẳng qua `alt=media`. `components/
+OriginalSourceViewer.tsx` và "Mở tab mới" đều trỏ về route này, không còn
+chỗ nào lộ URL Drive gốc.
+
+**Đã kiểm chứng bằng DevTools thật** (không chỉ tin log/response header):
+mở `claude-in-chrome`, bấm "Xem bản gốc" trên sách `viet-sach-cung-claude`
+thật trên production, đọc lại toàn bộ network request qua
+`read_network_requests` — bắt được 60 request (xác nhận tool đang theo
+dõi thật, không phải false-negative do chưa kích hoạt) — trong đó có đúng
+1 request `GET /api/drive-proxy/viet-sach-cung-claude` (200) và **0 request
+nào tới `drive.google.com`**. Trước đó cũng đã tự tải trực tiếp qua `curl`
+cả ở dev local lẫn production, xác nhận response là file PDF hợp lệ
+(`%PDF-1.7`) đúng 1.384.485 byte ở cả 2 nơi.
+
+Áp dụng ngay cho 2 sách cũ đã có `sourceUrl` (`viet-sach-cung-claude`,
+`lich-su-ai`) mà không cần sửa dữ liệu — route tự suy ra URL proxy từ
+slug, không phụ thuộc dữ liệu sách phải có sẵn `driveFileId`.
+
 ---
 
 ## Context
