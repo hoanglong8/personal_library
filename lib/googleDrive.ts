@@ -91,3 +91,45 @@ export async function exportGoogleDocText(fileId: string): Promise<string> {
   }
   return res.text();
 }
+
+const GOOGLE_NATIVE_MIME_PREFIX = "application/vnd.google-apps.";
+
+// Used by app/api/drive-proxy/[bookSlug] — streams the ORIGINAL SOURCE
+// DOCUMENT (a book's meta.sourceUrl), not a folder-listing file. Google
+// Docs/Sheets/Slides don't have raw bytes to download (they're not files
+// in the normal sense), so those get exported as PDF instead — which also
+// conveniently means the browser's own built-in PDF viewer renders it, no
+// Google-hosted preview UI (and its own drive.google.com sub-requests)
+// involved at all.
+export async function streamDriveFile(
+  fileId: string
+): Promise<{ contentType: string; body: ReadableStream<Uint8Array> }> {
+  const token = await getAccessToken();
+
+  const metaRes = await fetch(
+    `https://www.googleapis.com/drive/v3/files/${fileId}?fields=mimeType`,
+    { headers: { Authorization: `Bearer ${token}` }, signal: AbortSignal.timeout(15_000) }
+  );
+  if (!metaRes.ok) {
+    throw new Error(`Đọc metadata file Drive thất bại: ${await metaRes.text()}`);
+  }
+  const { mimeType } = await metaRes.json();
+
+  const isGoogleNative = typeof mimeType === "string" && mimeType.startsWith(GOOGLE_NATIVE_MIME_PREFIX);
+  const url = isGoogleNative
+    ? `https://www.googleapis.com/drive/v3/files/${fileId}/export?mimeType=application/pdf`
+    : `https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`;
+
+  const res = await fetch(url, {
+    headers: { Authorization: `Bearer ${token}` },
+    signal: AbortSignal.timeout(30_000),
+  });
+  if (!res.ok || !res.body) {
+    throw new Error(`Tải nội dung file Drive thất bại: ${await res.text()}`);
+  }
+
+  return {
+    contentType: isGoogleNative ? "application/pdf" : mimeType || "application/octet-stream",
+    body: res.body,
+  };
+}
