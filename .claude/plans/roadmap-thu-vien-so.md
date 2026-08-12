@@ -544,6 +544,75 @@ năng gắn dấu sao cho sách ở "Quản lý nội dung".
   hiển thị + gộp 2 bước thành 1 ở client, nhưng luồng gộp create+process
   liền nhau trong 1 lần bấm thì chưa tự tay chạy qua).
 
+## Sau Giai đoạn 3 — Chống copy khi đọc + sửa render markdown thô (2026-08-12)
+
+User báo 2 vấn đề: (1) chưa có cơ chế chống copy nội dung khi đọc sách;
+(2) nội dung hiện đang lộ cú pháp markdown thô (`**`, `| a |...`) thay vì
+render đúng định dạng — hệ quả trực tiếp của việc các trường nội dung đổi
+sang soạn bằng `MarkdownFieldEditor` ở phiên trước (2026-08-12, mục "Mở
+rộng giao diện Quản lý nội dung") nhưng **phía đọc chưa từng được cập
+nhật để parse markdown** — trước giờ `ConceptBlock`/`CaseStudyCard`/...
+chỉ tách đoạn theo `\n\n` rồi in thẳng chuỗi ra `<p>`, không hiểu cú pháp.
+
+**Render markdown đúng cách:**
+- Cài `react-markdown@10.1.0` + `remark-gfm@4.0.1` làm dependency trực
+  tiếp (2 gói này vốn đã có sẵn trong `node_modules` như phụ thuộc bắc
+  cầu của `@uiw/react-md-editor`, cùng đúng version — khai báo thẳng
+  trong `package.json` thay vì dựa ngầm vào cây phụ thuộc của gói khác).
+- `components/MarkdownText.tsx` (mới): bọc `<ReactMarkdown
+  remarkPlugins={[remarkGfm]}>` — không cần `"use client"`, component
+  đồng bộ của `react-markdown` v10 không dùng hook/API trình duyệt nên
+  render được ở server component (giữ nguyên kiến trúc hiện có, không
+  phải chuyển hàng loạt block sang client component).
+- Áp dụng `MarkdownText` thay cho toàn bộ chỗ in text thô trước đây:
+  `ConceptBlock`, `CaseStudyCard`, `NoteCallout`, `FrameworkCard` (intro +
+  từng bước), `ExerciseCard` (prompt/hint/gợi ý/đáp án), `PrintView.tsx`
+  (bản in — cùng lỗi, cùng cách sửa), và `mod.summary` ở trang module
+  (`app/[book]/modules/[slug]/page.tsx`).
+- Phải tái cấu trúc vài chỗ đang lồng nhãn + nội dung chung 1 thẻ `<p>`
+  (vd `<p><span>Gợi ý: </span>{section.hint}</p>`) — `MarkdownText` xuất
+  ra `<p>` (thẻ khối), không thể nằm trong `<p>`/`<span>` khác (HTML
+  không hợp lệ, một số biến thể `<span>` bọc ngoài sẽ bị trình duyệt tự
+  đóng sớm). Tách nhãn ra dòng riêng (`<p>Gợi ý:</p>` rồi `<div
+  className="prose-portal">` chứa `MarkdownText` ngay dưới) ở cả
+  `ExerciseCard.tsx` lẫn `PrintView.tsx`.
+- `ModuleGrid.tsx` (thẻ mục lục ở trang sách, có `line-clamp-2`) **không**
+  đổi sang render markdown đầy đủ — bảng/heading/list là phần tử khối,
+  phá layout thẻ đã bị cắt dòng. Thay vào đó viết `lib/stripMarkdown.ts`
+  (regex loại bỏ `**`, `#`, `` ` ``, `|`, gạch đầu dòng...) chỉ dùng riêng
+  cho ngữ cảnh xem trước bị cắt dòng này.
+- `app/globals.css`: mở rộng `.prose-portal` (trước đó chỉ có style cho
+  `p`) thêm đầy đủ `strong/em/del/a/code/pre/ul/ol/li/blockquote/hr/
+  table/th/td/img` — nếu không có bước này, markdown tuy đã được PARSE
+  đúng nhưng bảng/code/blockquote vẫn hiện xấu bằng style mặc định của
+  trình duyệt.
+
+**Chống copy khi đọc:**
+- `components/AntiCopyGuard.tsx` (mới, client component) — CSS
+  `select-none` + chặn `onCopy`/`onCut`/`onContextMenu`/`onDragStart`.
+  Ghi rõ trong comment đây là **rào cản mềm, không phải DRM thật** — xem
+  view-source/devtools hoặc tắt JS vẫn đọc được toàn bộ text, không có
+  cách nào chặn tuyệt đối ở phía client.
+- Bọc có chủ đích, KHÔNG bọc toàn trang: `SectionRenderer.tsx` chỉ bọc
+  phần nội dung mục (Concept/Framework/CaseStudy/Exercise/Note/Image),
+  không bọc `BookmarkButton`/`CommentThread` — nếu bọc luôn cả
+  `CommentThread` thì người đọc sẽ không gõ/chọn/sửa được chính bình luận
+  họ đang viết (`onCopy` là sự kiện nổi bọt, chặn ở cha sẽ chặn luôn con).
+  `app/[book]/modules/[slug]/page.tsx` bọc riêng phần tiêu đề + tóm tắt
+  chương.
+- **Đã kiểm chứng thật**: trên dev server, kéo chọn 1 đoạn văn trong nội
+  dung → không bôi đen được (user-select chặn đúng); right-click trên nội
+  dung → không hiện context menu; gõ + kéo chọn text trong ô "Chia sẻ
+  nhận xét..." (bình luận) → vẫn gõ và bôi đen chọn được bình thường,
+  xác nhận không bọc nhầm vùng tương tác.
+- Trên production: tạo 1 sách nháp test qua đúng luồng "Tiếp nhận nội
+  dung" (file `.md` chứa `**đậm**`, `*nghiêng*`, `` `code` ``, bảng 2
+  cột, list, blockquote), Duyệt → Publish → mở trang module thật, xác
+  nhận toàn bộ render đúng định dạng (bảng có viền/nền tiêu đề, đậm/
+  nghiêng/code đúng kiểu, list có bullet, blockquote có viền trái) —
+  không còn ký tự markdown thô nào lộ ra. Ngừng công khai + Xoá sách test
+  ngay sau khi xác nhận, không để lại dữ liệu rác.
+
 ---
 
 ## Context
