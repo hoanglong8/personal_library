@@ -50,9 +50,22 @@ jobs:
           sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
           sudo apt-get install -y postgresql-client-17
 
+      # Also hit: plain "pg_dump" on PATH resolved to Ubuntu's preinstalled
+      # 16.x even after installing 17 alongside it — multiple major
+      # versions coexist under /usr/lib/postgresql/<version>/bin/ and
+      # nothing on PATH prefers the newer one automatically. Resolve the
+      # highest-numbered installed binary explicitly instead of guessing.
+      - name: Locate pg_dump binary
+        id: pg_dump
+        run: |
+          BIN=$(ls /usr/lib/postgresql/*/bin/pg_dump | sort -V | tail -n1)
+          "$BIN" --version
+          echo "bin=$BIN" >> "$GITHUB_OUTPUT"
+
       - name: Run backup + export
         env:
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          PG_DUMP_BIN: ${{ steps.pg_dump.outputs.bin }}
         run: node scripts/backup-export.mjs
 
       - name: Push backup.sql to private backup repo

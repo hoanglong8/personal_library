@@ -31,8 +31,15 @@ function requireEnv(name) {
 function dumpDatabase() {
   const dbUrl = requireEnv("SUPABASE_DB_URL");
   const outPath = `${DIST_DIR}/backup.sql`;
+  // Plain "pg_dump" resolves to whatever version happened to be first on
+  // PATH — when multiple major versions are installed side by side (the
+  // workflow installs 17 alongside Ubuntu's preinstalled 16), that's not
+  // necessarily the new one. PG_DUMP_BIN lets the workflow point at the
+  // exact binary it just verified; falls back to plain "pg_dump" for
+  // local/manual runs where only one version exists.
+  const pgDumpBin = process.env.PG_DUMP_BIN || "pg_dump";
   execFileSync(
-    "pg_dump",
+    pgDumpBin,
     [dbUrl, "--schema=public", "--no-owner", "--no-privileges", "--file", outPath],
     { stdio: "inherit" }
   );
