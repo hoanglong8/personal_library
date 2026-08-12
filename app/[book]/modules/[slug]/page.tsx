@@ -6,6 +6,8 @@ import ModuleSearch from "@/components/ModuleSearch";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import SectionRenderer from "@/components/SectionRenderer";
 import MarkReadButton from "@/components/MarkReadButton";
+import MarkdownText from "@/components/MarkdownText";
+import AntiCopyGuard from "@/components/AntiCopyGuard";
 import { getBook, getModule, getAdjacentModules } from "@/lib/content";
 
 export default async function ModulePage({
@@ -34,8 +36,12 @@ export default async function ModulePage({
         <ModuleNav modules={book.modules} activeId={slug} bookSlug={bookSlug} />
 
         <article className="mx-auto min-w-0 max-w-3xl flex-1">
-          <h1 className="text-3xl font-semibold text-ink">{mod.title}</h1>
-          <p className="mt-2 text-ink-soft">{mod.summary}</p>
+          <AntiCopyGuard>
+            <h1 className="text-3xl font-semibold text-ink">{mod.title}</h1>
+            <div className="prose-portal mt-2">
+              <MarkdownText text={mod.summary} />
+            </div>
+          </AntiCopyGuard>
 
           <div className="mt-10 space-y-10">
             {mod.sections.map((section) => (

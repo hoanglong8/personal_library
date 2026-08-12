@@ -1,4 +1,5 @@
 import type { CaseStudySection } from "@/lib/types";
+import MarkdownText from "./MarkdownText";
 
 export default function CaseStudyCard({ section }: { section: CaseStudySection }) {
   return (
@@ -8,9 +9,7 @@ export default function CaseStudyCard({ section }: { section: CaseStudySection }
       </span>
       <h3 className="mt-1.5 text-xl font-medium text-ink">{section.title}</h3>
       <div className="prose-portal mt-3">
-        {section.body.split("\n\n").map((p, i) => (
-          <p key={i}>{p}</p>
-        ))}
+        <MarkdownText text={section.body} />
       </div>
       {section.source && (
         <p className="mt-2 text-xs text-paper-400">Nguồn: {section.source}</p>

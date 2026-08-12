@@ -1,4 +1,5 @@
 import type { NoteSection } from "@/lib/types";
+import MarkdownText from "./MarkdownText";
 
 const VARIANT_LABEL: Record<NoteSection["variant"], string> = {
   tip: "Ghi chú",
@@ -21,7 +22,9 @@ export default function NoteCallout({ section }: { section: NoteSection }) {
         {VARIANT_LABEL[section.variant]}
         {section.title ? ` · ${section.title}` : ""}
       </span>
-      <p className="mt-1 text-ink-soft leading-relaxed">{section.body}</p>
+      <div className="prose-portal mt-1 text-ink-soft leading-relaxed">
+        <MarkdownText text={section.body} />
+      </div>
     </div>
   );
 }

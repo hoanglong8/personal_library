@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "@/lib/auth";
 import { supabase, isSupabaseConfigured } from "@/lib/supabaseClient";
 import type { Book, Section, NoteSection } from "@/lib/types";
+import MarkdownText from "./MarkdownText";
 
 const NOTE_LABEL: Record<NoteSection["variant"], string> = {
   tip: "Ghi chú",
@@ -16,20 +17,17 @@ function SectionPrintBlock({ section }: { section: Section }) {
     <div className="mt-6">
       <h4 className="text-base font-medium text-ink">{section.title}</h4>
 
-      {section.type === "concept" &&
-        section.body.split("\n\n").map((p, i) => (
-          <p key={i} className="mt-2 text-ink-soft">
-            {p}
-          </p>
-        ))}
+      {section.type === "concept" && (
+        <div className="prose-portal mt-2">
+          <MarkdownText text={section.body} />
+        </div>
+      )}
 
       {section.type === "case-study" && (
         <>
-          {section.body.split("\n\n").map((p, i) => (
-            <p key={i} className="mt-2 text-ink-soft">
-              {p}
-            </p>
-          ))}
+          <div className="prose-portal mt-2">
+            <MarkdownText text={section.body} />
+          </div>
           {section.source && (
             <p className="mt-1 text-sm text-paper-400">Nguồn: {section.source}</p>
           )}
@@ -38,10 +36,16 @@ function SectionPrintBlock({ section }: { section: Section }) {
 
       {section.type === "framework" && (
         <>
-          {section.intro && <p className="mt-2 text-ink-soft">{section.intro}</p>}
+          {section.intro && (
+            <div className="prose-portal mt-2">
+              <MarkdownText text={section.intro} />
+            </div>
+          )}
           <ol className="mt-2 list-decimal space-y-1 pl-5 text-ink-soft">
             {section.steps.map((step, i) => (
-              <li key={i}>{step}</li>
+              <li key={i} className="prose-portal [&_p]:mb-0">
+                <MarkdownText text={step} />
+              </li>
             ))}
           </ol>
         </>
@@ -49,27 +53,35 @@ function SectionPrintBlock({ section }: { section: Section }) {
 
       {section.type === "exercise" && (
         <>
-          <p className="mt-2 text-ink-soft">{section.prompt}</p>
+          <div className="prose-portal mt-2">
+            <MarkdownText text={section.prompt} />
+          </div>
           {section.hint && (
-            <p className="mt-1 text-sm text-ink-soft">
-              <span className="font-medium text-ink">Gợi ý: </span>
-              {section.hint}
-            </p>
+            <div className="mt-1 text-sm">
+              <p className="font-medium text-ink">Gợi ý:</p>
+              <div className="prose-portal">
+                <MarkdownText text={section.hint} />
+              </div>
+            </div>
           )}
           {section.answer && (
-            <p className="mt-1 text-sm text-ink-soft">
-              <span className="font-medium text-ink">Đáp án tham khảo: </span>
-              {section.answer}
-            </p>
+            <div className="mt-1 text-sm">
+              <p className="font-medium text-ink">Đáp án tham khảo:</p>
+              <div className="prose-portal">
+                <MarkdownText text={section.answer} />
+              </div>
+            </div>
           )}
         </>
       )}
 
       {section.type === "note" && (
-        <p className="mt-2 text-ink-soft">
-          <span className="font-medium text-ink">{NOTE_LABEL[section.variant]}: </span>
-          {section.body}
-        </p>
+        <div className="mt-2 text-ink-soft">
+          <p className="font-medium text-ink">{NOTE_LABEL[section.variant]}:</p>
+          <div className="prose-portal">
+            <MarkdownText text={section.body} />
+          </div>
+        </div>
       )}
 
       {section.type === "image" && (
@@ -162,7 +174,9 @@ export default function PrintView({ bookSlug }: { bookSlug: string }) {
       {book.modules.map((mod) => (
         <section key={mod.id} className="mt-12" style={{ breakBefore: "page" }}>
           <h2 className="text-2xl font-semibold text-ink">{mod.title}</h2>
-          <p className="mt-1 text-ink-soft">{mod.summary}</p>
+          <div className="prose-portal mt-1">
+            <MarkdownText text={mod.summary} />
+          </div>
           {mod.sections.map((section) => (
             <SectionPrintBlock key={section.id} section={section} />
           ))}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { ExerciseSection } from "@/lib/types";
+import MarkdownText from "./MarkdownText";
 
 export default function ExerciseCard({ section }: { section: ExerciseSection }) {
   const [revealed, setRevealed] = useState(false);
@@ -12,9 +13,9 @@ export default function ExerciseCard({ section }: { section: ExerciseSection }) 
         Bài tập thực hành
       </span>
       <h3 className="mt-1.5 text-xl font-medium text-ink">{section.title}</h3>
-      <p className="mt-3 text-sm text-ink-soft leading-relaxed">
-        {section.prompt}
-      </p>
+      <div className="prose-portal mt-3 text-sm leading-relaxed">
+        <MarkdownText text={section.prompt} />
+      </div>
 
       {(section.hint || section.answer) && (
         <div className="mt-4">
@@ -25,18 +26,22 @@ export default function ExerciseCard({ section }: { section: ExerciseSection }) 
             {revealed ? "Ẩn gợi ý / đáp án" : "Xem gợi ý / đáp án"}
           </button>
           {revealed && (
-            <div className="mt-3 space-y-2 rounded-lg bg-surface p-4 text-sm text-ink-soft">
+            <div className="mt-3 space-y-3 rounded-lg bg-surface p-4 text-sm text-ink-soft">
               {section.hint && (
-                <p>
-                  <span className="font-medium text-ink">Gợi ý: </span>
-                  {section.hint}
-                </p>
+                <div>
+                  <p className="font-medium text-ink">Gợi ý:</p>
+                  <div className="prose-portal">
+                    <MarkdownText text={section.hint} />
+                  </div>
+                </div>
               )}
               {section.answer && (
-                <p>
-                  <span className="font-medium text-ink">Đáp án tham khảo: </span>
-                  {section.answer}
-                </p>
+                <div>
+                  <p className="font-medium text-ink">Đáp án tham khảo:</p>
+                  <div className="prose-portal">
+                    <MarkdownText text={section.answer} />
+                  </div>
+                </div>
               )}
             </div>
           )}

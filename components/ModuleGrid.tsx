@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Module } from "@/lib/types";
 import { useSession } from "@/lib/auth";
 import { supabase } from "@/lib/supabaseClient";
+import { stripMarkdown } from "@/lib/stripMarkdown";
 
 export default function ModuleGrid({
   modules,
@@ -62,7 +63,7 @@ export default function ModuleGrid({
                 {m.title}
               </h3>
               <p className="mt-1.5 text-sm text-ink-soft line-clamp-2">
-                {m.summary}
+                {stripMarkdown(m.summary)}
               </p>
             </Link>
           );
