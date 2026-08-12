@@ -43,12 +43,6 @@ export default function RootLayout({
               <ImportLink />
               <AdminLink />
               <TuSachLink />
-              <Link
-                href="/chen-anh"
-                className="text-xs text-paper-400 hover:text-accent transition-colors"
-              >
-                Chèn ảnh
-              </Link>
               <AuthWidget />
               <ThemeToggle />
             </div>

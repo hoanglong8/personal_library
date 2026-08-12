@@ -117,7 +117,7 @@ export default function TuSachPage() {
   if (!session) {
     return (
       <section className="mx-auto max-w-3xl px-6 py-14">
-        <h1 className="text-2xl font-semibold text-ink">Tủ sách của tôi</h1>
+        <h1 className="text-2xl font-semibold text-ink">Tuyển tập của tôi</h1>
         <p className="mt-4 text-sm text-paper-400">
           Đăng nhập ở góc trên để xem các mục bạn đã đánh dấu.
         </p>
@@ -127,7 +127,7 @@ export default function TuSachPage() {
 
   return (
     <section className="mx-auto max-w-3xl px-6 py-14">
-      <h1 className="text-2xl font-semibold text-ink">Tủ sách của tôi</h1>
+      <h1 className="text-2xl font-semibold text-ink">Tuyển tập của tôi</h1>
 
       {items === undefined && (
         <p className="mt-4 text-sm text-paper-400">Đang tải...</p>
@@ -135,7 +135,7 @@ export default function TuSachPage() {
 
       {items?.length === 0 && (
         <p className="mt-4 text-sm text-paper-400">
-          Chưa có mục nào được đánh dấu — bấm &ldquo;☆ Lưu vào tủ sách&rdquo; ở cuối
+          Chưa có mục nào được đánh dấu — bấm &ldquo;☆ Lưu vào tuyển tập&rdquo; ở cuối
           một mục bất kỳ khi đang đọc.
         </p>
       )}

@@ -49,16 +49,17 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
 
   try {
     let book: Book | null = null;
+    let bookStatus: string | null = null;
     if (job.book_id) {
       const { data: bookRow, error: bookError } = await supabase
         .from("books")
-        .select("slug, data")
+        .select("slug, status, data")
         .eq("slug", job.book_id)
-        .eq("status", "published")
         .single();
       if (bookError || !bookRow) {
-        throw new Error(`Không tìm thấy sách đã publish với slug "${job.book_id}".`);
+        throw new Error(`Không tìm thấy sách với slug "${job.book_id}".`);
       }
+      bookStatus = bookRow.status;
       book = { slug: bookRow.slug, ...(bookRow.data as Omit<Book, "slug">) };
     }
 
@@ -88,11 +89,25 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     }
 
     if (outcome.kind === "pending-edit") {
-      const { error: updateError } = await supabase
-        .from("books")
-        .update({ pending_data: outcome.data })
-        .eq("slug", outcome.slug);
-      if (updateError) throw new Error(`Ghi pending_data thất bại: ${updateError.message}`);
+      if (bookStatus === "published") {
+        // Live already — stage as a proposal so an admin reviews the diff
+        // before it overwrites what readers currently see (app/admin/drafts
+        // "Đã duyệt, chờ công khai").
+        const { error: updateError } = await supabase
+          .from("books")
+          .update({ pending_data: outcome.data })
+          .eq("slug", outcome.slug);
+        if (updateError) throw new Error(`Ghi pending_data thất bại: ${updateError.message}`);
+      } else {
+        // Not public yet (draft/reviewed) — nothing to protect behind a
+        // review step; submitting this job from Biên tập nội dung IS the
+        // review, same as a manual edit (see [slug]/edit/route.ts).
+        const { error: updateError } = await supabase
+          .from("books")
+          .update({ data: outcome.data })
+          .eq("slug", outcome.slug);
+        if (updateError) throw new Error(`Ghi data thất bại: ${updateError.message}`);
+      }
     } else {
       const { data: existing } = await supabase
         .from("books")

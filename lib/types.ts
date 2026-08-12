@@ -100,6 +100,8 @@ export interface PortalMeta {
   driveFileId?: string;
   /** Ảnh minh hoạ hiển thị ở cuối sách (khối "Thông tin bổ sung"), tách riêng khỏi thumbnail dùng ở trang chủ. */
   footerImage?: string;
+  /** Cờ đánh dấu sao (nổi bật) do admin gắn thủ công ở trang Quản lý nội dung — không tự động suy ra từ dữ liệu nào khác. */
+  featured?: boolean;
 }
 
 export interface Book {

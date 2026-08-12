@@ -13,6 +13,77 @@ interface BookOption {
   title: string;
 }
 
+// Kept as its own small component rather than folded into the form below —
+// it submits + processes an "ingest" AI job (lib/aiJobs/ingest.ts) through
+// the same /api/admin/jobs endpoints as Biên tập nội dung, not the .md
+// upload flow above, so it has its own request lifecycle/error state.
+function GoogleDriveIngest() {
+  const router = useRouter();
+  const [folderUrl, setFolderUrl] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleIngest() {
+    setSubmitting(true);
+    setError(null);
+
+    const createRes = await adminFetch("/api/admin/jobs", {
+      method: "POST",
+      body: JSON.stringify({
+        job_type: "ingest",
+        book_id: null,
+        payload: folderUrl.trim() ? { driveFolderUrl: folderUrl.trim() } : {},
+      }),
+    });
+    const createBody = await createRes.json().catch(() => ({}));
+    if (!createRes.ok) {
+      setError(createBody.error ?? "Tạo job thất bại.");
+      setSubmitting(false);
+      return;
+    }
+
+    const processRes = await adminFetch(`/api/admin/jobs/${createBody.job.id}/process`, {
+      method: "POST",
+    });
+    const processBody = await processRes.json().catch(() => ({}));
+    setSubmitting(false);
+    if (!processRes.ok) {
+      setError(
+        `${processBody.error ?? "Xử lý job thất bại."} (xem lại ở Biên tập nội dung, job vẫn nằm trong hàng đợi để thử lại)`
+      );
+      return;
+    }
+    router.push(`/admin/edit/${processBody.slug}`);
+  }
+
+  return (
+    <div className="mt-8 rounded-xl border border-border p-5">
+      <h2 className="font-medium text-ink">Nhập từ Google Drive</h2>
+      <p className="mt-1.5 text-sm text-ink-soft">
+        Đọc 1 Google Doc mới (chưa từng nhập trước đó) từ folder Drive đã cấp quyền cho Service
+        Account, AI tóm tắt thành 1 sách nháp — có thể mất tới khoảng 1 phút.
+      </p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <input
+          value={folderUrl}
+          onChange={(e) => setFolderUrl(e.target.value)}
+          placeholder="Link folder Drive (để trống dùng folder mặc định đã cấu hình)"
+          className="min-w-72 flex-1 rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+        />
+        <button
+          type="button"
+          onClick={handleIngest}
+          disabled={submitting}
+          className="shrink-0 rounded-full bg-accent px-4 py-2 text-xs font-medium text-accent-ink disabled:opacity-50"
+        >
+          {submitting ? "Đang nhập..." : "Nhập từ Drive"}
+        </button>
+      </div>
+      {error && <p className="mt-2 text-xs text-danger">{error}</p>}
+    </div>
+  );
+}
+
 // For bringing in a whole book translated/authored *outside* the portal
 // (e.g. by hand, or with an external tool like silaBook) as a set of .md
 // files — one file per chapter. Distinct from the AI "translate" job
@@ -221,6 +292,8 @@ export default function ImportBookPage() {
         </button>
         {error && <p className="text-xs text-danger">{error}</p>}
       </form>
+
+      <GoogleDriveIngest />
     </div>
   );
 }

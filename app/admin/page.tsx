@@ -9,9 +9,9 @@ export default function AdminHomePage() {
           href="/admin/jobs"
           className="rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent"
         >
-          <h2 className="font-medium text-ink">AI Job Queue</h2>
+          <h2 className="font-medium text-ink">Biên tập nội dung</h2>
           <p className="mt-1.5 text-sm text-ink-soft">
-            Gửi job gắn tag, tóm tắt, phân loại, dịch thuật cho sách đã có.
+            Gửi job gắn tag, tóm tắt, phân loại, dịch thuật cho sách — kể cả sách còn ở dạng nháp.
           </p>
         </Link>
         <Link

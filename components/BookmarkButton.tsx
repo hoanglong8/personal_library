@@ -60,12 +60,12 @@ export default function BookmarkButton({
   return (
     <button
       onClick={toggle}
-      aria-label={saved ? "Bỏ đánh dấu mục này" : "Đánh dấu mục này vào tủ sách"}
+      aria-label={saved ? "Bỏ đánh dấu mục này" : "Đánh dấu mục này vào tuyển tập"}
       className={`text-xs transition-colors ${
         saved ? "text-accent" : "text-paper-400 hover:text-accent"
       }`}
     >
-      {saved ? "★ Đã lưu" : "☆ Lưu vào tủ sách"}
+      {saved ? "★ Đã lưu" : "☆ Lưu vào tuyển tập"}
     </button>
   );
 }

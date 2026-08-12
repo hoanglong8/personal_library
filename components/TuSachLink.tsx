@@ -12,7 +12,7 @@ export default function TuSachLink() {
       href="/tu-sach"
       className="text-xs text-paper-400 hover:text-accent transition-colors"
     >
-      Tủ sách
+      Tuyển tập
     </Link>
   );
 }

@@ -19,7 +19,7 @@ export default function AdminLink() {
   return (
     <>
       <Link href="/admin/jobs" className="text-xs text-paper-400 hover:text-accent transition-colors">
-        AI Job Queue
+        Biên tập nội dung
       </Link>
       <Link href="/admin/drafts" className="text-xs text-paper-400 hover:text-accent transition-colors">
         Quản lý nội dung

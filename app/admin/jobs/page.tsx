@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import Link from "next/link";
 import { adminFetch } from "@/lib/adminFetch";
-import { supabase } from "@/lib/supabaseClient";
 
 interface BookOption {
   slug: string;
@@ -21,12 +21,14 @@ interface AiJob {
   created_at: string;
 }
 
+// "ingest" (nhập sách mới từ Google Drive) sống ở trang Tiếp nhận nội
+// dung (app/admin/import/page.tsx) — trang này chỉ còn các job biên tập
+// một cuốn sách đã có sẵn (kể cả sách vẫn đang ở dạng nháp).
 const JOB_TYPES = [
   { value: "tag", label: "Gắn tag" },
   { value: "summarize", label: "Tóm tắt (viết lại mô tả)" },
   { value: "classify", label: "Phân loại (domain/field)" },
   { value: "translate", label: "Dịch thuật" },
-  { value: "ingest", label: "Nhập từ Google Drive (sách mới)" },
 ];
 
 export default function AdminJobsPage() {
@@ -59,20 +61,20 @@ export default function AdminJobsPage() {
   }
 
   useEffect(() => {
-    if (!supabase) return;
-    supabase
-      .from("books")
-      .select("slug, data")
-      .eq("status", "published")
-      .then(({ data }) => {
-        if (!data) return;
-        setBooks(
-          data.map((row) => ({
-            slug: row.slug as string,
-            title: (row.data as { meta?: { title?: string } })?.meta?.title ?? row.slug,
-          }))
-        );
-      });
+    // Every status (draft/reviewed/published) — job biên tập giờ áp dụng
+    // được cho sách chưa publish, không chỉ sách đã lên site, nên danh
+    // sách chọn sách phải đi qua API admin (anon key + RLS chỉ thấy được
+    // sách published) thay vì query Supabase thẳng như trước.
+    adminFetch("/api/admin/drafts").then(async (res) => {
+      const body = await res.json().catch(() => null);
+      if (!res.ok || !body?.drafts) return;
+      setBooks(
+        body.drafts.map((row: { slug: string; data: { meta?: { title?: string } } }) => ({
+          slug: row.slug,
+          title: row.data?.meta?.title ?? row.slug,
+        }))
+      );
+    });
     // Inlined rather than calling refreshJobs() here: the lint rule
     // react-hooks/set-state-in-effect flags a setState reachable from a
     // named function called synchronously in an effect body, even when
@@ -88,7 +90,7 @@ export default function AdminJobsPage() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    if (jobType !== "ingest" && !bookSlug) {
+    if (!bookSlug) {
       setSubmitError("Chọn 1 sách.");
       return;
     }
@@ -98,11 +100,7 @@ export default function AdminJobsPage() {
     const payload = jobType === "translate" ? { targetLang } : {};
     const res = await adminFetch("/api/admin/jobs", {
       method: "POST",
-      body: JSON.stringify({
-        job_type: jobType,
-        book_id: jobType === "ingest" ? null : bookSlug,
-        payload,
-      }),
+      body: JSON.stringify({ job_type: jobType, book_id: bookSlug, payload }),
     });
     const body = await res.json();
     setSubmitting(false);
@@ -128,7 +126,18 @@ export default function AdminJobsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-ink">AI Job Queue</h1>
+      <div className="flex items-center justify-between gap-3">
+        <h1 className="text-2xl font-semibold text-ink">Biên tập nội dung</h1>
+        <Link
+          href="/chen-anh"
+          className="shrink-0 rounded-full border border-border px-3 py-1.5 text-xs text-ink-soft hover:border-accent hover:text-accent"
+        >
+          Chèn ảnh ↗
+        </Link>
+      </div>
+      <p className="mt-1 text-sm text-paper-400">
+        Áp dụng được cho cả sách còn ở dạng nháp — không cần publish trước mới biên tập được.
+      </p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4 rounded-xl border border-border p-5">
         <div className="flex flex-wrap gap-2">
@@ -152,49 +161,41 @@ export default function AdminJobsPage() {
           ))}
         </div>
 
-        {jobType !== "ingest" && (
-          <div className="relative max-w-sm">
-            <input
-              value={bookQuery}
-              onChange={(e) => {
-                setBookQuery(e.target.value);
-                setBookSlug("");
-                setShowBookSuggestions(true);
-              }}
-              onFocus={() => setShowBookSuggestions(true)}
-              onBlur={() => setTimeout(() => setShowBookSuggestions(false), 150)}
-              placeholder="Tìm sách theo tên..."
-              className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
-            />
-            {showBookSuggestions && (
-              <ul className="absolute z-10 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-border bg-surface shadow-lg">
-                {bookMatches.length === 0 && (
-                  <li className="px-3 py-2 text-xs text-paper-400">Không tìm thấy sách phù hợp.</li>
-                )}
-                {bookMatches.map((b) => (
-                  <li key={b.slug}>
-                    <button
-                      type="button"
-                      onClick={() => selectBook(b)}
-                      className="block w-full px-3 py-2 text-left text-sm hover:bg-accent-soft hover:text-accent"
-                    >
-                      {b.title}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-            {bookSlug && (
-              <p className="mt-1 text-xs text-accent">Đã chọn: {bookQuery}</p>
-            )}
-          </div>
-        )}
-
-        {jobType === "ingest" && (
-          <p className="text-xs text-paper-400">
-            Đọc từ folder Drive mặc định đã cấu hình — sẽ tạo 1 sách nháp mới.
-          </p>
-        )}
+        <div className="relative max-w-sm">
+          <input
+            value={bookQuery}
+            onChange={(e) => {
+              setBookQuery(e.target.value);
+              setBookSlug("");
+              setShowBookSuggestions(true);
+            }}
+            onFocus={() => setShowBookSuggestions(true)}
+            onBlur={() => setTimeout(() => setShowBookSuggestions(false), 150)}
+            placeholder="Tìm sách theo tên (kể cả sách nháp)..."
+            className="w-full rounded-lg border border-border bg-surface px-3 py-2 text-sm outline-none focus:border-accent"
+          />
+          {showBookSuggestions && (
+            <ul className="absolute z-10 mt-1 max-h-64 w-full overflow-y-auto rounded-lg border border-border bg-surface shadow-lg">
+              {bookMatches.length === 0 && (
+                <li className="px-3 py-2 text-xs text-paper-400">Không tìm thấy sách phù hợp.</li>
+              )}
+              {bookMatches.map((b) => (
+                <li key={b.slug}>
+                  <button
+                    type="button"
+                    onClick={() => selectBook(b)}
+                    className="block w-full px-3 py-2 text-left text-sm hover:bg-accent-soft hover:text-accent"
+                  >
+                    {b.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+          {bookSlug && (
+            <p className="mt-1 text-xs text-accent">Đã chọn: {bookQuery}</p>
+          )}
+        </div>
 
         {jobType === "translate" && (
           <input
@@ -245,7 +246,7 @@ export default function AdminJobsPage() {
             {job.result?.slug ? (
               <p className="mt-2 text-xs text-paper-400">
                 Kết quả: slug <span className="text-ink">{String(job.result.slug)}</span> — xem ở
-                trang Bản nháp.
+                trang Quản lý nội dung.
               </p>
             ) : null}
             {(job.status === "pending" || job.status === "error" || job.status === "processing") && (

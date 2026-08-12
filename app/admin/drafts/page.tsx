@@ -14,6 +14,33 @@ interface BookRow {
   updated_at: string;
 }
 
+function StarButton({
+  book,
+  busy,
+  onToggle,
+}: {
+  book: BookRow;
+  busy: boolean;
+  onToggle: (slug: string) => void;
+}) {
+  const featured = Boolean(book.data.meta.featured);
+  return (
+    <button
+      onClick={() => onToggle(book.slug)}
+      disabled={busy}
+      title={featured ? "Bỏ đánh dấu sao" : "Đánh dấu sao"}
+      aria-label={featured ? "Bỏ đánh dấu sao" : "Đánh dấu sao"}
+      className={`rounded-full border px-3 py-1.5 text-xs disabled:opacity-50 ${
+        featured
+          ? "border-accent bg-accent-soft text-accent"
+          : "border-border text-ink-soft hover:border-accent hover:text-accent"
+      }`}
+    >
+      {featured ? "★" : "☆"}
+    </button>
+  );
+}
+
 function MetaDiffLine({
   label,
   current,
@@ -69,6 +96,20 @@ export default function AdminDraftsPage() {
     await refresh();
   }
 
+  async function toggleStar(slug: string) {
+    setBusySlug(slug);
+    setError(null);
+    const res = await adminFetch(`/api/admin/books/${slug}/star`, { method: "POST" });
+    const body = await res.json().catch(() => ({}));
+    setBusySlug(null);
+    if (!res.ok) {
+      setError(body.error ?? "Đánh dấu sao thất bại.");
+      return;
+    }
+    await refresh();
+  }
+
+
   const needsReview = books.filter((b) => b.status === "draft" || b.pending_data);
   const reviewed = books.filter((b) => b.status === "reviewed");
   const live = books.filter((b) => b.status === "published");
@@ -93,12 +134,16 @@ export default function AdminDraftsPage() {
                   <p className="text-xs font-mono uppercase tracking-widest text-accent">
                     {b.status === "draft" ? "Sách mới (chưa duyệt)" : "Đề xuất chỉnh sửa"}
                   </p>
-                  <h3 className="mt-1 font-medium text-ink">{b.data.meta.title}</h3>
+                  <h3 className="mt-1 font-medium text-ink">
+                    {b.data.meta.featured && <span className="mr-1 text-accent">★</span>}
+                    {b.data.meta.title}
+                  </h3>
                   <p className="text-xs text-paper-400">
                     slug: {b.slug} · nguồn: {b.source}
                   </p>
                 </div>
                 <div className="flex gap-2">
+                  <StarButton book={b} busy={busySlug === b.slug} onToggle={toggleStar} />
                   <Link
                     href={`/admin/edit/${b.slug}`}
                     className="rounded-full border border-border px-4 py-1.5 text-xs hover:border-accent hover:text-accent"
@@ -167,12 +212,16 @@ export default function AdminDraftsPage() {
               className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border p-5"
             >
               <div>
-                <h3 className="font-medium text-ink">{b.data.meta.title}</h3>
+                <h3 className="font-medium text-ink">
+                  {b.data.meta.featured && <span className="mr-1 text-accent">★</span>}
+                  {b.data.meta.title}
+                </h3>
                 <p className="text-xs text-paper-400">
                   slug: {b.slug} · nguồn: {b.source}
                 </p>
               </div>
               <div className="flex gap-2">
+                <StarButton book={b} busy={busySlug === b.slug} onToggle={toggleStar} />
                 <Link
                   href={`/admin/edit/${b.slug}`}
                   className="rounded-full border border-border px-4 py-1.5 text-xs hover:border-accent hover:text-accent"
@@ -210,7 +259,10 @@ export default function AdminDraftsPage() {
               className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border p-5"
             >
               <div>
-                <h3 className="font-medium text-ink">{b.data.meta.title}</h3>
+                <h3 className="font-medium text-ink">
+                  {b.data.meta.featured && <span className="mr-1 text-accent">★</span>}
+                  {b.data.meta.title}
+                </h3>
                 <p className="text-xs text-paper-400">
                   slug: {b.slug} · nguồn: {b.source}
                   {b.pending_data && (
@@ -219,6 +271,7 @@ export default function AdminDraftsPage() {
                 </p>
               </div>
               <div className="flex gap-2">
+                <StarButton book={b} busy={busySlug === b.slug} onToggle={toggleStar} />
                 <Link
                   href={`/admin/edit/${b.slug}`}
                   className="rounded-full border border-border px-4 py-1.5 text-xs hover:border-accent hover:text-accent"
