@@ -341,6 +341,33 @@ cả ở dev local lẫn production, xác nhận response là file PDF hợp l�
 `lich-su-ai`) mà không cần sửa dữ liệu — route tự suy ra URL proxy từ
 slug, không phụ thuộc dữ liệu sách phải có sẵn `driveFileId`.
 
+### Mở rộng: hỗ trợ nhiều loại nguồn, không chỉ Drive (2026-08-12)
+
+User yêu cầu thêm: nhập được link Google Docs/Sheets/Slides hoặc "1 link
+web server lưu trữ khác", đồng thời khung xem phải tôn trọng đúng quyền
+tải/in của tài liệu gốc. **Đã chỉ rõ mâu thuẫn trước khi code**: 2 mục
+tiêu "ẩn nguồn hoàn toàn" và "tôn trọng quyền tải/in gốc + đa dạng nguồn"
+không thể cùng đạt được với route proxy (viewer PDF của trình duyệt luôn
+có nút tải/in riêng, không tắt theo ý chủ sở hữu tài liệu gốc được) — chỉ
+nhúng iframe trực tiếp của chính dịch vụ gốc mới tự động tôn trọng quyền
+đó. User chọn **giữ ẩn nguồn**, chấp nhận không tôn trọng được quyền
+tải/in gốc.
+
+- `lib/drive.ts::extractDriveFileId` mở rộng nhận diện thêm
+  `/document/d/`, `/spreadsheets/d/`, `/presentation/d/` (Docs/Sheets/
+  Slides đều là file Drive ở dưới, cùng cơ chế Service Account, không cần
+  sửa `streamDriveFile` — hàm đó đã tự phân biệt qua mimeType thật).
+- `app/api/drive-proxy/[bookSlug]/route.ts` thêm nhánh fallback: nếu
+  không nhận diện được là link Google, coi là 1 URL https công khai bất
+  kỳ, `fetch()` thẳng (không xác thực) rồi stream qua — vẫn qua domain
+  của portal, giữ đúng hành vi ẩn nguồn. Đã tự test logic fetch/stream với
+  1 PDF công khai ngoài Google trước khi deploy.
+- `app/admin/edit/[slug]/page.tsx` thêm ô nhập `meta.sourceUrl` trực tiếp
+  (trước đó chỉ job "ingest" tự điền được, không có UI cho admin tự đặt).
+- **Đã kiểm chứng sau deploy**: sách Drive cũ vẫn trả đúng file PDF y hệt
+  trước (không bị regression) — chưa test thật với 1 sách dùng nguồn
+  ngoài Google (cần user tự thử khi có nhu cầu thật).
+
 ---
 
 ## Context
